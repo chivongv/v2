@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styled from '@emotion/styled';
-
+import { Theme } from 'theme-ui';
 import ToggleMode from './ToggleMode';
 
 const Container = styled('nav')({
@@ -31,11 +31,10 @@ const InnerContainer = styled('div')({
   },
 });
 
-const Anchor = styled('a')(({ theme }) => ({
+const Anchor = styled('a')<{ theme: Theme }>(({ theme }) => ({
   cursor: 'pointer',
   [':hover, :focus']: {
     borderBottom: `3px solid ${theme.colors.accent}`,
-    // borderBottom: `3px solid #000`,
   },
 }));
 

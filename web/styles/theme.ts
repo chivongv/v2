@@ -1,6 +1,8 @@
-export default {
+import { Theme } from 'theme-ui';
+
+const theme: Theme = {
   initialColorModeName: 'light',
-  useColorSchemeMediaQuery: 'true',
+  useColorSchemeMediaQuery: true,
   useLocalStorage: true,
   colors: {
     text: '#444a51',
@@ -35,3 +37,5 @@ export default {
     heading: 'inherit',
   },
 };
+
+export default theme;

@@ -6,8 +6,6 @@ import Navbar from '../components/Navbar';
 
 const Container = styled('div')({
   minHeight: '100vh',
-  width: '100vw',
-  maxWidth: '100vw',
 });
 
 const InnerContainer = styled('div')({
