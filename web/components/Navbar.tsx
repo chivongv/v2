@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import styled from 'styled-components';
-
+import styled from '@emotion/styled';
+import { Theme } from 'theme-ui';
 import ToggleMode from './ToggleMode';
 
 const Container = styled('nav')({
@@ -21,32 +21,35 @@ const InnerContainer = styled('div')({
     listStyleType: 'none',
     justifyContent: 'center',
     alignItems: 'center',
-    '& a': {
+    '& li:not(:last-child)': {
+      background: 'linear-gradient(to right, #e66465, #9198e5)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
       marginRight: 20,
       fontWeight: 600,
     },
   },
 });
 
-const Anchor = styled('a')({
-  color: '#000',
+const Anchor = styled('a')<{ theme: Theme }>(({ theme }) => ({
+  cursor: 'pointer',
   [':hover, :focus']: {
-    borderBottom: `3px solid #000`,
+    borderBottom: `3px solid ${theme.colors.accent}`,
   },
-});
+}));
 
-const Navbar = (props) => {
+const Navbar = () => {
   return (
     <Container>
       <InnerContainer>
         <ul>
           <li>
-            <Link href="/">
+            <Link href="/" as="/">
               <Anchor>Home</Anchor>
             </Link>
           </li>
           <li>
-            <Link href="/works">
+            <Link href="/works" as="/works">
               <Anchor>Works</Anchor>
             </Link>
           </li>
