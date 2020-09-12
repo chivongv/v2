@@ -2,14 +2,13 @@ import { ReactNode } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
 
-const StyledContainer = styled('div')`
-  min-height: 100vh;
-  max-width: 100vw;
+import Navbar from '../components/Navbar';
 
-  @media all and (max-width: 594px) {
-    width: 100vw;
-  }
-`;
+const StyledContainer = styled('div')({
+  minHeight: '100vh',
+  width: '100vw',
+  maxWidth: '100vw',
+});
 
 const StyledWrapper = styled('div')`
   padding: 20px 0;
@@ -31,20 +30,19 @@ type Props = {
 
 const Layout = ({ children, title }: Props) => {
   return (
-    <div>
-      <StyledContainer>
-        <Head>
-          <title>Chi Vong | {title}</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <main>{children}</main>
-        <footer>
-          <StyledWrapper>
-            © {new Date().getFullYear()} Built with &#9829; by Chi Vong
-          </StyledWrapper>
-        </footer>
-      </StyledContainer>
-    </div>
+    <StyledContainer>
+      <Head>
+        <title>Chi Vong | {title}</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Navbar />
+      <main>{children}</main>
+      <footer>
+        <StyledWrapper>
+          © {new Date().getFullYear()} Built with &#9829; by Chi Vong
+        </StyledWrapper>
+      </footer>
+    </StyledContainer>
   );
 };
 

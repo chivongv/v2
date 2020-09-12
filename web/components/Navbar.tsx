@@ -21,7 +21,10 @@ const InnerContainer = styled('div')({
     listStyleType: 'none',
     justifyContent: 'center',
     alignItems: 'center',
-    '& a': {
+    '& li:not(:last-child)': {
+      background: 'linear-gradient(to right, #e66465, #9198e5)',
+      '-webkit-background-clip': 'text',
+      '-webkit-text-fill-color': 'transparent',
       marginRight: 20,
       fontWeight: 600,
     },
@@ -29,7 +32,7 @@ const InnerContainer = styled('div')({
 });
 
 const Anchor = styled('a')({
-  color: '#000',
+  cursor: 'pointer',
   [':hover, :focus']: {
     borderBottom: `3px solid #000`,
   },
@@ -41,12 +44,12 @@ const Navbar = (props) => {
       <InnerContainer>
         <ul>
           <li>
-            <Link href="/">
+            <Link href="/" as="/">
               <Anchor>Home</Anchor>
             </Link>
           </li>
           <li>
-            <Link href="/works">
+            <Link href="/works" as="/works">
               <Anchor>Works</Anchor>
             </Link>
           </li>

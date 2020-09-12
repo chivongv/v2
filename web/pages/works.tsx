@@ -1,5 +1,11 @@
+import Layout from '../components/Layout';
+
 const Works = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Layout title="Works">in Works</Layout>
+    </div>
+  );
 };
 
 export default Works;

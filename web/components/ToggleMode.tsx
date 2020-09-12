@@ -1,13 +1,10 @@
 import styled from 'styled-components';
-import Blog from '../pages/blog';
-// import { useColorMode } from 'theme-ui';
+import { useColorMode } from 'theme-ui';
 
-const Container = styled('div')({
+const Button = styled('button')({
   background: 'none',
   border: 'none',
   display: 'flex',
-  height: 24,
-  width: 24,
   borderRadius: 5,
   alignItems: 'center',
   justifyContent: 'center',
@@ -40,25 +37,39 @@ const Moon = styled('div')({
   borderRadius: '50%',
   boxShadow: 'inset 8px -8px 0 #b7b5bd',
   ':hover': {
-    boxShadow: 'inset 8px -8px 0 #212131',
+    boxShadow: 'inset 8px -8px 0 #131419',
   },
 });
 
+const getModeIcon = (mode: string) => {
+  switch (mode) {
+    case 'light':
+      return <Moon />;
+    case 'dark':
+      return <Sun />;
+    default:
+      return null;
+  }
+};
+
 const ToggleMode = () => {
-  //   const [colorMode, setColorMode] = useColorMode();
-  const colorMode: 'light' | 'dark' = 'light';
+  const [colorMode, setColorMode] = useColorMode();
   const displayText =
     colorMode === 'dark' ? 'Activate light mode' : 'Activate dark mode';
-  //   const displayText = 'Activate light mode';
 
-  //   function toggleMode(e) {
-  //     setColorMode(colorMode === 'dark' ? 'light' : 'dark');
-  //   }
+  function toggleMode() {
+    setColorMode(colorMode === 'dark' ? 'light' : 'dark');
+  }
 
   return (
-    <Container title={displayText} aria-label={displayText}>
-      {colorMode === 'dark' ? <Sun /> : <Moon />}
-    </Container>
+    <Button
+      type="button"
+      title={displayText}
+      aria-label={displayText}
+      onClick={() => toggleMode()}
+    >
+      {getModeIcon(colorMode)}
+    </Button>
   );
 };
 
