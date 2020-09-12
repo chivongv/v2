@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { useColorMode } from 'theme-ui';
 
 const Button = styled('button')({

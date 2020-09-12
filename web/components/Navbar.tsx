@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 import ToggleMode from './ToggleMode';
 
@@ -23,22 +23,23 @@ const InnerContainer = styled('div')({
     alignItems: 'center',
     '& li:not(:last-child)': {
       background: 'linear-gradient(to right, #e66465, #9198e5)',
-      '-webkit-background-clip': 'text',
-      '-webkit-text-fill-color': 'transparent',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
       marginRight: 20,
       fontWeight: 600,
     },
   },
 });
 
-const Anchor = styled('a')({
+const Anchor = styled('a')(({ theme }) => ({
   cursor: 'pointer',
   [':hover, :focus']: {
-    borderBottom: `3px solid #000`,
+    borderBottom: `3px solid ${theme.colors.accent}`,
+    // borderBottom: `3px solid #000`,
   },
-});
+}));
 
-const Navbar = (props) => {
+const Navbar = () => {
   return (
     <Container>
       <InnerContainer>

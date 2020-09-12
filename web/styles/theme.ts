@@ -1,5 +1,7 @@
 export default {
   initialColorModeName: 'light',
+  useColorSchemeMediaQuery: 'true',
+  useLocalStorage: true,
   colors: {
     text: '#444a51',
     background: 'rgb(250,250,250)',
@@ -31,12 +33,5 @@ export default {
     body:
       'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
     heading: 'inherit',
-  },
-  styles: {
-    root: {
-      fontFamily: 'body',
-      color: 'text',
-      bg: 'background',
-    },
   },
 };
