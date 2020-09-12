@@ -35,9 +35,5 @@
     "sanity-plugin-dashboard-widget-document-list": "^0.0.10",
     "sanity-plugin-dashboard-widget-netlify": "^1.0.1"
   },
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git@gitlab.com:chivongv/portfolio.git"
-  }
+  "devDependencies": {}
 }

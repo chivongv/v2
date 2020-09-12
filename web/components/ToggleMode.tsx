@@ -52,21 +52,21 @@ const getModeIcon = (mode: string) => {
   }
 };
 
-const ToggleMode = () => {
-  const [colorMode, setColorMode] = useColorMode();
+type Props = {
+  onClick?: () => any;
+};
+
+const ToggleMode = ({ onClick }: Props) => {
+  const [colorMode] = useColorMode();
   const displayText =
     colorMode === 'dark' ? 'Activate light mode' : 'Activate dark mode';
-
-  function toggleMode() {
-    setColorMode(colorMode === 'dark' ? 'light' : 'dark');
-  }
 
   return (
     <Button
       type="button"
       title={displayText}
       aria-label={displayText}
-      onClick={() => toggleMode()}
+      onClick={onClick}
     >
       {getModeIcon(colorMode)}
     </Button>

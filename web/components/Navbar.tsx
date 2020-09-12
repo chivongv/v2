@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styled from '@emotion/styled';
-import { Theme } from 'theme-ui';
+import { Theme, useColorMode } from 'theme-ui';
 import ToggleMode from './ToggleMode';
 
 const Container = styled('nav')({
@@ -39,6 +39,12 @@ const Anchor = styled('a')<{ theme: Theme }>(({ theme }) => ({
 }));
 
 const Navbar = () => {
+  const [colorMode, setColorMode] = useColorMode();
+
+  const toggleMode = () => {
+    setColorMode(colorMode === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <Container>
       <InnerContainer>
@@ -59,7 +65,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <ToggleMode />
+            <ToggleMode onClick={() => toggleMode()} />
           </li>
         </ul>
       </InnerContainer>
