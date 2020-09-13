@@ -7,7 +7,7 @@ export default {
   fields: [
     {
       name: 'title',
-      title: 'Post name',
+      title: 'Post title',
       type: 'string',
     },
     {
@@ -39,24 +39,19 @@ export default {
     {
       name: 'coverImage',
       title: 'Cover Image',
-      type: 'figure',
+      type: 'image',
     },
     {
       name: 'body',
-      type: 'string',
+      type: 'array',
       title: 'Body text',
+      of: [{ type: 'block' }],
     },
     {
-      name: 'tags',
-      type: 'array',
-      title: 'Post tags',
-      of: [
-        {
-          type: 'string',
-          validation: (Rule) =>
-            Rule.required().min(1).error('Minimum 1 character is required'),
-        },
-      ],
+      name: 'author',
+      title: 'Author',
+      type: 'reference',
+      to: [{ type: 'person' }],
     },
   ],
   orderings: [
