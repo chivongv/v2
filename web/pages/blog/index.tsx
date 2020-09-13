@@ -4,22 +4,20 @@ import Layout from '../../components/Layout';
 import { getAllPostsForHome } from '../../lib/api';
 
 const Blog = ({ allPosts }) => {
-  const heroPost = allPosts[0];
-
   return (
     <Layout title="Blog">
-      <div>
-        {heroPost && (
-          <>
-            <h3>{heroPost.title}</h3>
-            <small>{heroPost.publishedDate}</small>
-            <div>{heroPost.excerpt}</div>
-            <Link href="/blog/[slug]" as={`/blog/${heroPost.slug}`}>
+      {allPosts.map((post, index) => {
+        return (
+          <div key={index}>
+            <h3>{post.title}</h3>
+            <small>{post.publishedDate}</small>
+            <div>{post.excerpt}</div>
+            <Link href="/blog/[slug]" as={`/blog/${post.slug}`}>
               <a>Read more</a>
             </Link>
-          </>
-        )}
-      </div>
+          </div>
+        );
+      })}
     </Layout>
   );
 };

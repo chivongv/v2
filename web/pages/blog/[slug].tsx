@@ -19,7 +19,6 @@ const PostBody = styled('div')({
 
 const Post = ({ post }) => {
   const router = useRouter();
-  console.log('post', post);
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
