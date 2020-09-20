@@ -4,10 +4,9 @@ import styled from '@emotion/styled';
 import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
 
-import { CMS_NAME } from '../../lib/constants';
-import Navbar from '../../components/Navbar';
 import Layout from '../../components/Layout';
 import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
+import { formatDate } from '../../utils/datetime-utils';
 
 const Container = styled('div')({
   marginBottom: 10,
@@ -38,8 +37,8 @@ const Post = ({ post }) => {
                 </title>
               </Head>
               <h2>{post.title}</h2>
-              <small>{post.publishedDate}</small>
-              {`by ${post.author.name}`}
+              <small>{formatDate(post.publishedDate)}</small>
+              {` by ${post.author.name}`}
               <PostBody>
                 <BlockContent blocks={post.body} />
               </PostBody>

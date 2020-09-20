@@ -13,13 +13,23 @@ const getUniquePosts = (posts) => {
 };
 
 const postFields = `
-  name,
-  title,
-  publishedDate,
   excerpt,
+  name,
+  publishedDate,
+  title,
   'slug': slug.current,
   'coverImage': coverImage.asset->url,
   'author': author->{name, 'picture': picture.asset->url},
+`;
+
+const projectFields = `
+  _id,
+  demo,
+  excerpt,
+  showOnFrontPage,
+  source,
+  tags,
+  title,
 `;
 
 const getClient = (preview) => (preview ? previewClient : client);
@@ -46,6 +56,14 @@ export async function getAllPostsForHome(preview) {
       ${postFields}
     }`);
   return getUniquePosts(results);
+}
+
+export async function getAllWorksForHome(preview) {
+  const results = await getClient(preview)
+    .fetch(`*[_type == "project" && showOnFrontPage] | order(publishedDate desc){
+      ${projectFields}
+    }`);
+  return results;
 }
 
 export async function getPostAndMorePosts(slug, preview) {

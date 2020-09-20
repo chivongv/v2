@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import styled from '@emotion/styled';
-import { Theme, useColorMode } from 'theme-ui';
+import { useColorMode } from 'theme-ui';
 import ToggleMode from './ToggleMode';
+import { ExtendedTheme } from '../styles/theme';
 
 const Container = styled('nav')({
   display: 'flex',
@@ -15,23 +16,23 @@ const Container = styled('nav')({
   height: 50,
 });
 
-const InnerContainer = styled('div')({
+const InnerContainer = styled('div')<{ theme: ExtendedTheme }>(({ theme }) => ({
   '> ul': {
     display: 'flex',
     listStyleType: 'none',
     justifyContent: 'center',
     alignItems: 'center',
     '& li:not(:last-child)': {
-      background: 'linear-gradient(to right, #e66465, #9198e5)',
+      background: theme.colors.text,
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
       marginRight: 20,
       fontWeight: 600,
     },
   },
-});
+}));
 
-const Anchor = styled('a')<{ theme: Theme }>(({ theme }) => ({
+const Anchor = styled('a')<{ theme: ExtendedTheme }>(({ theme }) => ({
   cursor: 'pointer',
   [':hover, :focus']: {
     borderBottom: `3px solid ${theme.colors.accent}`,
@@ -50,17 +51,12 @@ const Navbar = () => {
       <InnerContainer>
         <ul>
           <li>
-            <Link href="/" as="/">
+            <Link href="/" passHref>
               <Anchor>Home</Anchor>
             </Link>
           </li>
           <li>
-            <Link href="/works" as="/works">
-              <Anchor>Works</Anchor>
-            </Link>
-          </li>
-          <li>
-            <Link href="/blog">
+            <Link href="/blog" passHref>
               <Anchor>Blog</Anchor>
             </Link>
           </li>

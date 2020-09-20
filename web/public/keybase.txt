@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/chivongv
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://chivongv.se
+  * I am chivongv (https://keybase.io/chivongv) on keybase.
+  * I have a public key ASCuiyfybCwpfF16b8iizX4YYhERFeFbiP26e_7RRnQ8tQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120a5f8e0d38ee4a60dfdacbed56c526b60c748ec68da2cec01ba4279de42e7673d0a",
+      "host": "keybase.io",
+      "kid": "0120ae8b27f26c2c297c5d7a6fc8a2cd7e1862111115e15b88fdba7bfed146743cb50a",
+      "uid": "f3f20309073d2ed8734214c35a80c819",
+      "username": "chivongv"
+    },
+    "merkle_root": {
+      "ctime": 1551635845,
+      "hash": "85d96a25b1da89ae067b0aee8afb157e539a88a619403dd45f9dd0542fcfec022abbd0c7dabd66da551d247fc4cb8fb4bd1132e156192e23a9fd5c356d8e710f",
+      "hash_meta": "73daf97c476dd2b2b1894c1fd3a42f0eb80bb8d88c489bf633d8c70d67badffe",
+      "seqno": 4867575
+    },
+    "service": {
+      "entropy": "dKXf/Vu53/ZyCib9jYXxacAG",
+      "hostname": "chivongv.se",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "3.0.0"
+  },
+  "ctime": 1551635872,
+  "expire_in": 504576000,
+  "prev": "4b89ed105c7cd077a81f08c400fe9766312ef3e0d7bc3bcad8c223899968f7be",
+  "seqno": 21,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgrosn8mwsKXxdem/Ios1+GGIRERXhW4j9unv+0UZ0PLUKp3BheWxvYWTESpcCFcQgS4ntEFx80HeoHwjEAP6XZjEu8+DXvDvK2MIjiZlo977EIMNQuyz/RKQG9RE2aeh6uTcLycNMPK2BAXYUWlJDPmMEAgHCo3NpZ8RAGc1/AGT860mOuMlE4WWJsH+XyUj7f8SZ2vRxB6XDcXv/F/ihOlxoE+aEQEfcK+AqofuWc20Upu+7SVnZrQwXD6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIAdlQcwIntEAPKMUMYKsVvthq6h/VvA4ozCV8fUsh6Boo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/chivongv
+
+==================================================================

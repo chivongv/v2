@@ -1,6 +1,22 @@
-import { Theme } from 'theme-ui';
+import { ColorMode, Theme } from 'theme-ui';
 
-const theme: Theme = {
+type Colors = ColorMode & {
+  black: string;
+  blue: string;
+  darkGrey: string;
+  hello: string;
+  orange: string;
+  shadow: string;
+  tag: string;
+  thumbnail: string;
+  white: string;
+};
+
+export type ExtendedTheme = Theme & {
+  colors: Colors;
+};
+
+const theme: ExtendedTheme = {
   initialColorModeName: 'light',
   useColorSchemeMediaQuery: true,
   useLocalStorage: true,
@@ -33,7 +49,7 @@ const theme: Theme = {
   },
   fonts: {
     body:
-      'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+      'Roboto, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif',
     heading: 'inherit',
   },
 };

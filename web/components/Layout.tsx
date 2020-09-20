@@ -9,7 +9,7 @@ const Container = styled('div')({
 });
 
 const InnerContainer = styled('div')({
-  maxWidth: 1200,
+  maxWidth: 1000,
   margin: '0 auto',
 });
 
