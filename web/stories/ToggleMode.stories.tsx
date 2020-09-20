@@ -1,5 +1,4 @@
-import React from 'react';
-import { action } from '@storybook/addon-actions';
+import { useColorMode } from 'theme-ui';
 import ToggleMode from '../components/ToggleMode';
 
 export default {
@@ -7,5 +6,11 @@ export default {
 };
 
 export const toggleMode = () => {
-  return <ToggleMode onClick={action('clicked')} />;
+  const [colorMode, setColorMode] = useColorMode();
+
+  const toggleMode = () => {
+    setColorMode(colorMode === 'dark' ? 'light' : 'dark');
+  };
+
+  return <ToggleMode onClick={() => toggleMode()} />;
 };
