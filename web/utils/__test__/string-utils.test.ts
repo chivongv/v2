@@ -1,12 +1,9 @@
 import { toCapitalize } from '../string-utils';
 
 describe('String utils', () => {
-  test('Expects null to be null', () => {
-    expect(toCapitalize(null)).toBe(null);
-  });
-
-  test('Expect undefined to be null', () => {
-    expect(toCapitalize(undefined)).toBe(null);
+  test('Expects null/undefined to be null', () => {
+    expect(toCapitalize(null)).toBeNull();
+    expect(toCapitalize(undefined)).toBeNull();
   });
 
   test('Expects string "hello" to be "Hello"', () => {

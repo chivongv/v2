@@ -1,12 +1,9 @@
 import { formatDate } from '../datetime-utils';
 
 describe('Datetime utils', () => {
-  test('Expects null to be null', () => {
-    expect(formatDate(null)).toBe(null);
-  });
-
-  test('Expect undefined to be null', () => {
-    expect(formatDate(undefined)).toBe(null);
+  test('Expects null/undefined to be null', () => {
+    expect(formatDate(null)).toBeNull();
+    expect(formatDate(undefined)).toBeNull();
   });
 
   test('Expects date as number 1600684311216 to be 2020-09-21', () => {
