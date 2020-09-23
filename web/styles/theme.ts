@@ -10,6 +10,7 @@ type Colors = ColorMode & {
   tag: string;
   thumbnail: string;
   white: string;
+  navBarBg: string;
 };
 
 export type ExtendedTheme = Theme & {
@@ -34,16 +35,18 @@ const theme: ExtendedTheme = {
     blue: '#3694ff',
     orange: '#ff8f58',
     white: '#fff',
+    navBarBg: 'rgba(0,0,0,0.1)',
     modes: {
       dark: {
         text: '#9d9fa0',
         background: '#131419',
         primary: 'rgba(54, 148, 255,0.7)',
-        accent: '#ff8f58',
+        accent: '#3694ff',
         hello: '#3694ff',
         tag: 'rgba(157, 159, 160,0.9)',
         shadow: 'rgba(0,0,0,0.15)',
         thumbnail: '#f2f2f210',
+        navBarBg: 'rgba(255,255,255,0.1)',
       },
     },
   },

@@ -10,10 +10,6 @@ describe('Datetime utils', () => {
     expect(formatDate(1600684311216)).toBe('2020-09-21');
   });
 
-  test('Expects Date.now() to be 2020-09-21', () => {
-    expect(formatDate(Date.now())).toBe('2020-09-21');
-  });
-
   test('Expects new Date() to be 2020-09-21', () => {
     expect(formatDate(new Date('2020-09-21'))).toBe('2020-09-21');
   });

@@ -6,17 +6,21 @@ import Navbar from '../components/Navbar';
 
 const Container = styled('div')({
   minHeight: '100vh',
+  position: 'relative',
 });
 
-const InnerContainer = styled('div')({
+const ContentWrapper = styled('div')({
   maxWidth: 1000,
   margin: '0 auto',
+  paddingBottom: '2.5rem',
 });
 
-const Wrapper = styled('div')({
-  padding: '20px 0',
+const Footer = styled('footer')({
+  position: 'absolute',
+  bottom: 0,
+  width: '100%',
+  height: '2.5rem',
   textAlign: 'center',
-  margin: '0 auto',
 });
 
 type Props = {
@@ -27,19 +31,17 @@ type Props = {
 const Layout = ({ children, title }: Props) => {
   return (
     <Container>
-      <InnerContainer>
-        <Head>
-          <title>Chi Vong | {title}</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <Navbar />
+      <Head>
+        <title>Chi Vong | {title}</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Navbar />
+      <ContentWrapper>
         <main>{children}</main>
-        <footer>
-          <Wrapper>
-            © {new Date().getFullYear()} Built with &#9829; by Chi Vong
-          </Wrapper>
-        </footer>
-      </InnerContainer>
+      </ContentWrapper>
+      <Footer>
+        © {new Date().getFullYear()} Built with &#9829; by Chi Vong
+      </Footer>
     </Container>
   );
 };

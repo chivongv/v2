@@ -22,12 +22,15 @@ const Title = styled('h2')<{ theme: ExtendedTheme }>(({ theme }) => ({
   },
 }));
 
-const SubTitle = styled('h3')({
+const SubTitle = styled('h3')<{ theme: ExtendedTheme }>(({ theme }) => ({
   fontSize: 'calc(0.6rem + 0.8vw)',
   maxWidth: 800,
   width: '85vw',
   lineHeight: 1.3,
-});
+  '.highlight': {
+    color: theme.colors.accent,
+  },
+}));
 
 const Anchor = styled('a')<{ theme: ExtendedTheme }>(({ theme }) => ({
   marginTop: 30,

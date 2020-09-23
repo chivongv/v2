@@ -8,8 +8,8 @@ const Container = styled.div({
   flexDirection: 'column',
   maxWidth: 1000,
   minHeight: '70vh',
-  margin: '0 auto 50px',
-  paddingTop: 30,
+  margin: '0 auto',
+  padding: '30px 0',
 });
 
 const Title = styled('h2')<{ theme: ExtendedTheme }>(({ theme }) => ({

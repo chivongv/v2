@@ -7,14 +7,23 @@ import BlockContent from '@sanity/block-content-to-react';
 import Layout from '../../components/Layout';
 import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
 import { formatDate } from '../../utils/datetime-utils';
+import { ExtendedTheme } from '../../styles/theme';
 
 const Container = styled('div')({
-  marginBottom: 10,
+  textAlign: 'center',
+  paddingTop: 70,
 });
 
-const PostBody = styled('div')({
-  maxWidth: 1200,
+const PostTitle = styled('h3')<{ theme: ExtendedTheme }>(({ theme }) => ({
+  color: theme.colors.blue,
+  marginBottom: 15,
+}));
+
+const PostInfo = styled('div')({
+  marginBottom: 25,
 });
+
+const ContentWrapper = styled('div')({});
 
 const Post = ({ post }) => {
   const router = useRouter();
@@ -27,7 +36,7 @@ const Post = ({ post }) => {
     <Layout title={router.isFallback ? 'Loading...' : post.title}>
       <Container>
         {router.isFallback ? (
-          <h2>Loading…</h2>
+          <PostTitle>Loading…</PostTitle>
         ) : (
           <>
             <article>
@@ -36,12 +45,13 @@ const Post = ({ post }) => {
                   {post.title} | {post.author.name}
                 </title>
               </Head>
-              <h2>{post.title}</h2>
-              <small>{formatDate(post.publishedDate)}</small>
-              {` by ${post.author.name}`}
-              <PostBody>
+              <PostTitle>{post.title}</PostTitle>
+              <PostInfo>
+                {`${formatDate(post.publishedDate)} by ${post.author.name}`}
+              </PostInfo>
+              <ContentWrapper>
                 <BlockContent blocks={post.body} />
-              </PostBody>
+              </ContentWrapper>
             </article>
           </>
         )}

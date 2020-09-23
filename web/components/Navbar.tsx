@@ -4,23 +4,26 @@ import { useColorMode } from 'theme-ui';
 import ToggleMode from './ToggleMode';
 import { ExtendedTheme } from '../styles/theme';
 
-const Container = styled('nav')({
+const Container = styled('nav')<{ theme: ExtendedTheme }>(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'flex-end',
   width: '100vw',
-  maxWidth: 1200,
   margin: '0 auto',
   paddingRight: 20,
   height: 50,
-});
+  position: 'fixed',
+  backgroundColor: theme.colors.navBarBg,
+}));
 
 const InnerContainer = styled('div')<{ theme: ExtendedTheme }>(({ theme }) => ({
+  width: 1000,
+  margin: '0 auto',
   '> ul': {
     display: 'flex',
     listStyleType: 'none',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     '& li:not(:last-child)': {
       background: theme.colors.text,
