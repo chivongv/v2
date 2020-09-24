@@ -1,5 +1,6 @@
 import { AppProps } from 'next/app';
 import { ThemeProvider } from 'theme-ui';
+
 import theme from '../styles/theme';
 import '../styles/globals.css';
 

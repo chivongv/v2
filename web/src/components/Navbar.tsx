@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import { useColorMode } from 'theme-ui';
+
 import ToggleMode from './ToggleMode';
 import { ExtendedTheme } from '../styles/theme';
 

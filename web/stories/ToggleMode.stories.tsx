@@ -1,5 +1,5 @@
 import { useColorMode } from 'theme-ui';
-import ToggleMode from '../components/ToggleMode';
+import ToggleMode from '../src/components/ToggleMode';
 
 export default {
   title: 'Button',

@@ -8,6 +8,6 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
-    '^.+\\.css$': '<rootDir>/config/jest/cssTransform.js',
+    '^.+\\.css$': '<rootDir>/src/config/jest/cssTransform.js',
   },
 };
