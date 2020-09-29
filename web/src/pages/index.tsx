@@ -1,6 +1,7 @@
 import { getAllWorksForHome } from '../lib/api';
-import Layout from '../components/Layout';
 import Hero from '../sections/Hero';
+import Layout from '../components/Layout';
+import SocialBar from '../components/SocialBar';
 import Works from '../sections/Works';
 
 const Home = ({ works }) => {
@@ -8,6 +9,7 @@ const Home = ({ works }) => {
     <div>
       <Layout title="Software Engineer">
         <Hero />
+        <SocialBar />
         <Works works={works} />
       </Layout>
     </div>
