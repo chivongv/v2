@@ -16,16 +16,18 @@ const Container = styled('nav')<{ theme: ExtendedTheme }>(({ theme }) => ({
   height: 50,
   position: 'fixed',
   backgroundColor: theme.colors.navBarBg,
+  boxShadow: `3px 3px 5px ${theme.colors.shadow}`,
+  zIndex: 999,
 }));
 
 const InnerContainer = styled('div')<{ theme: ExtendedTheme }>(({ theme }) => ({
-  width: 1000,
+  width: '100%',
+  maxWidth: 1000,
   margin: '0 auto',
   '> ul': {
     display: 'flex',
     listStyleType: 'none',
     justifyContent: 'flex-end',
-    alignItems: 'center',
     '& li:not(:last-child)': {
       background: theme.colors.text,
       WebkitBackgroundClip: 'text',
