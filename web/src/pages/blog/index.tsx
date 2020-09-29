@@ -10,12 +10,22 @@ const Container = styled('div')({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  minHeight: '85vh',
   paddingTop: 70,
   gap: 30,
   '> ul': {
     padding: 10,
   },
+  '@media screen and (min-width: 1000px)': {
+    minHeight: '100vh',
+  },
 });
+
+const Title = styled('h2')<{ theme: ExtendedTheme }>(({ theme }) => ({
+  fontSize: 'calc(0.875rem + 0.8vw)',
+  textAlign: 'center',
+  color: theme.colors.primary,
+}));
 
 const PostItem = styled('li')({
   listStyle: 'none',
@@ -34,7 +44,7 @@ const Blog = ({ allPosts }) => {
   return (
     <Layout title="Blog">
       <Container>
-        <h2>Blog</h2>
+        <Title>Blog</Title>
         <ul>
           {allPosts.map((post, index) => {
             return (

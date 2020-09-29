@@ -15,7 +15,7 @@ const Container = styled.div({
 const Title = styled('h2')<{ theme: ExtendedTheme }>(({ theme }) => ({
   fontSize: 'calc(0.875rem + 0.8vw)',
   textAlign: 'center',
-  color: theme.colors.accent,
+  color: theme.colors.primary,
 }));
 
 const WorkList = styled.div({
@@ -42,7 +42,7 @@ const Works = ({ works }) => {
   if (works && works.length > 0) {
     return (
       <Container id="works">
-        <Title className="">Some Things I&#39;ve Built</Title>
+        <Title>Some Things I&#39;ve Built</Title>
         <WorkList>
           {works.map((work) => {
             if (work) {

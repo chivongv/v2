@@ -5,7 +5,6 @@ import styled from '@emotion/styled';
 import Navbar from '../components/Navbar';
 
 const Container = styled('div')({
-  minHeight: '100vh',
   position: 'relative',
 });
 
@@ -20,7 +19,9 @@ const Footer = styled('footer')({
   bottom: 0,
   width: '100%',
   height: '2.5rem',
-  textAlign: 'center',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 });
 
 type Props = {
