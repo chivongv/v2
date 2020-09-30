@@ -1,11 +1,13 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
+import { useInView } from 'react-intersection-observer';
 
-import Layout from '../../components/Layout';
-import SocialBar from '../../components/SocialBar';
-import { getAllPostsForHome } from '../../lib/api';
 import { ExtendedTheme } from '../../styles/theme';
 import { formatDate } from '../../utils/datetime-utils';
+import { getAllPostsForHome } from '../../lib/api';
+import Layout from '../../components/Layout';
+import SocialBar from '../../components/SocialBar';
+import ToTop from '../../components/ToTop';
 
 const Container = styled('div')({
   display: 'flex',
@@ -42,11 +44,15 @@ const PostTitle = styled('div')<{ theme: ExtendedTheme }>(({ theme }) => ({
 }));
 
 const Blog = ({ allPosts }) => {
+  const [ref, inView] = useInView({
+    rootMargin: '350px',
+  });
+
   return (
     <Layout title="Blog">
       <Container>
         <Title>Blog</Title>
-        <ul>
+        <ul ref={ref}>
           {allPosts.map((post, index) => {
             return (
               <PostItem key={index}>
@@ -62,6 +68,7 @@ const Blog = ({ allPosts }) => {
         </ul>
       </Container>
       <SocialBar />
+      <ToTop inView={inView} />
     </Layout>
   );
 };

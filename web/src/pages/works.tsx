@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
+import { useInView } from 'react-intersection-observer';
 
-import Layout from '../components/Layout';
-import SocialBar from '../components/SocialBar';
-import ProjectCard from '../components/ProjectCard';
 import { getAllWorks } from '../lib/api';
+import Layout from '../components/Layout';
+import ProjectCard from '../components/ProjectCard';
+import SocialBar from '../components/SocialBar';
+import ToTop from '../components/ToTop';
 
 const Container = styled('div')({
   display: 'flex',
@@ -26,10 +28,14 @@ const ProjectCardWrapper = styled('div')({
 });
 
 const Works = ({ allWorks }) => {
+  const [ref, inView] = useInView({
+    rootMargin: '350px',
+  });
+
   return (
     <Layout title="Works">
       <Container>
-        <ProjectList>
+        <ProjectList ref={ref}>
           {allWorks
             ? allWorks.map((project) =>
                 project ? (
@@ -42,6 +48,7 @@ const Works = ({ allWorks }) => {
         </ProjectList>
       </Container>
       <SocialBar />
+      <ToTop inView={inView} />
     </Layout>
   );
 };

@@ -1,16 +1,37 @@
+import { useInView } from 'react-intersection-observer';
+
 import { getAllWorksForHome } from '../lib/api';
 import Hero from '../sections/Hero';
 import Layout from '../components/Layout';
 import SocialBar from '../components/SocialBar';
+import ToTop from '../components/ToTop';
 import Works from '../sections/Works';
 
-const Home = ({ works }) => {
+type Work = {
+  _id: string;
+  demo: string;
+  excerpt: string;
+  source: string;
+  tags: string[];
+  title: string;
+};
+
+type Props = {
+  works: Work[];
+};
+
+const Home = ({ works }: Props) => {
+  const [ref, inView] = useInView({
+    threshold: 0,
+  });
+
   return (
     <div>
       <Layout title="Software Engineer">
         <Hero />
         <SocialBar />
-        <Works works={works} />
+        <Works works={works} ref={ref} />
+        <ToTop inView={inView} />
       </Layout>
     </div>
   );

@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import styled from '@emotion/styled';
+import { forwardRef } from 'react';
+
 import WorkCard from '../components/WorkCard';
 import { ExtendedTheme } from '../styles/theme';
 
@@ -18,7 +20,7 @@ const Title = styled('h2')<{ theme: ExtendedTheme }>(({ theme }) => ({
   color: theme.colors.primary,
 }));
 
-const WorkList = styled.div({
+const WorkList = styled('div')({
   marginTop: 20,
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
@@ -38,12 +40,25 @@ const Anchor = styled('a')<{ theme: ExtendedTheme }>(({ theme }) => ({
   padding: '10px 16px',
 }));
 
-const Works = ({ works }) => {
+type Work = {
+  _id: string;
+  demo: string;
+  excerpt: string;
+  source: string;
+  tags: string[];
+  title: string;
+};
+
+type Props = {
+  works: Work[];
+};
+
+const Works = forwardRef(({ works }: Props, ref?: any) => {
   if (works && works.length > 0) {
     return (
       <Container id="works">
         <Title>Some Things I&#39;ve Built</Title>
-        <WorkList>
+        <WorkList ref={ref}>
           {works.map((work) => {
             if (work) {
               return <WorkCard key={work._id} data={work} />;
@@ -61,6 +76,6 @@ const Works = ({ works }) => {
   }
 
   return null;
-};
+});
 
 export default Works;
