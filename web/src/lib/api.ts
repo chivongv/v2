@@ -12,7 +12,7 @@ const getUniquePosts = (posts) => {
   });
 };
 
-const postFields = `
+const sharedPostFields = `
   excerpt,
   name,
   publishedDate,
@@ -22,11 +22,10 @@ const postFields = `
   'author': author->{name, 'picture': picture.asset->url},
 `;
 
-const projectFields = `
+const sharedProjectFields = `
   _id,
   demo,
   excerpt,
-  showOnFrontPage,
   source,
   tags,
   title,
@@ -37,7 +36,7 @@ const getClient = (preview) => (preview ? previewClient : client);
 export async function getPreviewPostBySlug(slug) {
   const data = await getClient(true).fetch(
     `*[_type == "post" && slug.current == $slug] | order(date desc){
-      ${postFields}
+      ${sharedPostFields}
       content
     }`,
     { slug },
@@ -53,17 +52,9 @@ export async function getAllPostsWithSlug() {
 export async function getAllPostsForHome(preview) {
   const results = await getClient(preview)
     .fetch(`*[_type == "post"] | order(publishedDate desc, _updatedAt desc){
-      ${postFields}
+      ${sharedPostFields}
     }`);
   return getUniquePosts(results);
-}
-
-export async function getAllWorksForHome(preview) {
-  const results = await getClient(preview)
-    .fetch(`*[_type == "project" && showOnFrontPage] | order(publishedDate desc){
-      ${projectFields}
-    }`);
-  return results;
 }
 
 export async function getPostAndMorePosts(slug, preview) {
@@ -72,7 +63,7 @@ export async function getPostAndMorePosts(slug, preview) {
     curClient
       .fetch(
         `*[_type == "post" && slug.current == $slug] | order(_updatedAt desc) {
-        ${postFields}
+        ${sharedPostFields}
         body,
       }`,
         { slug },
@@ -80,11 +71,29 @@ export async function getPostAndMorePosts(slug, preview) {
       .then((res) => res?.[0]),
     curClient.fetch(
       `*[_type == "post" && slug.current != $slug] | order(date desc, _updatedAt desc){
-        ${postFields}
+        ${sharedPostFields}
         body,
       }[0...2]`,
       { slug },
     ),
   ]);
   return { post, morePosts: getUniquePosts(morePosts) };
+}
+
+export async function getAllWorksForHome(preview) {
+  const results = await getClient(preview)
+    .fetch(`*[_type == "project" && showOnFrontPage] | order(publishedDate desc){
+      ${sharedProjectFields}
+    }`);
+  return results;
+}
+
+export async function getAllWorks() {
+  const data = await client.fetch(`*[_type == "project"]| order(publishedDate desc){ 
+    ${sharedProjectFields}
+    showOnFrontPage,
+    body,
+    coverImage
+   }`);
+  return data;
 }

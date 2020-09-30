@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 
 import Layout from '../../components/Layout';
+import SocialBar from '../../components/SocialBar';
 import { getAllPostsForHome } from '../../lib/api';
 import { ExtendedTheme } from '../../styles/theme';
 import { formatDate } from '../../utils/datetime-utils';
@@ -60,6 +61,7 @@ const Blog = ({ allPosts }) => {
           })}
         </ul>
       </Container>
+      <SocialBar />
     </Layout>
   );
 };

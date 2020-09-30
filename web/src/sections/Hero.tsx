@@ -31,14 +31,14 @@ const SubTitle = styled('h3')<{ theme: ExtendedTheme }>(({ theme }) => ({
 }));
 
 const Anchor = styled('a')<{ theme: ExtendedTheme }>(({ theme }) => ({
-  marginTop: 30,
+  marginTop: 15,
   backgroundColor: theme.colors.primary,
   color: '#fff',
   position: 'relative',
   padding: '10px 15px',
   borderRadius: 4,
-  '@media screen and (max-width: 594px)': {
-    marginTop: 15,
+  '@media screen and (min-width: 594px)': {
+    marginTop: 30,
   },
 }));
 

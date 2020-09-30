@@ -62,6 +62,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+            <Link href="/works" passHref>
+              <Anchor>Works</Anchor>
+            </Link>
+          </li>
+          <li>
             <Link href="/blog" passHref>
               <Anchor>Blog</Anchor>
             </Link>

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { FaGithub, FaGitlab, FaExternalLinkAlt } from 'react-icons/fa';
+
 import { ExtendedTheme } from '../styles/theme';
 
 const Container = styled.div<{ theme: ExtendedTheme }>(({ theme }) => ({
@@ -17,7 +18,7 @@ const Container = styled.div<{ theme: ExtendedTheme }>(({ theme }) => ({
   },
 }));
 
-const StyledLinks = styled.div<{ theme: ExtendedTheme }>(({ theme }) => ({
+const WorkLinks = styled.div<{ theme: ExtendedTheme }>(({ theme }) => ({
   display: 'flex',
   justifyContent: 'flex-end',
   marginRight: 10,
@@ -82,7 +83,7 @@ const WorkCard = ({ data }) => {
     return (
       <Container>
         {source || demo ? (
-          <StyledLinks className="works-links">
+          <WorkLinks>
             {source ? (
               <a
                 href={source}
@@ -97,7 +98,7 @@ const WorkCard = ({ data }) => {
                 <FaExternalLinkAlt /> Demo
               </a>
             ) : null}
-          </StyledLinks>
+          </WorkLinks>
         ) : null}
         {title ? <Name>{title}</Name> : null}
         {excerpt ? (
@@ -107,7 +108,7 @@ const WorkCard = ({ data }) => {
             }}
           ></Body>
         ) : null}
-        <TagList className="work-tags">
+        <TagList>
           {tags
             ? tags.map((tag, j) => {
                 return <Tag key={j}>{tag}</Tag>;
