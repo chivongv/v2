@@ -18,6 +18,9 @@ const Title = styled('h2')<{ theme: ExtendedTheme }>(({ theme }) => ({
   fontSize: 'calc(1rem + 2.5vw)',
   lineHeight: 1.5,
   marginBottom: 20,
+  '.highlight': {
+    color: theme.colors.accent,
+  },
 }));
 
 const SubTitle = styled('h3')<{ theme: ExtendedTheme }>(({ theme }) => ({
@@ -25,9 +28,7 @@ const SubTitle = styled('h3')<{ theme: ExtendedTheme }>(({ theme }) => ({
   maxWidth: 800,
   width: '85vw',
   lineHeight: 1.3,
-  '.highlight': {
-    color: theme.colors.accent,
-  },
+  textAlign: 'center'
 }));
 
 const Anchor = styled('a')<{ theme: ExtendedTheme }>(({ theme }) => ({
@@ -45,12 +46,9 @@ const Anchor = styled('a')<{ theme: ExtendedTheme }>(({ theme }) => ({
 const Hero = () => {
   return (
     <Container>
-      <Title>Hi there 👋</Title>
+      <Title>Hi, I'm <span className="highlight">Chi</span></Title>
       <SubTitle>
-        I'm Chi Vong from Sweden. I'm currently a{' '}
-        <span className="highlight">Front-End Developer</span> with the goal to
-        become <span className="highlight">Fullstack Developer</span>. Until
-        then, I will continue to learn and challenge myself.
+         Front-End Developer
       </SubTitle>
       <Link href="/#works" passHref>
         <Anchor>Read more</Anchor>

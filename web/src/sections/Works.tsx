@@ -17,7 +17,7 @@ const Container = styled.div({
 const Title = styled('h2')<{ theme: ExtendedTheme }>(({ theme }) => ({
   fontSize: 'calc(0.875rem + 0.8vw)',
   textAlign: 'center',
-  color: theme.colors.primary,
+  color: theme.colors.accent,
 }));
 
 const WorkList = styled('div')({

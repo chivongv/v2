@@ -56,7 +56,7 @@ const ProjectLinks = styled('div')<{ theme: ExtendedTheme }>(({ theme }) => ({
 const Name = styled('h2')<{ theme: ExtendedTheme }>(({ theme }) => ({
   margin: '10px 0 7px',
   fontSize: 'calc(0.8rem + 0.4vw)',
-  color: theme.colors.primary,
+  color: theme.colors.accent,
 }));
 
 const Body = styled('div')({
