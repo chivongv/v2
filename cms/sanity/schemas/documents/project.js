@@ -58,6 +58,8 @@ export default {
       of: [
         {
           type: 'string',
+          name: 'tag',
+          title: 'Project tag',
           validation: (Rule) =>
             Rule.required().min(1).error('Minimum 1 character is required'),
         },
@@ -115,7 +117,7 @@ export default {
       slug = {},
       media,
     }) {
-      const dateSegment = format(new Date(publishedDate), 'YYYY/MM');
+      const dateSegment = format(new Date(publishedDate), 'yyyy/MM');
       const path = `/${dateSegment}/${slug.current}/`;
       return {
         title,

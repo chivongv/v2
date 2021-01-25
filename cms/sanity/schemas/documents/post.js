@@ -97,7 +97,7 @@ export default {
       slug = {},
       media,
     }) {
-      const dateSegment = format(new Date(publishedDate), 'YYYY/MM');
+      const dateSegment = format(new Date(publishedDate), 'yyyy/MM');
       const path = `/${dateSegment}/${slug.current}/`;
       return {
         title,
