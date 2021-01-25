@@ -170,6 +170,7 @@ const ProjectCard = ({ data }) => {
           <Thumbnail>
             {coverImage && coverImage.asset ? (
               <img
+                loading="lazy"
                 src={imageBuilder.image(coverImage).width(400).url()}
                 alt={title}
               />
