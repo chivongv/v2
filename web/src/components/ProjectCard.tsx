@@ -81,6 +81,7 @@ const Thumbnail = styled('div')<{ theme: ExtendedTheme }>(({ theme }) => ({
   img: {
     objectFit: 'cover',
     borderRadius: '5px 5px 0 0',
+    maxHeight: 400,
   },
   '@media all and (min-width: 800px)': {
     maxWidth: 400,
