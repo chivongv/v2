@@ -4,7 +4,6 @@ type Colors = ColorMode & {
   black: string;
   blue: string;
   darkGrey: string;
-  hello: string;
   orange: string;
   shadow: string;
   tag: string;
@@ -26,7 +25,6 @@ const theme: ExtendedTheme = {
     background: 'rgb(250,250,250)',
     primary: 'rgba(54, 148, 255,0.9)',
     accent: '#3d92f3',
-    hello: '#ff8f58',
     tag: 'rgba(0,0,0,0.6)',
     shadow: 'rgba(0,0,0,0.1)',
     thumbnail: '#f2f2f2',
@@ -39,14 +37,13 @@ const theme: ExtendedTheme = {
     modes: {
       dark: {
         text: '#ececec',
-        background: '#222831',
-        primary: '#30475e',
-        accent: '#f2a365',
-        hello: '#f2a365',
+        background: '#17191c',
+        primary: 'rgb(86, 134, 245)',
+        accent: 'rgb(86, 134, 245)',
         tag: 'rgb(219, 232, 225, 0.7)',
-        shadow: 'rgba(219, 232, 225,0.05)',
-        thumbnail: '#f2f2f210',
-        navBarBg: 'rgba(34, 40, 49, 0.9)',
+        shadow: 'rgba(219, 232, 225,0.03)',
+        thumbnail: '#f2f2f205',
+        navBarBg: '#17191c',
       },
     },
   },
