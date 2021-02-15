@@ -41,7 +41,7 @@ const theme: ExtendedTheme = {
         primary: 'rgb(86, 134, 245)',
         accent: 'rgb(86, 134, 245)',
         tag: 'rgb(219, 232, 225, 0.7)',
-        shadow: 'rgba(219, 232, 225,0.03)',
+        shadow: 'rgba(0, 0, 0, 0.7)',
         thumbnail: '#f2f2f205',
         navBarBg: '#17191c',
       },
