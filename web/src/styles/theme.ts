@@ -43,7 +43,7 @@ const theme: ExtendedTheme = {
         tag: 'rgb(219, 232, 225, 0.7)',
         shadow: 'rgba(0, 0, 0, 0.7)',
         thumbnail: '#f2f2f205',
-        navBarBg: '#17191c',
+        navBarBg: 'rgba(23, 25, 28, 0.8)',
       },
     },
   },
