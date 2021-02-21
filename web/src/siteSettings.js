@@ -8,12 +8,12 @@ module.exports = {
       url: 'mailto:chivongv@pm.me',
     },
     {
-      name: 'Telegram',
-      url: 'https://t.me/chivongv',
-    },
-    {
       name: 'GitHub',
       url: 'https://github.com/chivongv',
+    },
+    {
+      name: 'Twitter',
+      url: 'https://twitter.com/chivongv',
     },
     {
       name: 'Codepen',

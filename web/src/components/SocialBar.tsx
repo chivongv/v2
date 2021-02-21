@@ -5,7 +5,7 @@ import {
   FaGitlab,
   FaLinkedin,
   FaCodepen,
-  FaTelegramPlane,
+  FaTwitter,
 } from 'react-icons/fa';
 
 import { socialMedia } from '../siteSettings';
@@ -104,8 +104,8 @@ const IconSelector = ({ name }) => {
   switch (name) {
     case 'Email':
       return <FaRegEnvelope />;
-    case 'Telegram':
-      return <FaTelegramPlane />;
+    case 'Twitter':
+      return <FaTwitter />;
     case 'GitHub':
       return <FaGithub />;
     case 'LinkedIn':
