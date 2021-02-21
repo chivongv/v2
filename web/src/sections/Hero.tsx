@@ -28,7 +28,7 @@ const SubTitle = styled('h3')<{ theme: ExtendedTheme }>(({ theme }) => ({
   maxWidth: 800,
   width: '85vw',
   lineHeight: 1.3,
-  textAlign: 'center'
+  textAlign: 'center',
 }));
 
 const Anchor = styled('a')<{ theme: ExtendedTheme }>(({ theme }) => ({
@@ -46,10 +46,10 @@ const Anchor = styled('a')<{ theme: ExtendedTheme }>(({ theme }) => ({
 const Hero = () => {
   return (
     <Container>
-      <Title>Hi, I'm <span className="highlight">Chi</span></Title>
-      <SubTitle>
-         Front-End Developer
-      </SubTitle>
+      <Title>
+        Hi, I'm <span className="highlight">Chi</span>
+      </Title>
+      <SubTitle>Frontend Engineer</SubTitle>
       <Link href="/#works" passHref>
         <Anchor>Read more</Anchor>
       </Link>
