@@ -3,15 +3,14 @@ import { FaGithub, FaGitlab, FaExternalLinkAlt } from 'react-icons/fa';
 import imageUrlBuilder from '@sanity/image-url';
 
 import client from '../lib/sanity';
-import { ExtendedTheme } from '../styles/theme';
 
-const Container = styled('div')<{ theme: ExtendedTheme }>(({ theme }) => ({
+const Container = styled('div')({
   width: '100%',
   borderRadius: 10,
-  boxShadow: `3px 3px 7px ${theme.colors.shadow}, 
-            -2px -2px 7px ${theme.colors.shadow}`,
+  boxShadow: `3px 3px 7px var(--colors-shadow), 
+            -2px -2px 7px var(--colors-shadow)`,
   marginBottom: 20,
-}));
+});
 
 const TwoCol = styled('div')({
   marginTop: 15,
@@ -32,14 +31,14 @@ const Content = styled('div')({
   textAlign: 'center',
 });
 
-const ProjectLinks = styled('div')<{ theme: ExtendedTheme }>(({ theme }) => ({
+const ProjectLinks = styled('div')({
   display: 'flex',
   justifyContent: 'center',
   a: {
     marginRight: 15,
-    color: theme.colors.text,
+    color: 'var(--colors-text)',
     ':hover, :focus': {
-      color: theme.colors.accent,
+      color: 'var(--colors-primary)',
     },
     svg: {
       marginRight: 3,
@@ -51,13 +50,13 @@ const ProjectLinks = styled('div')<{ theme: ExtendedTheme }>(({ theme }) => ({
   '@media all and (min-width: 800px)': {
     justifyContent: 'flex-start',
   },
-}));
+});
 
-const Name = styled('h2')<{ theme: ExtendedTheme }>(({ theme }) => ({
+const Name = styled('h2')({
   margin: '10px 0 7px',
   fontSize: 'calc(0.8rem + 0.4vw)',
-  color: theme.colors.accent,
-}));
+  color: 'var(--colors-primary)',
+});
 
 const Body = styled('div')({
   flex: 1,
@@ -70,10 +69,10 @@ const Body = styled('div')({
   },
 });
 
-const Thumbnail = styled('div')<{ theme: ExtendedTheme }>(({ theme }) => ({
+const Thumbnail = styled('div')({
   width: '100%',
   maxWidth: '100vw',
-  background: theme.colors.thumbnail,
+  background: 'var(--colors-thumbnail-background)',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'flex-end',
@@ -89,7 +88,7 @@ const Thumbnail = styled('div')<{ theme: ExtendedTheme }>(({ theme }) => ({
   '@media all and (min-width: 1000px)': {
     maxWidth: 600,
   },
-}));
+});
 
 const TagList = styled('ul')({
   listStyleType: 'none',
@@ -105,20 +104,20 @@ const TagList = styled('ul')({
   },
 });
 
-const Tag = styled.li<{ theme: ExtendedTheme }>(({ theme }) => ({
-  color: theme.colors.tag,
+const Tag = styled.li({
+  color: 'var(--colors-tag)',
   marginRight: 10,
   marginBottom: 7,
   ':hover, :focus': {
-    color: theme.colors.accent,
+    color: 'var(--colors-primary)',
   },
-}));
+});
 
 const IconSelector = (link = 'github') => {
-  if (link.includes('gitlab')) {
-    return <FaGitlab />;
-  } else {
+  if (link.includes('github')) {
     return <FaGithub />;
+  } else {
+    return <FaGitlab />;
   }
 };
 

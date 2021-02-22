@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { useColorMode } from 'theme-ui';
+import { useTheme } from 'next-themes';
 
 const Button = styled('button')({
   background: 'none',
@@ -52,23 +53,25 @@ const getModeIcon = (mode: string) => {
   }
 };
 
-type Props = {
-  onClick?: () => any;
-};
-
-const ToggleMode = ({ onClick }: Props) => {
-  const [colorMode] = useColorMode();
+const ToggleMode: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
   const displayText =
-    colorMode === 'dark' ? 'Activate light mode' : 'Activate dark mode';
+    theme === 'dark' ? 'Activate light mode' : 'Activate dark mode';
+  const nextTheme = theme === 'light' ? 'dark' : 'light';
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
 
   return (
     <Button
       type="button"
       title={displayText}
       aria-label={displayText}
-      onClick={onClick}
+      onClick={() => setTheme(nextTheme)}
     >
-      {getModeIcon(colorMode)}
+      {getModeIcon(theme)}
     </Button>
   );
 };

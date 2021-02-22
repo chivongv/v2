@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import { forwardRef } from 'react';
 
 import WorkCard from '../components/WorkCard';
-import { ExtendedTheme } from '../styles/theme';
 
 const Container = styled.div({
   display: 'flex',
@@ -14,11 +13,11 @@ const Container = styled.div({
   padding: '30px 0',
 });
 
-const Title = styled('h2')<{ theme: ExtendedTheme }>(({ theme }) => ({
+const Title = styled('h2')({
   fontSize: 'calc(0.875rem + 0.8vw)',
   textAlign: 'center',
-  color: theme.colors.accent,
-}));
+  color: 'var(--colors-primary)',
+});
 
 const WorkList = styled('div')({
   marginTop: 20,
@@ -33,12 +32,12 @@ const Wrapper = styled.div({
   margin: '20px 0 0',
 });
 
-const Anchor = styled('a')<{ theme: ExtendedTheme }>(({ theme }) => ({
-  color: theme.colors.white,
-  background: theme.colors.primary,
+const Anchor = styled('a')({
+  color: '#fff',
+  background: 'var(--colors-primary)',
   borderRadius: 5,
   padding: '10px 16px',
-}));
+});
 
 type Work = {
   _id: string;

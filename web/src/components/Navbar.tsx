@@ -1,11 +1,9 @@
 import Link from 'next/link';
 import styled from '@emotion/styled';
-import { useColorMode } from 'theme-ui';
 
 import ToggleMode from './ToggleMode';
-import { ExtendedTheme } from '../styles/theme';
 
-const Container = styled('nav')<{ theme: ExtendedTheme }>(({ theme }) => ({
+const Container = styled('nav')({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -15,12 +13,12 @@ const Container = styled('nav')<{ theme: ExtendedTheme }>(({ theme }) => ({
   paddingRight: 20,
   height: 50,
   position: 'fixed',
-  backgroundColor: theme.colors.navBarBg,
-  boxShadow: `3px 3px 5px ${theme.colors.shadow}`,
+  backgroundColor: 'var(--colors-nav-background)',
+  boxShadow: `3px 3px 5px var(--colors-shadow)`,
   zIndex: 999,
-}));
+});
 
-const InnerContainer = styled('div')<{ theme: ExtendedTheme }>(({ theme }) => ({
+const InnerContainer = styled('div')({
   width: '100%',
   maxWidth: 1000,
   margin: '0 auto',
@@ -29,29 +27,23 @@ const InnerContainer = styled('div')<{ theme: ExtendedTheme }>(({ theme }) => ({
     listStyleType: 'none',
     justifyContent: 'flex-end',
     '& li:not(:last-child)': {
-      background: theme.colors.text,
+      background: 'var(--colors-text)',
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
       marginRight: 20,
       fontWeight: 600,
     },
   },
-}));
+});
 
-const Anchor = styled('a')<{ theme: ExtendedTheme }>(({ theme }) => ({
+const Anchor = styled('a')({
   cursor: 'pointer',
   [':hover, :focus']: {
-    borderBottom: `3px solid ${theme.colors.accent}`,
+    borderBottom: `3px solid var(--colors-primary)`,
   },
-}));
+});
 
 const Navbar = () => {
-  const [colorMode, setColorMode] = useColorMode();
-
-  const toggleMode = () => {
-    setColorMode(colorMode === 'dark' ? 'light' : 'dark');
-  };
-
   return (
     <Container>
       <InnerContainer>
@@ -72,7 +64,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <ToggleMode onClick={() => toggleMode()} />
+            <ToggleMode />
           </li>
         </ul>
       </InnerContainer>

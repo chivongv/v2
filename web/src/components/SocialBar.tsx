@@ -9,11 +9,8 @@ import {
 } from 'react-icons/fa';
 
 import { socialMedia } from '../siteSettings';
-import { ExtendedTheme } from '../styles/theme';
 
-const Container = styled('div')({});
-
-const List = styled('ul')<{ theme: ExtendedTheme }>(({ theme }) => ({
+const List = styled('ul')({
   display: 'flex',
   width: '100%',
   minHeight: 50,
@@ -27,7 +24,7 @@ const List = styled('ul')<{ theme: ExtendedTheme }>(({ theme }) => ({
   '::before': {
     content: '""',
     display: 'inline-block',
-    backgroundColor: theme.colors.text,
+    backgroundColor: 'var(--colors-text)',
     width: 0,
     height: 1,
     margin: 0,
@@ -36,7 +33,7 @@ const List = styled('ul')<{ theme: ExtendedTheme }>(({ theme }) => ({
   '::after': {
     content: '""',
     display: 'inline-block',
-    backgroundColor: theme.colors.text,
+    backgroundColor: 'var(--colors-text)',
     width: 0,
     height: 1,
     margin: 0,
@@ -81,24 +78,24 @@ const List = styled('ul')<{ theme: ExtendedTheme }>(({ theme }) => ({
       },
     },
   },
-}));
+});
 
-const Icon = styled('a')<{ theme: ExtendedTheme }>(({ theme }) => ({
+const Icon = styled('a')({
   textDecoration: 'none',
-  color: theme.colors.text,
+  color: 'var(--colors-text)',
   borderRadius: '50%',
   padding: 10,
   background: 'transparent',
-  boxShadow: `0 2px 3px ${theme.colors.shadow}, -1px -1px 2px ${theme.colors.shadow}`,
+  boxShadow: `0 2px 3px var(--colors-shadow), -1px -1px 2px var(--colors-shadow)`,
   ':hover, :focus': {
-    color: theme.colors.primary,
+    color: 'var(--colors-primary)',
   },
   ':hover + span, :focus + span': {
     display: 'inline-block',
-    color: theme.colors.accent,
-    boxShadow: `0 0 3px ${theme.colors.primary}`,
+    color: 'var(--colors-primary)',
+    boxShadow: `0 0 3px var(--colors-primary)`,
   },
-}));
+});
 
 const IconSelector = ({ name }) => {
   switch (name) {
@@ -121,7 +118,7 @@ const IconSelector = ({ name }) => {
 
 const SocialBar = () => {
   return (
-    <Container>
+    <div>
       <List>
         {socialMedia &&
           socialMedia.map(({ name, url }, i) => (
@@ -133,7 +130,7 @@ const SocialBar = () => {
             </li>
           ))}
       </List>
-    </Container>
+    </div>
   );
 };
 

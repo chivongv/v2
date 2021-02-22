@@ -1,33 +1,31 @@
 import styled from '@emotion/styled';
 import { FaGithub, FaGitlab, FaExternalLinkAlt } from 'react-icons/fa';
 
-import { ExtendedTheme } from '../styles/theme';
-
-const Container = styled.div<{ theme: ExtendedTheme }>(({ theme }) => ({
+const Container = styled.div({
   display: 'flex',
   flexDirection: 'column',
   padding: 15,
   borderRadius: 10,
   transition: 'transform 0.2s linear',
-  boxShadow: `3px 3px 5px ${theme.colors.shadow}, -2px -2px 7px ${theme.colors.shadow}`,
+  boxShadow: `3px 3px 5px var(--colors-shadow), -2px -2px 7px var(--colors-shadow)`,
   width: '100%',
   minHeight: 200,
   justifyContent: 'center',
   ':hover, :focus': {
     transform: 'translateY(-10px)',
   },
-}));
+});
 
-const WorkLinks = styled.div<{ theme: ExtendedTheme }>(({ theme }) => ({
+const WorkLinks = styled.div({
   display: 'flex',
   justifyContent: 'flex-end',
   marginRight: 10,
 
   a: {
     marginRight: 15,
-    color: theme.colors.text,
+    color: 'var(--colors-text)',
     ':hover, :focus': {
-      color: theme.colors.accent,
+      color: 'var(--colors-primary)',
     },
     svg: {
       marginRight: 3,
@@ -36,13 +34,13 @@ const WorkLinks = styled.div<{ theme: ExtendedTheme }>(({ theme }) => ({
   'a:last-child': {
     marginRight: 0,
   },
-}));
+});
 
-const Name = styled('h2')<{ theme: ExtendedTheme }>(({ theme }) => ({
+const Name = styled('h2')({
   fontSize: 'calc(0.6rem + 0.4vw)',
   margin: '10px 0 7px',
-  color: theme.colors.accent,
-}));
+  color: 'var(--colors-primary)',
+});
 
 const Body = styled.div({
   flex: 1,
@@ -59,20 +57,20 @@ const TagList = styled.ul({
   },
 });
 
-const Tag = styled.li<{ theme: ExtendedTheme }>(({ theme }) => ({
-  color: theme.colors.tag,
+const Tag = styled.li({
+  color: 'var(--colors-tag)',
   marginRight: 10,
   marginBottom: 7,
   ':hover, :focus': {
-    color: theme.colors.accent,
+    color: 'var(--colors-primary)',
   },
-}));
+});
 
 const IconSelector = (link = 'github') => {
-  if (link.includes('gitlab')) {
-    return <FaGitlab />;
-  } else {
+  if (link.includes('github')) {
     return <FaGithub />;
+  } else {
+    return <FaGitlab />;
   }
 };
 

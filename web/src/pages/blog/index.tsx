@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 
-import { ExtendedTheme } from '../../styles/theme';
 import { formatDate } from '../../utils/datetime-utils';
 import { getAllPostsForHome } from '../../lib/api';
 import Layout from '../../components/Layout';
@@ -24,11 +23,11 @@ const Container = styled('div')({
   },
 });
 
-const Title = styled('h2')<{ theme: ExtendedTheme }>(({ theme }) => ({
+const Title = styled('h2')({
   fontSize: 'calc(0.875rem + 0.8vw)',
   textAlign: 'center',
-  color: theme.colors.primary,
-}));
+  color: 'var(--colors-primary)',
+});
 
 const PostItem = styled('li')({
   listStyle: 'none',
@@ -38,10 +37,10 @@ const PostItem = styled('li')({
   },
 });
 
-const PostTitle = styled('div')<{ theme: ExtendedTheme }>(({ theme }) => ({
-  color: theme.colors.blue,
+const PostTitle = styled('div')({
+  color: 'var(--colors-primary)',
   marginRight: '2rem',
-}));
+});
 
 const Blog = ({ allPosts }) => {
   const [ref, inView] = useInView({

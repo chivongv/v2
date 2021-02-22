@@ -7,17 +7,16 @@ import BlockContent from '@sanity/block-content-to-react';
 import Layout from '../../components/Layout';
 import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
 import { formatDate } from '../../utils/datetime-utils';
-import { ExtendedTheme } from '../../styles/theme';
 
 const Container = styled('div')({
   textAlign: 'center',
   paddingTop: 70,
 });
 
-const PostTitle = styled('h3')<{ theme: ExtendedTheme }>(({ theme }) => ({
-  color: theme.colors.blue,
+const PostTitle = styled('h3')({
+  color: 'var(--colors-primary)',
   marginBottom: 15,
-}));
+});
 
 const PostInfo = styled('div')({
   marginBottom: 25,

@@ -1,14 +1,15 @@
 import { AppProps } from 'next/app';
-import { ThemeProvider } from 'theme-ui';
-
-import theme from '../styles/theme';
-import '../styles/globals.css';
+import { ThemeProvider } from 'next-themes';
+import { globalStyles } from '../styles/theme';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <>
+      {globalStyles}
+      <ThemeProvider defaultTheme="dark">
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
   );
 };
 

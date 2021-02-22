@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import styled from '@emotion/styled';
 
-import { ExtendedTheme } from '../styles/theme';
-
 const Container = styled('div')({
   display: 'flex',
   minHeight: '85vh',
@@ -14,26 +12,27 @@ const Container = styled('div')({
   },
 });
 
-const Title = styled('h2')<{ theme: ExtendedTheme }>(({ theme }) => ({
+const Title = styled('h2')({
   fontSize: 'calc(1rem + 2.5vw)',
   lineHeight: 1.5,
   marginBottom: 20,
-  '.highlight': {
-    color: theme.colors.accent,
-  },
-}));
+});
 
-const SubTitle = styled('h3')<{ theme: ExtendedTheme }>(({ theme }) => ({
+const Highlight = styled.span({
+  color: 'var(--colors-primary)',
+});
+
+const SubTitle = styled('h3')({
   fontSize: 'calc(0.6rem + 0.8vw)',
   maxWidth: 800,
   width: '85vw',
   lineHeight: 1.3,
   textAlign: 'center',
-}));
+});
 
-const Anchor = styled('a')<{ theme: ExtendedTheme }>(({ theme }) => ({
+const Anchor = styled('a')({
   marginTop: 15,
-  backgroundColor: theme.colors.primary,
+  backgroundColor: 'var(--colors-primary)',
   color: '#fff',
   position: 'relative',
   padding: '10px 15px',
@@ -41,13 +40,13 @@ const Anchor = styled('a')<{ theme: ExtendedTheme }>(({ theme }) => ({
   '@media screen and (min-width: 594px)': {
     marginTop: 30,
   },
-}));
+});
 
 const Hero = () => {
   return (
     <Container>
       <Title>
-        Hi, I'm <span className="highlight">Chi</span>
+        Hi, I'm <Highlight>Chi</Highlight>
       </Title>
       <SubTitle>Frontend Engineer</SubTitle>
       <Link href="/#works" passHref>
