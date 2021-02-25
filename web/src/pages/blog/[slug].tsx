@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
+import Image from 'next/image';
 import styled from '@emotion/styled';
 import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
@@ -21,9 +22,17 @@ const PostTitle = styled('h3')({
 
 const PostInfo = styled('div')({
   marginBottom: 25,
+  color: 'var(--colors-tag)',
 });
 
-const ContentWrapper = styled('div')({});
+const ImageWrapper = styled('div')({
+  maxWidth: 1000,
+});
+
+const ContentWrapper = styled('div')({
+  textAlign: 'initial',
+  padding: 10,
+});
 
 const Post = ({ post }) => {
   const router = useRouter();
@@ -46,8 +55,15 @@ const Post = ({ post }) => {
                 </title>
               </Head>
               <PostTitle>{post.title}</PostTitle>
+              {post.coverImage && (
+                <Image src={post.coverImage} width="1000" height="600" />
+              )}
               <PostInfo>
-                {`${formatDate(post.publishedDate)} by ${post.author.name}`}
+                {`Published on ${formatDate(post.publishedDate)} by ${
+                  post.author.name
+                }.`}
+                {post.updatedDate &&
+                  ` Last updated ${formatDate(post.updatedDate, 'datetime')}.`}
               </PostInfo>
               <ContentWrapper>
                 <BlockContent blocks={post.body} />

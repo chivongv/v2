@@ -16,6 +16,7 @@ const sharedPostFields = `
   excerpt,
   name,
   publishedDate,
+  updatedDate,
   title,
   'slug': slug.current,
   'coverImage': coverImage.asset->url,

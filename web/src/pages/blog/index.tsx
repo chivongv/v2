@@ -34,6 +34,7 @@ const PostItem = styled('li')({
   padding: 10,
   '> a': {
     display: 'flex',
+    justifyContent: 'space-between',
   },
 });
 
