@@ -27,7 +27,7 @@ const Home = ({ works }: Props) => {
 
   return (
     <div>
-      <Layout title="Frontend Engineer">
+      <Layout title="Chi Vong | Frontend Engineer">
         <Hero />
         <SocialBar />
         <Works works={works} ref={ref} />

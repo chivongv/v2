@@ -29,11 +29,23 @@ type Props = {
   title: string;
 };
 
-const Layout = ({ children, title }: Props) => {
+const Layout = ({ children, ...customMeta }: Props) => {
+  const meta = {
+    title: 'Chi Vong',
+    description: `Frontend Developer, Software Engineer`,
+    type: 'website',
+    ...customMeta,
+  };
+
   return (
     <Container>
       <Head>
-        <title>Chi Vong | {title}</title>
+        <title>{meta.title}</title>
+        <meta content={meta.description} name="description" />
+        <meta property="og:type" content={meta.type} />
+        <meta property="og:site_name" content="Chi Vong" />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />

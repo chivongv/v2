@@ -48,7 +48,7 @@ const Blog = ({ allPosts }) => {
   });
 
   return (
-    <Layout title="Blog">
+    <Layout title="Chi Vong | Blog">
       <Container>
         <Title>Blog</Title>
         <ul ref={ref}>

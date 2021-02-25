@@ -33,7 +33,7 @@ const Works = ({ allWorks }) => {
   });
 
   return (
-    <Layout title="Works">
+    <Layout title="Chi Vong | Works">
       <Container>
         <ProjectList ref={ref}>
           {allWorks
