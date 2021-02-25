@@ -11,6 +11,7 @@ import { formatDate } from '../../utils/datetime-utils';
 const Container = styled('div')({
   textAlign: 'center',
   paddingTop: 70,
+  minHeight: '100vh',
 });
 
 const PostTitle = styled('h3')({
