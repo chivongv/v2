@@ -55,3 +55,28 @@ export const globalStyles = (
     `}
   />
 );
+
+export const themes = {
+  light: {
+    colors: {
+      primary: '#3d92f3',
+      background: 'rgb(250, 250, 250)',
+      text: '#444a51',
+      'nav-background': 'rgba(250, 250, 250, 0.9)',
+      tag: 'rgba(0, 0, 0, 0.6)',
+      shadow: 'rgba(0, 0, 0, 0.1)',
+      'thumbnail-background': '#f2f2f2',
+    },
+  },
+  dark: {
+    colors: {
+      primary: 'rgb(86, 134, 245)',
+      background: '#17191c',
+      text: '#ececec',
+      'nav-background': 'rgba(23, 25, 28, 0.8)',
+      tag: 'rgb(219, 232, 225, 0.7)',
+      shadow: 'rgba(0, 0, 0, 0.7)',
+      'thumbnail-background': '#f2f2f205',
+    },
+  },
+};
