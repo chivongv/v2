@@ -37,6 +37,10 @@ const Anchor = styled('a')({
   position: 'relative',
   padding: '10px 15px',
   borderRadius: 4,
+  '::selection': {
+    backgroundColor: 'initial',
+    color: 'initial',
+  },
   '@media screen and (min-width: 594px)': {
     marginTop: 30,
   },

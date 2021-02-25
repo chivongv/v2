@@ -6,16 +6,6 @@ export const globalStyles = (
       @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap');
 
       :root {
-        --colors-primary: #3d92f3;
-        --colors-background: rgb(250, 250, 250);
-        --colors-text: #444a51;
-        --colors-nav-background: rgba(250, 250, 250, 0.9);
-        --colors-tag: rgba(0, 0, 0, 0.6);
-        --colors-shadow: rgba(0, 0, 0, 0.1);
-        --colors-thumbnail-background: #f2f2f2;
-      }
-
-      [data-theme='dark'] {
         --colors-primary: rgb(86, 134, 245);
         --colors-background: #17191c;
         --colors-text: #ececec;
@@ -25,10 +15,25 @@ export const globalStyles = (
         --colors-thumbnail-background: #f2f2f205;
       }
 
+      [data-theme='light'] {
+        --colors-primary: #3d92f3;
+        --colors-background: rgb(250, 250, 250);
+        --colors-text: #444a51;
+        --colors-nav-background: rgba(250, 250, 250, 0.9);
+        --colors-tag: rgba(0, 0, 0, 0.6);
+        --colors-shadow: rgba(0, 0, 0, 0.1);
+        --colors-thumbnail-background: #f2f2f2;
+      }
+
       * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
+      }
+
+      ::selection {
+        background-color: none;
+        color: var(--colors-primary);
       }
 
       html,

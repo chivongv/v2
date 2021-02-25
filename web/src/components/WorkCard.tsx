@@ -45,6 +45,10 @@ const Name = styled('h2')({
 const Body = styled.div({
   flex: 1,
   lineHeight: 1.5,
+  '::selection': {
+    backgroundColor: 'none',
+    color: 'var(--colors-primary)',
+  },
 });
 
 const TagList = styled.ul({

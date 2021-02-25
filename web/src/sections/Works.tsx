@@ -37,6 +37,10 @@ const Anchor = styled('a')({
   background: 'var(--colors-primary)',
   borderRadius: 5,
   padding: '10px 16px',
+  '::selection': {
+    backgroundColor: 'initial',
+    color: 'initial',
+  },
 });
 
 type Work = {
