@@ -53,7 +53,8 @@ const Layout = ({ children, ...customMeta }: Props) => {
         <main>{children}</main>
       </ContentWrapper>
       <Footer>
-        © {new Date().getFullYear()} Built with &#9829; by Chi Vong
+        © {new Date().getFullYear()} Built with &#9829; by{' '}
+        <span className="highlight">Chi Vong</span>
       </Footer>
     </Container>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaArrowUp } from 'react-icons/fa';
 import styled from '@emotion/styled';
+import { Breakpoints } from '../styles/breakpoints';
 
 const Button = styled('button')({
   position: 'fixed',
@@ -21,7 +22,7 @@ const Button = styled('button')({
   '@media all and  (min-width: 500px)': {
     right: 20,
   },
-  '@media all and (min-width: 1000px)': {
+  [Breakpoints.LargerThan1000]: {
     right: 30,
   },
 });

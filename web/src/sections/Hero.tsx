@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styled from '@emotion/styled';
+import { Breakpoints } from '../styles/breakpoints';
 
 const Container = styled('div')({
   display: 'flex',
@@ -7,7 +8,7 @@ const Container = styled('div')({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  '@media screen and (min-width: 1000px)': {
+  [Breakpoints.LargerThan1000]: {
     minHeight: '100vh',
   },
 });

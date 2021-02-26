@@ -8,8 +8,11 @@ import BlockContent from '@sanity/block-content-to-react';
 import Layout from '../../components/Layout';
 import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
 import { formatDate } from '../../utils/datetime-utils';
+import { Breakpoints } from '../../styles/breakpoints';
 
-const Container = styled('div')({
+const Container = styled('article')({
+  display: 'flex',
+  flexDirection: 'column',
   textAlign: 'center',
   paddingTop: 70,
   minHeight: '100vh',
@@ -17,21 +20,51 @@ const Container = styled('div')({
 
 const PostTitle = styled('h3')({
   color: 'var(--colors-primary)',
-  marginBottom: 15,
+  marginBottom: 10,
 });
 
 const PostInfo = styled('div')({
-  marginBottom: 25,
+  marginBottom: 15,
+  fontSize: 12,
   color: 'var(--colors-tag)',
+  padding: '0 10px',
 });
 
 const ImageWrapper = styled('div')({
-  maxWidth: 1000,
+  width: '100%',
+  maxWidth: 800,
+  margin: '0 auto',
+});
+
+const PostBody = styled('div')({
+  flex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  textAlign: 'initial',
+  padding: '15px',
+  width: '100%',
+  maxWidth: 800,
+  height: '100%',
+  margin: '0 auto',
+  '> a': {
+    margin: '20px 0',
+    display: 'inline-block',
+    color: 'var(--colors-text)',
+  },
 });
 
 const ContentWrapper = styled('div')({
-  textAlign: 'initial',
-  padding: 10,
+  flex: 1,
+  p: {
+    marginBottom: 10,
+  },
+  a: {
+    color: 'var(--colors-primary)',
+  },
+  [Breakpoints.LargerThan1000]: {
+    marginBottom: 15,
+  },
 });
 
 const Post = ({ post }) => {
@@ -48,27 +81,38 @@ const Post = ({ post }) => {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article>
-              <Head>
-                <title>
-                  {post.title} | {post.author.name}
-                </title>
-              </Head>
-              <PostTitle>{post.title}</PostTitle>
-              {post.coverImage && (
-                <Image src={post.coverImage} width="1000" height="600" />
-              )}
-              <PostInfo>
-                {`Published on ${formatDate(post.publishedDate)} by ${
-                  post.author.name
-                }.`}
-                {post.updatedDate &&
-                  ` Last updated ${formatDate(post.updatedDate, 'datetime')}.`}
-              </PostInfo>
+            <Head>
+              <title>
+                {post.title} | {post.author.name}
+              </title>
+            </Head>
+            <PostTitle>{post.title}</PostTitle>
+            <PostInfo>
+              {`Published on ${formatDate(post.publishedDate)} by ${
+                post.author.name
+              }.`}
+              {post.updatedDate &&
+                ` Last updated ${formatDate(post.updatedDate, 'datetime')}.`}
+            </PostInfo>
+            {post.coverImage && (
+              <ImageWrapper>
+                <Image src={post.coverImage} width="800" height="600" />
+              </ImageWrapper>
+            )}
+            <PostBody>
               <ContentWrapper>
                 <BlockContent blocks={post.body} />
               </ContentWrapper>
-            </article>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`https://twitter.com/search?q=${encodeURIComponent(
+                  'https://chivongv.se/blog/' + post.slug,
+                )}`}
+              >
+                Discuss on Twitter
+              </a>
+            </PostBody>
           </>
         )}
       </Container>

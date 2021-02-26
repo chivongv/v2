@@ -3,6 +3,7 @@ import { FaGithub, FaGitlab, FaExternalLinkAlt } from 'react-icons/fa';
 import imageUrlBuilder from '@sanity/image-url';
 
 import client from '../lib/sanity';
+import { Breakpoints } from '../styles/breakpoints';
 
 const Container = styled('div')({
   width: '100%',
@@ -14,7 +15,7 @@ const Container = styled('div')({
 
 const TwoCol = styled('div')({
   marginTop: 15,
-  '@media all and (min-width: 800px)': {
+  [Breakpoints.LargerThan800]: {
     display: 'flex',
     minHeight: 250,
   },
@@ -47,7 +48,7 @@ const ProjectLinks = styled('div')({
   'a:last-child': {
     marginRight: 0,
   },
-  '@media all and (min-width: 800px)': {
+  [Breakpoints.LargerThan800]: {
     justifyContent: 'flex-start',
   },
 });
@@ -82,10 +83,10 @@ const Thumbnail = styled('div')({
     borderRadius: '5px 5px 0 0',
     maxHeight: 400,
   },
-  '@media all and (min-width: 800px)': {
+  [Breakpoints.LargerThan800]: {
     maxWidth: 400,
   },
-  '@media all and (min-width: 1000px)': {
+  [Breakpoints.LargerThan1000]: {
     maxWidth: 600,
   },
 });
@@ -99,7 +100,7 @@ const TagList = styled('ul')({
   'li:last-child': {
     marginRight: 0,
   },
-  '@media all and (min-width: 800px)': {
+  [Breakpoints.LargerThan800]: {
     justifyContent: 'flex-start',
   },
 });

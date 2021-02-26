@@ -7,6 +7,7 @@ import { getAllPostsForHome } from '../../lib/api';
 import Layout from '../../components/Layout';
 import SocialBar from '../../components/SocialBar';
 import ToTop from '../../components/ToTop';
+import { Breakpoints } from '../../styles/breakpoints';
 
 const Container = styled('div')({
   display: 'flex',
@@ -18,7 +19,7 @@ const Container = styled('div')({
   '> ul': {
     padding: 10,
   },
-  '@media screen and (min-width: 1000px)': {
+  [Breakpoints.LargerThan1000]: {
     minHeight: '100vh',
   },
 });
@@ -27,6 +28,7 @@ const Title = styled('h2')({
   fontSize: 'calc(0.875rem + 0.8vw)',
   textAlign: 'center',
   color: 'var(--colors-primary)',
+  overflowWrap: 'break-word',
 });
 
 const PostItem = styled('li')({
@@ -35,6 +37,7 @@ const PostItem = styled('li')({
   '> a': {
     display: 'flex',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
 
