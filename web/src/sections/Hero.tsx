@@ -19,10 +19,6 @@ const Title = styled('h2')({
   marginBottom: 20,
 });
 
-const Highlight = styled.span({
-  color: 'var(--colors-primary)',
-});
-
 const SubTitle = styled('h3')({
   fontSize: 'calc(0.6rem + 0.8vw)',
   maxWidth: 800,
@@ -51,7 +47,7 @@ const Hero = () => {
   return (
     <Container>
       <Title>
-        Hi, I'm <Highlight>Chi</Highlight>
+        Hi, I'm <span className="highlight">Chi</span>
       </Title>
       <SubTitle>Frontend Engineer</SubTitle>
       <Link href="/#works" passHref>

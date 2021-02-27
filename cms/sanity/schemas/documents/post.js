@@ -45,7 +45,13 @@ export default {
       name: 'body',
       type: 'array',
       title: 'Body text',
-      of: [{ type: 'block' }],
+      of: [
+        { type: 'block' },
+        { type: 'image', name: 'image', title: 'Image' },
+        {
+          type: 'code',
+        },
+      ],
     },
     {
       name: 'author',

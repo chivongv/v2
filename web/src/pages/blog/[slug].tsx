@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import ErrorPage from 'next/error';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 import Head from 'next/head';
@@ -9,6 +8,8 @@ import Layout from '../../components/Layout';
 import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
 import { formatDate } from '../../utils/datetime-utils';
 import { Breakpoints } from '../../styles/breakpoints';
+import { options, serializers } from '../../lib/sanity';
+import NotFound from '../404';
 
 const Container = styled('article')({
   display: 'flex',
@@ -57,12 +58,25 @@ const PostBody = styled('div')({
 const ContentWrapper = styled('div')({
   flex: 1,
   p: {
-    marginBottom: 10,
+    marginBottom: '1.5em',
   },
   a: {
     color: 'var(--colors-primary)',
   },
-  [Breakpoints.LargerThan1000]: {
+  blockquote: {
+    borderLeft: '3px solid var(--colors-tag)',
+    margin: '0 0 1.5em',
+    padding: '0 1.5em',
+  },
+  figure: {
+    maxWidth: 600,
+    margin: '0 auto',
+    '> img': {
+      width: '100%',
+      height: '100%',
+    },
+  },
+  [Breakpoints.TabletOrLarger]: {
     marginBottom: 15,
   },
 });
@@ -71,7 +85,7 @@ const Post = ({ post }) => {
   const router = useRouter();
 
   if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
+    return <NotFound />;
   }
 
   return (
@@ -101,7 +115,12 @@ const Post = ({ post }) => {
             )}
             <PostBody>
               <ContentWrapper>
-                <BlockContent blocks={post.body} />
+                <BlockContent
+                  blocks={post.body}
+                  dataset={options.dataset}
+                  projectId={options.projectId}
+                  serializers={serializers}
+                />
               </ContentWrapper>
               <a
                 target="_blank"
@@ -128,6 +147,7 @@ export async function getStaticProps({ params, preview = false }) {
       post: data?.post || null,
       morePosts: data?.morePosts || null,
     },
+    revalidate: 10,
   };
 }
 

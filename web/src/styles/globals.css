@@ -50,3 +50,7 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.highlight {
+  color: var(--colors-primary);
+}

@@ -1,7 +1,8 @@
 import sanityClient from '@sanity/client';
 import sanityImage from '@sanity/image-url';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 
-const options = {
+export const options = {
   dataset: 'production',
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   useCdn: process.env.NODE_ENV === 'production',
@@ -19,5 +20,25 @@ export const previewClient = sanityClient({
   useCdn: false,
   token: process.env.SANITY_API_TOKEN,
 });
+
+export const serializers = {
+  types: {
+    code: ({ node }) => {
+      if (!node || !node.code) {
+        return null;
+      }
+      const { language, code } = node;
+      return (
+        <SyntaxHighlighter
+          language={language || 'text'}
+          customStyle={{ fontSize: '1rem' }}
+          showLineNumbers
+        >
+          {code}
+        </SyntaxHighlighter>
+      );
+    },
+  },
+};
 
 export default client;
