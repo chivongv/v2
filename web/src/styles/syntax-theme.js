@@ -3,10 +3,11 @@ export default {
   hljs: {
     display: 'block',
     overflowX: 'auto',
-    padding: '0.5em',
+    padding: '1em 0.5em 0.5em',
     color: '#abb2bf',
     background: '#282c34',
     fontSize: '1rem',
+    borderRadius: '0 0 5px 5px',
   },
   'hljs-comment': {
     color: '#5c6370',
