@@ -1,7 +1,8 @@
+import dynamic from 'next/dynamic';
 import sanityClient from '@sanity/client';
 import sanityImage from '@sanity/image-url';
-import CodeBlock from '@blocks/Code';
-import FigureBlock from '@blocks/Figure';
+const CodeBlock = dynamic(() => import('@blocks/Code'));
+const FigureBlock = dynamic(() => import('@blocks/Figure'));
 
 export const options = {
   dataset: 'production',

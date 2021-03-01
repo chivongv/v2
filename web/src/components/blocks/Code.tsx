@@ -1,6 +1,5 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
-const SyntaxHighlighter = dynamic(() => import('react-syntax-highlighter'));
+import SyntaxHighlighter from 'react-syntax-highlighter';
 import styled from '@emotion/styled';
 import { FiCopy } from 'react-icons/fi';
 import syntaxTheme from '@styles/syntax-theme';

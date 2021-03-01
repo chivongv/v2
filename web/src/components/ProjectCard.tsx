@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { FaGithub, FaGitlab, FaExternalLinkAlt } from 'react-icons/fa';
 import imageUrlBuilder from '@sanity/image-url';
 
-import client from '../lib/sanity';
-import { Breakpoints } from '../styles/breakpoints';
+import client from '@lib/sanity';
+import { Breakpoints } from '@styles/breakpoints';
 
 const Container = styled('div')({
   width: '100%',
