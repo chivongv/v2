@@ -1,13 +1,15 @@
-import styled from '@emotion/styled';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import styled from '@emotion/styled';
 import { useInView } from 'react-intersection-observer';
 
-import { formatDate } from '../../utils/datetime-utils';
-import { getAllPostsForHome } from '../../lib/api';
-import Layout from '../../components/Layout';
-import SocialBar from '../../components/SocialBar';
-import ToTop from '../../components/ToTop';
-import { Breakpoints } from '../../styles/breakpoints';
+import { formatDate } from '@utils/datetime-utils';
+import { getAllPostsForHome } from '@lib/api';
+import Layout from '@components/Layout';
+const SocialBar = dynamic(() => import('@components/SocialBar'));
+const ToTop = dynamic(() => import('@components/ToTop'));
+import { Breakpoints } from '@styles/breakpoints';
+import SoundCloudIframe from '@components/SoundCloudIframe';
 
 const Container = styled('div')({
   display: 'flex',
@@ -71,7 +73,8 @@ const Blog = ({ allPosts }) => {
         </ul>
       </Container>
       <SocialBar />
-      <ToTop inView={inView} />
+      {inView && <ToTop inView={inView} />}
+      <SoundCloudIframe />
     </Layout>
   );
 };
