@@ -47,7 +47,7 @@ export default {
       title: 'Body text',
       of: [
         { type: 'block' },
-        { type: 'image', name: 'image', title: 'Image' },
+        { type: 'figure' },
         {
           type: 'code',
         },

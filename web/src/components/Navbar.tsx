@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
-
 import ToggleMode from './ToggleMode';
 
 const Container = styled('nav')({
@@ -36,31 +36,36 @@ const InnerContainer = styled('div')({
   },
 });
 
-const Anchor = styled('a')({
+const Anchor = styled('a')<{ isActive: boolean }>(({ isActive }) => ({
   cursor: 'pointer',
+  borderBottom: isActive ? '3px solid var(--colors-primary)' : '',
   [':hover, :focus']: {
     borderBottom: `3px solid var(--colors-primary)`,
   },
-});
+}));
 
 const Navbar = () => {
+  const router = useRouter();
+
   return (
     <Container>
       <InnerContainer>
         <ul>
           <li>
             <Link href="/" passHref>
-              <Anchor>Home</Anchor>
+              <Anchor isActive={router.pathname === '/'}>Home</Anchor>
             </Link>
           </li>
           <li>
             <Link href="/works" passHref>
-              <Anchor>Works</Anchor>
+              <Anchor isActive={router.pathname.includes('/works')}>
+                Works
+              </Anchor>
             </Link>
           </li>
           <li>
             <Link href="/blog" passHref>
-              <Anchor>Blog</Anchor>
+              <Anchor isActive={router.pathname.includes('/blog')}>Blog</Anchor>
             </Link>
           </li>
           <li>

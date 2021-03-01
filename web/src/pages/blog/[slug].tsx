@@ -4,12 +4,13 @@ import styled from '@emotion/styled';
 import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
 
-import Layout from '../../components/Layout';
-import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
-import { formatDate } from '../../utils/datetime-utils';
-import { Breakpoints } from '../../styles/breakpoints';
-import { options, serializers } from '../../lib/sanity';
-import NotFound from '../404';
+import Layout from '@components/Layout';
+import { getAllPostsWithSlug, getPostAndMorePosts } from '@lib/api';
+import { formatDate } from '@utils/datetime-utils';
+import { Breakpoints } from '@styles/breakpoints';
+import { options, serializers } from '@lib/sanity';
+import NotFound from '@pages/404';
+import SocialBar from '@components/SocialBar';
 
 const Container = styled('article')({
   display: 'flex',
@@ -48,29 +49,29 @@ const PostBody = styled('div')({
   maxWidth: 800,
   height: '100%',
   margin: '0 auto',
-  '> a': {
-    margin: '20px 0',
-    display: 'inline-block',
-    color: 'var(--colors-text)',
-  },
 });
 
 const ContentWrapper = styled('div')({
   flex: 1,
   p: {
     marginBottom: '1.5em',
+    lineHeight: 1.4,
   },
   a: {
     color: 'var(--colors-primary)',
   },
   blockquote: {
-    borderLeft: '3px solid var(--colors-tag)',
+    borderLeft: '5px solid var(--colors-primary)',
+    background: 'hsla(221.9, 88.8%, 64.9%, 0.15)',
     margin: '0 0 1.5em',
-    padding: '0 1.5em',
+    padding: '1em 1.5em',
+    borderRadius: 4,
+    lineHeight: 1.5,
+    letterSpacing: 0.5,
   },
   figure: {
     maxWidth: 600,
-    margin: '0 auto',
+    margin: '1.5em auto',
     '> img': {
       width: '100%',
       height: '100%',
@@ -81,12 +82,18 @@ const ContentWrapper = styled('div')({
   },
 });
 
+const PostLink = styled('a')({
+  color: 'var(--colors-primary)',
+});
+
 const Post = ({ post }) => {
   const router = useRouter();
 
   if (!router.isFallback && !post?.slug) {
     return <NotFound />;
   }
+
+  const postURL = `https://chivongv.se/blog/${post?.slug}`;
 
   return (
     <Layout title={router.isFallback ? 'Loading...' : post.title}>
@@ -122,18 +129,21 @@ const Post = ({ post }) => {
                   serializers={serializers}
                 />
               </ContentWrapper>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href={`https://twitter.com/search?q=${encodeURIComponent(
-                  'https://chivongv.se/blog/' + post.slug,
-                )}`}
-              >
-                Discuss on Twitter
-              </a>
+              <div>
+                <PostLink
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={`https://twitter.com/search?q=${encodeURIComponent(
+                    postURL,
+                  )}`}
+                >
+                  Discuss on Twitter
+                </PostLink>
+              </div>
             </PostBody>
           </>
         )}
+        <SocialBar />
       </Container>
     </Layout>
   );

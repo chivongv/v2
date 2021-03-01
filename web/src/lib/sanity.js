@@ -1,6 +1,6 @@
 import sanityClient from '@sanity/client';
 import sanityImage from '@sanity/image-url';
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import CodeBlock from '@components/blocks/Code';
 
 export const options = {
   dataset: 'production',
@@ -23,21 +23,7 @@ export const previewClient = sanityClient({
 
 export const serializers = {
   types: {
-    code: ({ node }) => {
-      if (!node || !node.code) {
-        return null;
-      }
-      const { language, code } = node;
-      return (
-        <SyntaxHighlighter
-          language={language || 'text'}
-          customStyle={{ fontSize: '1rem' }}
-          showLineNumbers
-        >
-          {code}
-        </SyntaxHighlighter>
-      );
-    },
+    code: CodeBlock,
   },
 };
 
