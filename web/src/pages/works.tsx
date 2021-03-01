@@ -1,12 +1,13 @@
+import dynamic from 'next/dynamic';
 import styled from '@emotion/styled';
 import { useInView } from 'react-intersection-observer';
 
-import { getAllWorks } from '../lib/api';
-import Layout from '../components/Layout';
-import ProjectCard from '../components/ProjectCard';
-import SocialBar from '../components/SocialBar';
-import ToTop from '../components/ToTop';
-import { Breakpoints } from '../styles/breakpoints';
+import { getAllWorks } from '@lib/api';
+import Layout from '@components/Layout';
+import ProjectCard from '@components/ProjectCard';
+const SocialBar = dynamic(() => import('@components/SocialBar'));
+const ToTop = dynamic(() => import('@components/ToTop'));
+import { Breakpoints } from '@styles/breakpoints';
 
 const Container = styled('div')({
   display: 'flex',
@@ -49,7 +50,7 @@ const Works = ({ allWorks }) => {
         </ProjectList>
       </Container>
       <SocialBar />
-      <ToTop inView={inView} />
+      {inView && <ToTop inView={inView} />}
     </Layout>
   );
 };

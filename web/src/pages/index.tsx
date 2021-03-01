@@ -1,11 +1,12 @@
+import dynamic from 'next/dynamic';
 import { useInView } from 'react-intersection-observer';
 
-import { getAllWorksForHome } from '../lib/api';
-import Hero from '../sections/Hero';
-import Layout from '../components/Layout';
-import SocialBar from '../components/SocialBar';
-import ToTop from '../components/ToTop';
-import Works from '../sections/Works';
+import { getAllWorksForHome } from '@lib/api';
+import Hero from '@sections/Hero';
+import Layout from '@components/Layout';
+const ToTop = dynamic(() => import('@components/ToTop'));
+import Works from '@sections/Works';
+const SocialBar = dynamic(() => import('@components/SocialBar'));
 
 type Work = {
   _id: string;
@@ -29,9 +30,9 @@ const Home = ({ works }: Props) => {
     <div>
       <Layout title="Chi Vong | Frontend Engineer">
         <Hero />
-        <SocialBar />
         <Works works={works} ref={ref} />
-        <ToTop inView={inView} />
+        <SocialBar />
+        {inView && <ToTop inView={inView} />}
       </Layout>
     </div>
   );
