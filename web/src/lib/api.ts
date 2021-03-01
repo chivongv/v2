@@ -58,6 +58,21 @@ export async function getAllPostsForHome(preview) {
   return getUniquePosts(results);
 }
 
+export async function getPost(slug, preview) {
+  const curClient = getClient(preview);
+  const post = await curClient
+    .fetch(
+      `*[_type == "post" && slug.current == $slug] | order(_updatedAt desc) {
+        ${sharedPostFields}
+        body,
+      }`,
+      { slug },
+    )
+    .then((res) => res?.[0]);
+
+  return { post };
+}
+
 export async function getPostAndMorePosts(slug, preview) {
   const curClient = getClient(preview);
   const [post, morePosts] = await Promise.all([

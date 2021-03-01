@@ -5,7 +5,7 @@ import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
 
 import Layout from '@components/Layout';
-import { getAllPostsWithSlug, getPostAndMorePosts } from '@lib/api';
+import { getAllPostsWithSlug, getPost } from '@lib/api';
 import { formatDate } from '@utils/datetime-utils';
 import { Breakpoints } from '@styles/breakpoints';
 import { options, serializers } from '@lib/sanity';
@@ -150,12 +150,11 @@ const Post = ({ post }) => {
 };
 
 export async function getStaticProps({ params, preview = false }) {
-  const data = await getPostAndMorePosts(params.slug, preview);
+  const data = await getPost(params.slug, preview);
   return {
     props: {
       preview,
       post: data?.post || null,
-      morePosts: data?.morePosts || null,
     },
     revalidate: 10,
   };
