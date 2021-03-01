@@ -1,6 +1,7 @@
 import sanityClient from '@sanity/client';
 import sanityImage from '@sanity/image-url';
-import CodeBlock from '@components/blocks/Code';
+import CodeBlock from '@blocks/Code';
+import FigureBlock from '@blocks/Figure';
 
 export const options = {
   dataset: 'production',
@@ -24,6 +25,7 @@ export const previewClient = sanityClient({
 export const serializers = {
   types: {
     code: CodeBlock,
+    figure: FigureBlock,
   },
 };
 
