@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from '@emotion/styled';
@@ -9,9 +10,10 @@ import { postQuery, postSlugsQuery } from '@lib/queries';
 import { getClient, overlayDrafts, sanityClient } from '@lib/sanity.server';
 import { Breakpoints } from '@styles/breakpoints';
 import { sanityConfig } from '@lib/config';
-import { serializers } from '@lib/sanity';
+import { serializers, usePreviewSubscription } from '@lib/sanity';
 import NotFound from '@pages/404';
 import SocialBar from '@components/SocialBar';
+import { BlogPost } from 'types/blogpost';
 
 const Container = styled('article')({
   display: 'flex',
@@ -87,14 +89,30 @@ const PostLink = styled('a')({
   color: 'var(--colors-primary)',
 });
 
-const Post = ({ post }) => {
-  const router = useRouter();
+type Props = {
+  data: {
+    post: BlogPost;
+    morePosts: BlogPost;
+  };
+  preview: boolean;
+};
 
-  if (!router.isFallback && !post?.slug) {
+const Post: FC<Props> = ({ data, preview }) => {
+  const router = useRouter();
+  const slug = data?.post?.slug;
+  const { data: mdata } = usePreviewSubscription(postQuery, {
+    params: { slug },
+    initialData: data,
+    enabled: Boolean(preview && slug),
+  });
+
+  if (!mdata || (!router.isFallback && !slug)) {
     return <NotFound />;
   }
 
-  const postURL = `https://chivongv.se/blog/${post?.slug}`;
+  const { post, morePosts } = mdata;
+
+  const postURL = `https://chivongv.se/blog/${slug}`;
 
   return (
     <Layout
@@ -165,8 +183,10 @@ export async function getStaticProps({ params, preview = false }) {
   return {
     props: {
       preview,
-      post,
-      morePosts: overlayDrafts(morePosts),
+      data: {
+        post,
+        morePosts: overlayDrafts(morePosts),
+      },
     },
     revalidate: 10,
   };
