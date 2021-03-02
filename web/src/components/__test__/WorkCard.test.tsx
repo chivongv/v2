@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { render } from '../../test-utils';
-import WorkCard from '../WorkCard';
+import WorkCard from '../cards/WorkCard';
 
 describe('WorkCard component', () => {
   let data = {

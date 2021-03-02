@@ -2,7 +2,7 @@ import Link from 'next/link';
 import styled from '@emotion/styled';
 import { forwardRef } from 'react';
 
-import WorkCard from '../components/WorkCard';
+import WorkCard from '@components/cards/WorkCard';
 
 const Container = styled.div({
   display: 'flex',

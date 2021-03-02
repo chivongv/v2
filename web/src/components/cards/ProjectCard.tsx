@@ -60,9 +60,11 @@ const Name = styled('h2')({
 
 const Body = styled('div')({
   flex: 1,
+  fontSize: '0.875rem',
   p: {
     marginBottom: 10,
     lineHeight: 1.5,
+    textAlign: 'justify',
   },
   ul: {
     marginLeft: 25,

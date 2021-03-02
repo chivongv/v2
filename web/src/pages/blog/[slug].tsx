@@ -110,13 +110,6 @@ const Post = ({ post }) => {
               </title>
             </Head>
             <PostTitle>{post.title}</PostTitle>
-            <PostInfo>
-              {`Published on ${formatDate(post.publishedDate)} by ${
-                post.author.name
-              }.`}
-              {post.updatedDate &&
-                ` Last updated ${formatDate(post.updatedDate, 'datetime')}.`}
-            </PostInfo>
             {post.coverImage && (
               <ImageWrapper>
                 <Image src={post.coverImage} width="800" height="600" />
@@ -140,6 +133,16 @@ const Post = ({ post }) => {
                   )}`}
                 >
                   Discuss on Twitter
+                </PostLink>
+                {` • `}
+                <PostLink
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={`https://twitter.com/intent/tweet/?text=Great post by @chivongv ${encodeURIComponent(
+                    postURL,
+                  )}`}
+                >
+                  Tweet about this post
                 </PostLink>
               </div>
             </PostBody>

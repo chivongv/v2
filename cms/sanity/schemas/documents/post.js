@@ -59,6 +59,12 @@ export default {
       type: 'reference',
       to: [{ type: 'person' }],
     },
+    {
+      name: 'tags',
+      type: 'array',
+      title: 'Tags',
+      of: [{ type: 'string' }],
+    },
   ],
   orderings: [
     {
