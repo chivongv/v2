@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import styled from '@emotion/styled';
 import { useInView } from 'react-intersection-observer';
+import FuzzySearch from 'fuzzy-search';
 
 import { postsIndexQuery } from '@lib/queries';
 import { getClient, overlayDrafts } from '@lib/sanity.server';
@@ -9,6 +11,7 @@ const SocialBar = dynamic(() => import('@components/SocialBar'));
 const ToTop = dynamic(() => import('@components/ToTop'));
 import { Breakpoints } from '@styles/breakpoints';
 import BlogPostCard from '@components/cards/BlogPostCard';
+import SearchInput from '@components/SearchInput';
 
 const Container = styled('div')({
   display: 'flex',
@@ -44,13 +47,24 @@ const Blog = ({ allPosts }) => {
   const [ref, inView] = useInView({
     rootMargin: '350px',
   });
+  const [searchText, setSearchText] = useState('');
+  const searcher = new FuzzySearch(allPosts, ['tags', 'title'], {
+    caseSensitive: false,
+  });
+
+  const handleClick = (value) => {
+    setSearchText(value);
+  };
+
+  const filteredPosts = searcher.search(searchText);
 
   return (
     <Layout title="Chi Vong | Blog">
       <Container>
         <Title>Blog</Title>
+        <SearchInput handleClick={handleClick} />
         <PostList ref={ref}>
-          {allPosts.map((post, index) => {
+          {filteredPosts.map((post, index) => {
             return <BlogPostCard key={index} data={post} />;
           })}
         </PostList>

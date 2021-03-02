@@ -1,7 +1,6 @@
 const sharedPostFields = `
   _id,
   excerpt,
-  name,
   publishedDate,
   updatedDate,
   title,
