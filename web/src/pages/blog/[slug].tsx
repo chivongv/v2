@@ -28,13 +28,6 @@ const PostTitle = styled('h3')({
   marginBottom: 10,
 });
 
-const PostInfo = styled('div')({
-  marginBottom: 15,
-  fontSize: 12,
-  color: 'var(--colors-tag)',
-  padding: '0 10px',
-});
-
 const ImageWrapper = styled('div')({
   width: '100%',
   maxWidth: 800,
@@ -56,12 +49,19 @@ const PostBody = styled('div')({
 
 const ContentWrapper = styled('div')({
   flex: 1,
+  paddingBottom: '1em',
   p: {
     marginBottom: '1.5em',
     lineHeight: 1.4,
   },
   a: {
     color: 'var(--colors-primary)',
+  },
+  ul: {
+    paddingLeft: '1em',
+    li: {
+      paddingTop: '0.5em',
+    },
   },
   blockquote: {
     borderLeft: '5px solid var(--colors-primary)',

@@ -14,7 +14,7 @@ const Container = styled.div({
 });
 
 const Title = styled('h2')({
-  fontSize: '0.875rem',
+  fontSize: '1rem',
   margin: '10px 0 7px',
   color: 'var(--colors-primary)',
 });
