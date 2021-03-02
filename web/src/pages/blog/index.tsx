@@ -4,7 +4,8 @@ import styled from '@emotion/styled';
 import { useInView } from 'react-intersection-observer';
 
 import { formatDate } from '@utils/datetime-utils';
-import { getAllPostsForHome } from '@lib/api';
+import { postsIndexQuery } from '@lib/queries';
+import { getClient, overlayDrafts } from '@lib/sanity.server';
 import Layout from '@components/Layout';
 const SocialBar = dynamic(() => import('@components/SocialBar'));
 const ToTop = dynamic(() => import('@components/ToTop'));
@@ -80,7 +81,10 @@ const Blog = ({ allPosts }) => {
 };
 
 export async function getStaticProps({ preview = false }) {
-  const allPosts = await getAllPostsForHome(preview);
+  const allPosts = overlayDrafts(
+    await getClient(preview).fetch(postsIndexQuery),
+  );
+
   return {
     props: { allPosts, preview },
     revalidate: 60 * 60,

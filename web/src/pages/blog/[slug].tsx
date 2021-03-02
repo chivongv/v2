@@ -5,10 +5,12 @@ import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
 
 import Layout from '@components/Layout';
-import { getAllPostsWithSlug, getPost } from '@lib/api';
+import { postQuery, postSlugsQuery } from '@lib/queries';
+import { getClient, overlayDrafts, sanityClient } from '@lib/sanity.server';
 import { formatDate } from '@utils/datetime-utils';
 import { Breakpoints } from '@styles/breakpoints';
-import { options, serializers } from '@lib/sanity';
+import { sanityConfig } from '@lib/config';
+import { serializers } from '@lib/sanity';
 import NotFound from '@pages/404';
 import SocialBar from '@components/SocialBar';
 
@@ -124,8 +126,8 @@ const Post = ({ post }) => {
               <ContentWrapper>
                 <BlockContent
                   blocks={post.body}
-                  dataset={options.dataset}
-                  projectId={options.projectId}
+                  dataset={sanityConfig.dataset}
+                  projectId={sanityConfig.projectId}
                   serializers={serializers}
                 />
               </ContentWrapper>
@@ -150,25 +152,24 @@ const Post = ({ post }) => {
 };
 
 export async function getStaticProps({ params, preview = false }) {
-  const data = await getPost(params.slug, preview);
+  const { post, morePosts } = await getClient(preview).fetch(postQuery, {
+    slug: params.slug,
+  });
+
   return {
     props: {
       preview,
-      post: data?.post || null,
+      post,
+      morePosts: overlayDrafts(morePosts),
     },
     revalidate: 10,
   };
 }
 
 export async function getStaticPaths() {
-  const allPosts = await getAllPostsWithSlug();
+  const paths = await sanityClient.fetch(postSlugsQuery);
   return {
-    paths:
-      allPosts?.map((post) => ({
-        params: {
-          slug: post.slug,
-        },
-      })) || [],
+    paths: paths.map((slug) => ({ params: { slug } })) || [],
     fallback: true,
   };
 }

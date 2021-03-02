@@ -2,7 +2,8 @@ import dynamic from 'next/dynamic';
 import styled from '@emotion/styled';
 import { useInView } from 'react-intersection-observer';
 
-import { getAllWorks } from '@lib/api';
+import { worksIndexQuery } from '@lib/queries';
+import { getClient, overlayDrafts } from '@lib/sanity.server';
 import Layout from '@components/Layout';
 import ProjectCard from '@components/ProjectCard';
 const SocialBar = dynamic(() => import('@components/SocialBar'));
@@ -55,8 +56,10 @@ const Works = ({ allWorks }) => {
   );
 };
 
-export async function getStaticProps() {
-  const allWorks = await getAllWorks();
+export async function getStaticProps({ preview = false }) {
+  const allWorks = overlayDrafts(
+    await getClient(preview).fetch(worksIndexQuery),
+  );
   return {
     props: { allWorks },
     revalidate: 1,

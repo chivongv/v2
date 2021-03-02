@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import styled from '@emotion/styled';
 import { FiCopy } from 'react-icons/fi';
@@ -6,22 +6,15 @@ import { FiCopy } from 'react-icons/fi';
 import syntaxTheme from '@styles/syntax-theme';
 import { toCapitalize } from '@utils/string-utils';
 
-const Header = styled('div')`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  font-size: 13px;
-  color: #a3acb9;
-  background-size: 14px 12px;
-  background-position: 13px 10px;
-  background-repeat: no-repeat;
-  line-height: 14px;
-  cursor: default;
-  border-radius: 7px 7px 0 0;
-  background-color: hsl(220, 13%, 22%);
-  padding: 5px 12px 5px 20px;
-`;
+const Header = styled('div')({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  color: '#a3acb9',
+  borderRadius: '7px 7px 0 0',
+  backgroundColor: 'hsl(220, 13%, 22%)',
+  padding: '5px 12px 5px 20px',
+});
 
 const Title = styled('span')({
   fontSize: '0.875rem',
@@ -54,7 +47,7 @@ const CodeBlock = ({ node }) => {
   if (!node || !node.code) {
     return null;
   }
-  const [copied, setCopied] = React.useState(false);
+  const [copied, setCopied] = useState(false);
   const { language, code } = node;
 
   const handleClick = () => {

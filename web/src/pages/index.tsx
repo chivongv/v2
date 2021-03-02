@@ -1,7 +1,8 @@
 import dynamic from 'next/dynamic';
 import { useInView } from 'react-intersection-observer';
 
-import { getAllWorksForHome } from '@lib/api';
+import { allWorksForHomeQuery } from '@lib/queries';
+import { getClient, overlayDrafts } from '@lib/sanity.server';
 import Hero from '@sections/Hero';
 import Layout from '@components/Layout';
 const ToTop = dynamic(() => import('@components/ToTop'));
@@ -39,7 +40,9 @@ const Home = ({ works }: Props) => {
 };
 
 export async function getStaticProps({ preview = false }) {
-  const works = await getAllWorksForHome(preview);
+  const works = overlayDrafts(
+    await getClient(preview).fetch(allWorksForHomeQuery),
+  );
   return {
     props: { works, preview },
     revalidate: 60,

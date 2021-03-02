@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 import { FaGithub, FaGitlab, FaExternalLinkAlt } from 'react-icons/fa';
-import imageUrlBuilder from '@sanity/image-url';
 
-import client from '@lib/sanity';
 import { Breakpoints } from '@styles/breakpoints';
+import { urlForImage } from '@lib/sanity';
 
 const Container = styled('div')({
   width: '100%',
@@ -122,8 +121,6 @@ const IconSelector = (link = 'github') => {
   }
 };
 
-const imageBuilder = imageUrlBuilder(client);
-
 const ProjectCard = ({ data }) => {
   if (data) {
     const { title, source, demo, body, coverImage, tags } = data;
@@ -172,7 +169,7 @@ const ProjectCard = ({ data }) => {
             {coverImage && coverImage.asset ? (
               <img
                 loading="lazy"
-                src={imageBuilder.image(coverImage).width(400).url()}
+                src={urlForImage(coverImage, 400).url()}
                 alt={title}
               />
             ) : null}

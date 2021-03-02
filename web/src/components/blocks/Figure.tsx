@@ -1,12 +1,9 @@
-import imageUrlBuilder from '@sanity/image-url';
 import styled from '@emotion/styled';
-import client from '@lib/sanity';
+import { urlForImage } from '@lib/sanity';
 
 const Caption = styled('figcaption')({
   textAlign: 'center',
 });
-
-const imageBuilder = imageUrlBuilder(client);
 
 const FigureBlock = ({ node }) => {
   if (!node || !node.asset) {
@@ -17,7 +14,7 @@ const FigureBlock = ({ node }) => {
 
   return (
     <figure>
-      <img src={imageBuilder.image(node).width(400).url()} alt={alt} />
+      <img src={urlForImage(node, 400).url()} alt={alt} />
       {caption && <Caption>{caption}</Caption>}
     </figure>
   );
