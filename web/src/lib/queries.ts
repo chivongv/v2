@@ -22,6 +22,7 @@ const sharedProjectFields = `
 export const postsIndexQuery = `
   *[_type == "post"] | order(publishedDate desc, _updatedAt desc) {
     ${sharedPostFields}
+    tags,
   }
 `;
 

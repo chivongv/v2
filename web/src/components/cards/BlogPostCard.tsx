@@ -17,6 +17,7 @@ const Title = styled('h2')({
   fontSize: '1rem',
   margin: '10px 0 7px',
   color: 'var(--colors-primary)',
+  textAlign: 'center',
 });
 
 const Body = styled.div({
@@ -83,7 +84,7 @@ const BlogPostCard = ({ data }) => {
         <TagList>
           {tags
             ? tags.map((tag, j) => {
-                return <Tag key={j}>{tag}</Tag>;
+                return <Tag key={j}>#{tag}</Tag>;
               })
             : null}
         </TagList>
