@@ -7,7 +7,6 @@ import BlockContent from '@sanity/block-content-to-react';
 import Layout from '@components/Layout';
 import { postQuery, postSlugsQuery } from '@lib/queries';
 import { getClient, overlayDrafts, sanityClient } from '@lib/sanity.server';
-import { formatDate } from '@utils/datetime-utils';
 import { Breakpoints } from '@styles/breakpoints';
 import { sanityConfig } from '@lib/config';
 import { serializers } from '@lib/sanity';
@@ -98,7 +97,11 @@ const Post = ({ post }) => {
   const postURL = `https://chivongv.se/blog/${post?.slug}`;
 
   return (
-    <Layout title={router.isFallback ? 'Loading...' : post.title}>
+    <Layout
+      title={
+        router.isFallback ? 'Loading...' : `${post.title} | Chi Vong's blog`
+      }
+    >
       <Container>
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>

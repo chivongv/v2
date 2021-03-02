@@ -8,7 +8,6 @@ import Layout from '@components/Layout';
 const SocialBar = dynamic(() => import('@components/SocialBar'));
 const ToTop = dynamic(() => import('@components/ToTop'));
 import { Breakpoints } from '@styles/breakpoints';
-import SoundCloudIframe from '@components/SoundCloudIframe';
 import BlogPostCard from '@components/cards/BlogPostCard';
 
 const Container = styled('div')({
@@ -57,7 +56,6 @@ const Blog = ({ allPosts }) => {
       </Container>
       <SocialBar />
       {inView && <ToTop inView={inView} />}
-      <SoundCloudIframe />
     </Layout>
   );
 };

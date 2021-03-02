@@ -69,6 +69,13 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+            <Link href="/chill" passHref>
+              <Anchor isActive={router.pathname.includes('/chill')}>
+                Chill
+              </Anchor>
+            </Link>
+          </li>
+          <li>
             <ToggleMode />
           </li>
         </ul>
