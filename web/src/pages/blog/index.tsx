@@ -29,13 +29,14 @@ const Title = styled('h2')({
 });
 
 const PostList = styled('div')({
-  margin: '40px auto 15px',
+  margin: '20px auto 15px',
   width: '100%',
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
   gap: 20,
   [Breakpoints.TabletOrLarger]: {
     gridTemplateColumns: 'repeat(auto-fill, minmax(450px, 1fr))',
+    margin: '40px auto 15px',
   },
 });
 
@@ -67,7 +68,7 @@ export async function getStaticProps({ preview = false }) {
 
   return {
     props: { allPosts, preview },
-    revalidate: 60 * 60,
+    revalidate: 10,
   };
 }
 
