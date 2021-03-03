@@ -49,7 +49,7 @@ const Hero = () => {
       <Title>
         Hi, I'm <span className="highlight">Chi</span>
       </Title>
-      <SubTitle>Frontend Engineer</SubTitle>
+      <SubTitle>Software Engineer</SubTitle>
       <Link href="/#works" passHref>
         <Anchor>Read more</Anchor>
       </Link>

@@ -51,13 +51,23 @@ const ContentWrapper = styled('div')({
   flex: 1,
   paddingBottom: '1em',
   p: {
-    marginBottom: '1.5em',
+    marginBottom: '0.5em',
     lineHeight: 1.4,
   },
   a: {
     color: 'var(--colors-primary)',
   },
   ul: {
+    paddingLeft: '1em',
+    marginBottom: '1em',
+    li: {
+      paddingTop: '0.25em',
+    },
+    'li:first-of-type': {
+      paddingTop: 0,
+    },
+  },
+  ol: {
     paddingLeft: '1em',
     li: {
       paddingTop: '0.5em',
@@ -66,7 +76,7 @@ const ContentWrapper = styled('div')({
   blockquote: {
     borderLeft: '5px solid var(--colors-primary)',
     background: 'hsla(221.9, 88.8%, 64.9%, 0.15)',
-    margin: '0 0 1.5em',
+    marginBottom: '1em',
     padding: '1em 1.5em',
     borderRadius: 4,
     lineHeight: 1.5,

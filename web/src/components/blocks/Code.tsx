@@ -34,6 +34,9 @@ const Button = styled('button')({
   '> svg': {
     marginRight: 5,
   },
+  ':hover': {
+    color: 'var(--colors-tag)',
+  },
 });
 
 const Text = styled('div')({
