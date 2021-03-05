@@ -52,7 +52,7 @@ const Blog = ({ allPosts }) => {
     caseSensitive: false,
   });
 
-  const handleClick = (value) => {
+  const handleClick = (value: string) => {
     setSearchText(value);
   };
 
@@ -62,7 +62,10 @@ const Blog = ({ allPosts }) => {
     <Layout title="Chi Vong | Blog">
       <Container>
         <Title>Blog</Title>
-        <SearchInput handleClick={handleClick} />
+        <SearchInput
+          handleClick={handleClick}
+          placeholder="Search by keyword or tag"
+        />
         <PostList ref={ref}>
           {filteredPosts.map((post, index) => {
             return <BlogPostCard key={index} data={post} />;

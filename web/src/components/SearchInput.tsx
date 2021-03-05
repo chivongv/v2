@@ -15,7 +15,7 @@ const Icon = styled(FaSearch)({
   top: '50%',
   left: 18,
   transform: 'translate(-50%, -50%)',
-  color: 'rgba(255, 255, 255, 0.9)',
+  color: 'var(--colors-tag)',
 });
 
 const Input = styled.input({
@@ -29,7 +29,8 @@ const Input = styled.input({
   boxShadow: '0 0 2px var(--colors-primary)',
   borderRadius: 5,
   '::placeholder': {
-    fontSize: '0.875rem',
+    fontSize: '1rem',
+    color: 'var(--colors-tag)',
   },
 });
 
@@ -43,6 +44,7 @@ const Button = styled('button')({
   right: 0,
   top: '50%',
   transform: 'translateY(-50%)',
+  cursor: 'pointer',
 });
 
 const SearchInput = ({ handleClick, ...rest }) => {
