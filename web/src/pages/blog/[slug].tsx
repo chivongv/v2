@@ -32,9 +32,12 @@ const ImageWrapper = styled('div')({
   width: '100%',
   maxWidth: 800,
   margin: '0 auto',
+  img: {
+    borderRadius: 2,
+  },
 });
 
-const PostBody = styled('div')({
+const PostBody = styled('section')({
   flex: 1,
   display: 'flex',
   flexDirection: 'column',
@@ -49,12 +52,18 @@ const PostBody = styled('div')({
 
 const ContentWrapper = styled('div')({
   flex: 1,
-  paddingBottom: '1em',
+  paddingBottom: '1.5rem',
+  fontSize: '1.25rem',
+  'h1,h2,h3,h4,h5,h6,p': {
+    marginTop: '1.2em',
+    marginBottom: '1.2em',
+    ':first-of-type': {
+      marginTop: 0,
+    },
+  },
   p: {
-    marginBottom: '0.5em',
-    lineHeight: 1.4,
+    lineHeight: 1.7,
     code: {
-      fontSize: '1rem',
       color: 'var(--colors-primary)',
     },
   },
@@ -63,6 +72,7 @@ const ContentWrapper = styled('div')({
   },
   ul: {
     paddingLeft: '1em',
+    marginTop: '-0.6em',
     marginBottom: '1em',
     li: {
       paddingTop: '0.25em',

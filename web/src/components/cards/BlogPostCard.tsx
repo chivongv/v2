@@ -1,5 +1,6 @@
-import styled from '@emotion/styled';
 import Link from 'next/link';
+import styled from '@emotion/styled';
+import { FaLongArrowAltRight } from 'react-icons/fa';
 
 const Container = styled.div({
   display: 'flex',
@@ -31,12 +32,17 @@ const Body = styled.div({
 });
 
 const ButtonLink = styled('a')({
-  background: 'var(--colors-primary)',
   padding: '10px 35px',
   cursor: 'pointer',
   borderRadius: 5,
   margin: '20px auto 0',
-  color: '#fff',
+  span: {
+    marginRight: 10,
+  },
+  color: 'var(--colors-primary)',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 });
 
 const TagList = styled.ul({
@@ -79,7 +85,10 @@ const BlogPostCard = ({ data }) => {
           ></Body>
         ) : null}
         <Link href={`/blog/${encodeURIComponent(slug)}`} passHref>
-          <ButtonLink>Read more</ButtonLink>
+          <ButtonLink>
+            <span>Read more</span>
+            <FaLongArrowAltRight />
+          </ButtonLink>
         </Link>
         <TagList>
           {tags

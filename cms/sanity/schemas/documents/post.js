@@ -46,11 +46,15 @@ export default {
       type: 'array',
       title: 'Body text',
       of: [
+        { type: 'accordion' },
         { type: 'block' },
-        { type: 'figure' },
         {
           type: 'code',
+          options: {
+            withFilename: true,
+          },
         },
+        { type: 'figure' },
       ],
     },
     {

@@ -14,7 +14,11 @@ const FigureBlock = ({ node }) => {
 
   return (
     <figure>
-      <img src={urlForImage(node, 400).url()} alt={alt} />
+      <img
+        src={urlForImage(node, 400).url()}
+        alt={alt}
+        style={{ borderRadius: 2 }}
+      />
       {caption && <Caption>{caption}</Caption>}
     </figure>
   );

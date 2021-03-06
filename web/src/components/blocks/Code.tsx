@@ -43,6 +43,9 @@ const Button = styled('button')({
 });
 
 const Text = styled('div')({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
   height: 26,
   padding: 5,
   fontWeight: 700,
@@ -54,7 +57,7 @@ const CodeBlock = ({ node }) => {
     return null;
   }
   const [copied, setCopied] = useState(false);
-  const { language, code } = node;
+  const { language, code, filename } = node;
 
   const handleClick = () => {
     if (navigator.clipboard) {
@@ -68,6 +71,7 @@ const CodeBlock = ({ node }) => {
     <div>
       <Header>
         <Title>{mapCodeLanguages(language)}</Title>
+        {filename && <Title>{filename}</Title>}
         {!copied && (
           <Button onClick={handleClick} title="Copy to clipboard">
             <FiCopy /> Copy

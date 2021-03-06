@@ -3,6 +3,7 @@ import {
   createImageUrlBuilder,
   createPreviewSubscriptionHook,
 } from 'next-sanity';
+const AccordionBlock = dynamic(() => import('@blocks/Accordion'));
 const CodeBlock = dynamic(() => import('@blocks/Code'));
 const FigureBlock = dynamic(() => import('@blocks/Figure'));
 import { sanityConfig } from './config';
@@ -23,6 +24,7 @@ export const usePreviewSubscription = createPreviewSubscriptionHook(
 
 export const serializers = {
   types: {
+    accordion: AccordionBlock,
     code: CodeBlock,
     figure: FigureBlock,
   },
