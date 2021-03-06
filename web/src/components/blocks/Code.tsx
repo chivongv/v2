@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { FiCopy } from 'react-icons/fi';
 
 import syntaxTheme from '@styles/syntax-theme';
-import { toCapitalize } from '@utils/string-utils';
+import { mapCodeLanguages } from '@utils/codeLanguages-utils';
 
 const Header = styled('div')({
   display: 'flex',
@@ -18,6 +18,9 @@ const Header = styled('div')({
 
 const Title = styled('span')({
   fontSize: '0.875rem',
+  ':hover': {
+    color: 'var(--colors-primary)',
+  },
 });
 
 const Button = styled('button')({
@@ -64,9 +67,9 @@ const CodeBlock = ({ node }) => {
   return (
     <div>
       <Header>
-        <Title>{toCapitalize(language)}</Title>
+        <Title>{mapCodeLanguages(language)}</Title>
         {!copied && (
-          <Button onClick={handleClick}>
+          <Button onClick={handleClick} title="Copy to clipboard">
             <FiCopy /> Copy
           </Button>
         )}

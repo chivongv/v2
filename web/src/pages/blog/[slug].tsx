@@ -53,6 +53,10 @@ const ContentWrapper = styled('div')({
   p: {
     marginBottom: '0.5em',
     lineHeight: 1.4,
+    code: {
+      fontSize: '1rem',
+      color: 'var(--colors-primary)',
+    },
   },
   a: {
     color: 'var(--colors-primary)',
