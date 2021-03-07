@@ -5,15 +5,16 @@ import styled from '@emotion/styled';
 import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
 
-import Layout from '@components/Layout';
-import { postQuery, postSlugsQuery } from '@lib/queries';
-import { getClient, overlayDrafts, sanityClient } from '@lib/sanity.server';
+import { BlogPost } from 'types/blogpost';
 import { Breakpoints } from '@styles/breakpoints';
+import { getClient, overlayDrafts, sanityClient } from '@lib/sanity.server';
+import { postQuery, postSlugsQuery } from '@lib/queries';
 import { sanityConfig } from '@lib/config';
 import { serializers, usePreviewSubscription } from '@lib/sanity';
+import AlertPreview from '@components/AlertPreview';
+import Layout from '@components/Layout';
 import NotFound from '@pages/404';
 import SocialBar from '@components/SocialBar';
-import { BlogPost } from 'types/blogpost';
 
 const Container = styled('article')({
   display: 'flex',
@@ -169,6 +170,7 @@ const Post: FC<Props> = ({ data, preview }) => {
                   serializers={serializers}
                 />
               </ContentWrapper>
+              {preview && <AlertPreview />}
               <div>
                 <PostLink
                   target="_blank"

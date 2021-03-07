@@ -21,7 +21,7 @@ const Title = styled('h2')({
   textAlign: 'center',
 });
 
-const Body = styled.div({
+const Body = styled('div')({
   flex: 1,
   lineHeight: 1.5,
   textAlign: 'justify',
@@ -77,13 +77,7 @@ const BlogPostCard = ({ data }) => {
             </a>
           </Link>
         ) : null}
-        {excerpt ? (
-          <Body
-            dangerouslySetInnerHTML={{
-              __html: excerpt,
-            }}
-          ></Body>
-        ) : null}
+        <Body>{excerpt}</Body>
         <Link href={`/blog/${encodeURIComponent(slug)}`} passHref>
           <ButtonLink>
             <span>Read more</span>

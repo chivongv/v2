@@ -9,6 +9,7 @@ import ProjectCard from '@components/cards/ProjectCard';
 const SocialBar = dynamic(() => import('@components/SocialBar'));
 const ToTop = dynamic(() => import('@components/ToTop'));
 import { Breakpoints } from '@styles/breakpoints';
+import AlertPreview from '@components/AlertPreview';
 
 const Container = styled('div')({
   display: 'flex',
@@ -30,7 +31,7 @@ const ProjectCardWrapper = styled('div')({
   minWidth: 300,
 });
 
-const Works = ({ allWorks }) => {
+const Works = ({ allWorks, preview }) => {
   const [ref, inView] = useInView({
     rootMargin: '350px',
   });
@@ -39,6 +40,7 @@ const Works = ({ allWorks }) => {
     <Layout title="Chi Vong | Works">
       <Container>
         <ProjectList ref={ref}>
+          {preview && <AlertPreview />}
           {allWorks
             ? allWorks.map((project) =>
                 project ? (
@@ -61,7 +63,7 @@ export async function getStaticProps({ preview = false }) {
     await getClient(preview).fetch(worksIndexQuery),
   );
   return {
-    props: { allWorks },
+    props: { allWorks, preview },
     revalidate: 1,
   };
 }

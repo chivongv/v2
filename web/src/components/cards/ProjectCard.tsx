@@ -132,11 +132,9 @@ const ProjectCard = ({ data }) => {
         <TwoCol>
           <Content>
             {title ? <Name>{title}</Name> : null}
-            {body ? (
-              <Body>
-                <p>{body}</p>
-              </Body>
-            ) : null}
+            <Body>
+              <p>{body}</p>
+            </Body>
             {source || demo ? (
               <ProjectLinks>
                 {demo ? (

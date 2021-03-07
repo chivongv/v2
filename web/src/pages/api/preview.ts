@@ -2,8 +2,6 @@ import { postBySlugQuery } from '@lib/queries';
 import { previewClient } from '@lib/sanity.server';
 
 export default async function preview(req, res) {
-  // Check the secret and next parameters
-  // This secret should only be known to this API route and the CMS
   if (
     req.query.secret !== process.env.SANITY_PREVIEW_SECRET ||
     !req.query.slug
@@ -11,12 +9,18 @@ export default async function preview(req, res) {
     return res.status(401).json({ message: 'Invalid token' });
   }
 
+  if (!req.query.slug) {
+    return res.status(401).json({ message: 'Invalid slug' });
+  }
+
   const post = await previewClient.fetch(postBySlugQuery, {
     slug: req.query.slug,
   });
 
-  if (!post) {
-    return res.status(401).json({ message: 'Invalid slug' });
+  if (!post || !post.slug) {
+    return res
+      .status(401)
+      .json({ message: 'No valid post or post slug returned.' });
   }
 
   // Enable Preview Mode by setting the cookies

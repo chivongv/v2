@@ -103,13 +103,7 @@ const WorkCard = ({ data }) => {
           </WorkLinks>
         ) : null}
         {title ? <Name>{title}</Name> : null}
-        {excerpt ? (
-          <Body
-            dangerouslySetInnerHTML={{
-              __html: excerpt,
-            }}
-          ></Body>
-        ) : null}
+        <Body>{excerpt}</Body>
         <TagList>
           {tags
             ? tags.map((tag, j) => {

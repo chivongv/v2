@@ -52,6 +52,10 @@ const Content = styled('section')({
 });
 
 const AccordionBlock = ({ node }) => {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
     easing: 'ease-in-out',
     defaultExpanded: node.isOpen || false,

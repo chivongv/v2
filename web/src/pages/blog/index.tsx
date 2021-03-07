@@ -4,13 +4,14 @@ import styled from '@emotion/styled';
 import { useInView } from 'react-intersection-observer';
 import FuzzySearch from 'fuzzy-search';
 
-import { postsIndexQuery } from '@lib/queries';
-import { getClient, overlayDrafts } from '@lib/sanity.server';
-import Layout from '@components/Layout';
 const SocialBar = dynamic(() => import('@components/SocialBar'));
 const ToTop = dynamic(() => import('@components/ToTop'));
 import { Breakpoints } from '@styles/breakpoints';
+import { getClient, overlayDrafts } from '@lib/sanity.server';
+import { postsIndexQuery } from '@lib/queries';
+import AlertPreview from '@components/AlertPreview';
 import BlogPostCard from '@components/cards/BlogPostCard';
+import Layout from '@components/Layout';
 import SearchInput from '@components/SearchInput';
 
 const Container = styled('div')({
@@ -39,11 +40,11 @@ const PostList = styled('div')({
   gap: 20,
   [Breakpoints.TabletOrLarger]: {
     gridTemplateColumns: 'repeat(auto-fill, minmax(450px, 1fr))',
-    margin: '40px auto 15px',
+    margin: '20px auto 15px',
   },
 });
 
-const Blog = ({ allPosts }) => {
+const Blog = ({ allPosts, preview }) => {
   const [ref, inView] = useInView({
     rootMargin: '350px',
   });
@@ -66,6 +67,7 @@ const Blog = ({ allPosts }) => {
           handleClick={handleClick}
           placeholder="Search by keyword or tag"
         />
+        {preview && <AlertPreview />}
         <PostList ref={ref}>
           {filteredPosts.map((post, index) => {
             return <BlogPostCard key={index} data={post} />;
