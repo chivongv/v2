@@ -40,22 +40,14 @@ export default {
       name: 'coverImage',
       title: 'Cover Image',
       type: 'image',
+      options: {
+        hotspot: true,
+      },
     },
     {
       name: 'body',
-      type: 'array',
+      type: 'richText',
       title: 'Body text',
-      of: [
-        { type: 'accordion' },
-        { type: 'block' },
-        {
-          type: 'code',
-          options: {
-            withFilename: true,
-          },
-        },
-        { type: 'figure' },
-      ],
     },
     {
       name: 'author',
@@ -70,6 +62,10 @@ export default {
       of: [{ name: 'tag', title: 'Tag', type: 'string' }],
     },
   ],
+  initialValue: {
+    publishedDate: new Date().toISOString(),
+    updatedDate: new Date().toISOString(),
+  },
   orderings: [
     {
       name: 'publishedDateAsc',
@@ -113,7 +109,7 @@ export default {
       slug = {},
       media,
     }) {
-      const dateSegment = format(new Date(publishedDate), 'yyyy/MM');
+      const dateSegment = format(new Date(publishedDate), 'yyyy/MM/dd');
       const path = `/${dateSegment}/${slug.current}/`;
       return {
         title,

@@ -1,13 +1,18 @@
 export default {
-  name: "richText",
-  type: "array",
-  title: "RichText",
+  name: 'richText',
+  type: 'array',
+  title: 'RichText',
   of: [
+    { type: 'accordion' },
     {
-      type: "block",
+      type: 'block',
     },
     {
-      type: "figure",
+      type: 'code',
+      options: {
+        withFilename: true,
+      },
     },
+    { type: 'figure' },
   ],
-}
+};
