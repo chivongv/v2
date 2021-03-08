@@ -5,6 +5,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 import accordion from './objects/accordion';
 import category from './documents/category';
 import figure from './objects/figure';
+import gif from './objects/gif';
 import person from './documents/person';
 import post from './documents/post';
 import project from './documents/project';
@@ -17,6 +18,7 @@ export default createSchema({
     accordion,
     category,
     figure,
+    gif,
     person,
     post,
     project,

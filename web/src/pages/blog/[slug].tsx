@@ -152,7 +152,7 @@ const Post: FC<Props> = ({ data, preview }) => {
           <>
             <Head>
               <title>
-                {post.title} | {post.author.name}
+                {post.title} | {post.author?.name}
               </title>
             </Head>
             <PostTitle>{post.title}</PostTitle>

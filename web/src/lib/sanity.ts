@@ -6,11 +6,12 @@ import {
 const AccordionBlock = dynamic(() => import('@blocks/Accordion'));
 const CodeBlock = dynamic(() => import('@blocks/Code'));
 const FigureBlock = dynamic(() => import('@blocks/Figure'));
+const GIFBlock = dynamic(() => import('@blocks/GIF'));
 import { sanityConfig } from './config';
 
 export const imageBuilder = createImageUrlBuilder(sanityConfig);
 
-export const urlForImage = (source, width) => {
+export const urlForImage = (source, width = 0) => {
   if (width) {
     return imageBuilder.image(source).width(width);
   } else {
@@ -27,5 +28,6 @@ export const serializers = {
     accordion: AccordionBlock,
     code: CodeBlock,
     figure: FigureBlock,
+    gif: GIFBlock,
   },
 };
