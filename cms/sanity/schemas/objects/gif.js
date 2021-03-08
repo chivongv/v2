@@ -23,5 +23,13 @@ export default {
       title: 'Source ogg',
       type: 'file',
     },
+    {
+      name: 'caption',
+      title: 'Caption text',
+      type: 'string',
+      options: {
+        isHighlighted: true,
+      },
+    },
   ],
 };

@@ -32,6 +32,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'gif',
+      title: 'GIF',
+      type: 'gif',
+    },
+    {
       name: 'coverImage',
       title: 'Cover Image',
       type: 'figure',
@@ -73,6 +78,7 @@ export default {
   ],
   initialValue: {
     showOnFrontPage: false,
+    publishedDate: new Date().toISOString(),
   },
   orderings: [
     {

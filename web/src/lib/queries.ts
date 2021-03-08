@@ -20,7 +20,7 @@ const sharedProjectFields = `
 `;
 
 export const postsIndexQuery = `
-  *[_type == "post"] | order(publishedDate desc, _updatedAt desc) {
+  *[_type == "post"] | order(publishedDate desc, updatedDate desc) {
     ${sharedPostFields}
     tags,
   }
@@ -28,11 +28,11 @@ export const postsIndexQuery = `
 
 export const postQuery = `
 {
-  "post": *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) | [0] {
+  "post": *[_type == "post" && slug.current == $slug] | order(updatedDate desc) | [0] {
     ${sharedPostFields}
     body,
   },
-  "morePosts": *[_type == "post" && slug.current != $slug] | order(publishedDate desc, _updatedAt desc) | [0...2] {
+  "morePosts": *[_type == "post" && slug.current != $slug] | order(publishedDate desc, updatedDate desc) | [0...2] {
     ${sharedPostFields}
     body,
   }
@@ -59,6 +59,7 @@ export const worksIndexQuery = `
     ${sharedProjectFields}
     showOnFrontPage,
     body,
+    gif,
     coverImage
   }
 `;

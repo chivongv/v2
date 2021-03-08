@@ -3,6 +3,7 @@ import { FaGithub, FaGitlab, FaExternalLinkAlt } from 'react-icons/fa';
 
 import { Breakpoints } from '@styles/breakpoints';
 import { urlForImage } from '@lib/sanity';
+import { urlForFile } from '@utils/urlForFile';
 
 const Container = styled('div')({
   width: '100%',
@@ -83,6 +84,7 @@ const Thumbnail = styled('div')({
     objectFit: 'cover',
     borderRadius: '5px 5px 0 0',
     maxHeight: 400,
+    maxWidth: '100vw',
   },
   [Breakpoints.LargerThan800]: {
     maxWidth: 400,
@@ -125,7 +127,7 @@ const IconSelector = (link = 'github') => {
 
 const ProjectCard = ({ data }) => {
   if (data) {
-    const { title, source, demo, body, coverImage, tags } = data;
+    const { title, source, demo, body, gif, coverImage, tags } = data;
 
     return (
       <Container>
@@ -166,7 +168,20 @@ const ProjectCard = ({ data }) => {
             </TagList>
           </Content>
           <Thumbnail>
-            {coverImage && coverImage.asset ? (
+            {gif ? (
+              <video width="400" autoPlay loop muted>
+                {gif.webm && (
+                  <source src={`${urlForFile(gif.webm)}`} type="video/webm" />
+                )}
+                {gif.mp4 && (
+                  <source src={`${urlForFile(gif.mp4)}`} type="video/mp4" />
+                )}
+                {gif.ogg && (
+                  <source src={`${urlForFile(gif.ogg)}`} type="video/ogg" />
+                )}
+                Your browser does not support the video tag.
+              </video>
+            ) : coverImage && coverImage.asset ? (
               <img
                 loading="lazy"
                 src={urlForImage(coverImage, 400).url()}
