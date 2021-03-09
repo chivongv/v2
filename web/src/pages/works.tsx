@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import { worksIndexQuery } from '@lib/queries';
 import { getClient, overlayDrafts } from '@lib/sanity.server';
 import Layout from '@components/Layout';
-import ProjectCard from '@components/cards/ProjectCard';
+const ProjectCard = dynamic(() => import('@components/cards/ProjectCard'));
 const SocialBar = dynamic(() => import('@components/SocialBar'));
 const ToTop = dynamic(() => import('@components/ToTop'));
 import { Breakpoints } from '@styles/breakpoints';

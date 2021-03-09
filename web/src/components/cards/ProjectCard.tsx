@@ -86,6 +86,10 @@ const Thumbnail = styled('div')({
     maxHeight: 400,
     maxWidth: '100vw',
   },
+  video: {
+    borderRadius: '5px 5px 0 0',
+    maxWidth: 400,
+  },
   [Breakpoints.LargerThan800]: {
     maxWidth: 400,
   },
@@ -169,7 +173,7 @@ const ProjectCard = ({ data }) => {
           </Content>
           <Thumbnail>
             {gif ? (
-              <video width="400" autoPlay loop muted>
+              <video width="100%" autoPlay loop muted>
                 {gif.webm && (
                   <source src={`${urlForFile(gif.webm)}`} type="video/webm" />
                 )}

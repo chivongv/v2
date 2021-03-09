@@ -1,6 +1,11 @@
 import styled from '@emotion/styled';
 import { urlForFile } from '@utils/urlForFile';
 
+const Container = styled('div')({
+  maxWidth: 600,
+  margin: '0 auto',
+});
+
 const Caption = styled('figcaption')({
   textAlign: 'center',
 });
@@ -11,7 +16,7 @@ const GIFBlock = ({ node }) => {
   }
 
   return (
-    <div style={{ maxWidth: 600, margin: '0 auto' }}>
+    <Container>
       <video width="100%" autoPlay loop muted>
         {node.webm && (
           <source src={`${urlForFile(node.webm)}`} type="video/webm" />
@@ -25,7 +30,7 @@ const GIFBlock = ({ node }) => {
         Your browser does not support the video tag.
       </video>
       {node.caption && <Caption>{node.caption}</Caption>}
-    </div>
+    </Container>
   );
 };
 
