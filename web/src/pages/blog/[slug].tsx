@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 import Head from 'next/head';
+import { useInView } from 'react-intersection-observer';
 
 import { BlogPost } from 'types/blogpost';
 import { Breakpoints } from '@styles/breakpoints';
@@ -13,6 +14,7 @@ import AlertPreview from '@components/AlertPreview';
 import Layout from '@components/Layout';
 import NotFound from '@pages/404';
 import SocialBar from '@components/SocialBar';
+import ToTop from '@components/ToTop';
 
 const Container = styled('article')({
   display: 'flex',
@@ -128,6 +130,9 @@ const Post: FC<Props> = ({ data, preview }) => {
     initialData: data,
     enabled: Boolean(preview && slug),
   });
+  const [ref, inView] = useInView({
+    rootMargin: '350px',
+  });
 
   if (!mdata || (!router.isFallback && !slug)) {
     return <NotFound />;
@@ -159,7 +164,7 @@ const Post: FC<Props> = ({ data, preview }) => {
                 <Image src={post.coverImage} width="800" height="600" />
               </ImageWrapper>
             )}
-            <PostBody>
+            <PostBody ref={ref}>
               <ContentWrapper>
                 <PortableText blocks={post.body} />
               </ContentWrapper>
@@ -189,6 +194,7 @@ const Post: FC<Props> = ({ data, preview }) => {
           </>
         )}
         <SocialBar />
+        {inView && <ToTop inView={inView} />}
       </Container>
     </Layout>
   );
