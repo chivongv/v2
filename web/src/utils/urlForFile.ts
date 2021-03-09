@@ -20,6 +20,10 @@ const parseAsset = (ref) => {
 };
 
 export const urlForFile = (source) => {
+  if (!source || !source.asset || !source.asset._ref) {
+    return null;
+  }
+
   const cdnUrl = 'https://cdn.sanity.io';
   const { id, format } = parseAsset(source.asset._ref);
   const filename = id + '.' + format;
