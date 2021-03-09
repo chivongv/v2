@@ -45,19 +45,12 @@ const Button = styled('button')({
   top: '50%',
   transform: 'translateY(-50%)',
   cursor: 'pointer',
-  ':disabled': {
-    cursor: 'not-allowed',
-  },
 });
 
 const SearchInput = ({ handleClick, ...rest }) => {
   const [text, setText] = useState('');
 
   const handleKeyPress = (e) => {
-    if (text === '') {
-      return;
-    }
-
     if (e.key === 'Enter') {
       handleClick(text);
     }
@@ -72,9 +65,7 @@ const SearchInput = ({ handleClick, ...rest }) => {
         onChange={(e) => setText(e.target.value)}
         {...rest}
       />
-      <Button onClick={() => handleClick(text)} disabled={text === ''}>
-        Search
-      </Button>
+      <Button onClick={() => handleClick(text)}>Search</Button>
     </Container>
   );
 };
