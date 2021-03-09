@@ -80,7 +80,7 @@ const List = styled('ul')({
   },
 });
 
-const Icon = styled('a')({
+const IconLink = styled('a')({
   textDecoration: 'none',
   color: 'var(--colors-text)',
   borderRadius: '50%',
@@ -123,9 +123,9 @@ const SocialBar = () => {
         {socialMedia &&
           socialMedia.map(({ name, url }, i) => (
             <li key={i}>
-              <Icon href={url} className={name} aria-label={name}>
+              <IconLink href={url} className={name} aria-label={name}>
                 {IconSelector({ name })}
-              </Icon>
+              </IconLink>
               <span>{name}</span>
             </li>
           ))}

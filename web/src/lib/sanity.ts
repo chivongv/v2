@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import {
   createImageUrlBuilder,
+  createPortableTextComponent,
   createPreviewSubscriptionHook,
 } from 'next-sanity';
 const AccordionBlock = dynamic(() => import('@blocks/Accordion'));
@@ -8,6 +9,15 @@ const CodeBlock = dynamic(() => import('@blocks/Code'));
 const FigureBlock = dynamic(() => import('@blocks/Figure'));
 const GIFBlock = dynamic(() => import('@blocks/GIF'));
 import { sanityConfig } from './config';
+
+export const serializers = {
+  types: {
+    accordion: AccordionBlock,
+    code: CodeBlock,
+    figure: FigureBlock,
+    gif: GIFBlock,
+  },
+};
 
 export const imageBuilder = createImageUrlBuilder(sanityConfig);
 
@@ -23,11 +33,7 @@ export const usePreviewSubscription = createPreviewSubscriptionHook(
   sanityConfig,
 );
 
-export const serializers = {
-  types: {
-    accordion: AccordionBlock,
-    code: CodeBlock,
-    figure: FigureBlock,
-    gif: GIFBlock,
-  },
-};
+export const PortableText = createPortableTextComponent({
+  ...sanityConfig,
+  serializers: serializers,
+});

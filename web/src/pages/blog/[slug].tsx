@@ -3,14 +3,12 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 import Head from 'next/head';
-import BlockContent from '@sanity/block-content-to-react';
 
 import { BlogPost } from 'types/blogpost';
 import { Breakpoints } from '@styles/breakpoints';
 import { getClient, overlayDrafts, sanityClient } from '@lib/sanity.server';
 import { postQuery, postSlugsQuery } from '@lib/queries';
-import { sanityConfig } from '@lib/config';
-import { serializers, usePreviewSubscription } from '@lib/sanity';
+import { PortableText, usePreviewSubscription } from '@lib/sanity';
 import AlertPreview from '@components/AlertPreview';
 import Layout from '@components/Layout';
 import NotFound from '@pages/404';
@@ -163,12 +161,7 @@ const Post: FC<Props> = ({ data, preview }) => {
             )}
             <PostBody>
               <ContentWrapper>
-                <BlockContent
-                  blocks={post.body}
-                  dataset={sanityConfig.dataset}
-                  projectId={sanityConfig.projectId}
-                  serializers={serializers}
-                />
+                <PortableText blocks={post.body} />
               </ContentWrapper>
               {preview && <AlertPreview />}
               <div>

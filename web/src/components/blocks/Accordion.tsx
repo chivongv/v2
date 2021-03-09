@@ -1,9 +1,7 @@
 import useCollapse from 'react-collapsed';
 import styled from '@emotion/styled';
 import { IoIosArrowDown } from 'react-icons/io';
-import BlockContent from '@sanity/block-content-to-react';
-import { sanityConfig } from '@lib/config';
-import { serializers } from '@lib/sanity';
+import { PortableText } from '@lib/sanity';
 
 const Container = styled('div')({
   marginBottom: '1.5em',
@@ -75,12 +73,7 @@ const AccordionBlock = ({ node }) => {
         </Arrow>
       </Header>
       <Content {...getCollapseProps()}>
-        <BlockContent
-          blocks={content}
-          dataset={sanityConfig.dataset}
-          projectId={sanityConfig.projectId}
-          serializers={serializers}
-        />
+        <PortableText blocks={content} />
       </Content>
     </Container>
   );
