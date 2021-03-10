@@ -7,6 +7,7 @@ export default {
     {
       type: 'block',
     },
+    { type: 'break' },
     {
       type: 'code',
       options: {
