@@ -1,6 +1,8 @@
+import * as React from 'react';
 import dynamic from 'next/dynamic';
 import styled from '@emotion/styled';
 import { useInView } from 'react-intersection-observer';
+import { motion, useAnimation } from 'framer-motion';
 
 import { worksIndexQuery } from '@lib/queries';
 import { getClient, overlayDrafts } from '@lib/sanity.server';
@@ -22,29 +24,50 @@ const Container = styled('div')({
   },
 });
 
-const ProjectList = styled('ul')({
+const ProjectList = styled(motion.ul)({
   margin: '50px 0 20px',
+  listStyle: 'none',
 });
 
-const ProjectCardWrapper = styled('div')({
+const ProjectCardWrapper = styled(motion.li)({
   maxWidth: 1100,
   minWidth: 300,
 });
+
+const animations = {
+  hidden: { opacity: 0, y: 200 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const Works = ({ allWorks, preview }) => {
   const [ref, inView] = useInView({
     rootMargin: '350px',
   });
+  const controls = useAnimation();
+
+  React.useEffect(() => {
+    if (controls) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
 
   return (
     <Layout title="Chi Vong | Works">
       <Container>
-        <ProjectList ref={ref}>
+        <ProjectList>
           {preview && <AlertPreview />}
           {allWorks
-            ? allWorks.map((project) =>
+            ? allWorks.map((project, i) =>
                 project ? (
-                  <ProjectCardWrapper key={project._id}>
+                  <ProjectCardWrapper
+                    key={project._id}
+                    ref={ref}
+                    custom={i}
+                    initial="hidden"
+                    animate="visible"
+                    variants={animations}
+                    transition={{ delay: i * 0.3, duration: 1.5 }}
+                  >
                     <ProjectCard data={project} />
                   </ProjectCardWrapper>
                 ) : null,

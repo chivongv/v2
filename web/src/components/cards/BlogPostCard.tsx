@@ -2,7 +2,7 @@ import Link from 'next/link';
 import styled from '@emotion/styled';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 
-const Container = styled.div({
+const Container = styled('div')({
   display: 'flex',
   flexDirection: 'column',
   padding: 15,
@@ -10,6 +10,7 @@ const Container = styled.div({
   transition: 'transform 0.2s linear',
   boxShadow: `3px 3px 5px var(--colors-shadow), -2px -2px 7px var(--colors-shadow)`,
   width: '100%',
+  height: '100%',
   minHeight: 200,
   justifyContent: 'center',
 });

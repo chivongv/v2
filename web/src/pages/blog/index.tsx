@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import * as React from 'react';
 import dynamic from 'next/dynamic';
 import styled from '@emotion/styled';
 import { useInView } from 'react-intersection-observer';
 import FuzzySearch from 'fuzzy-search';
+import { motion } from 'framer-motion';
 
 const SocialBar = dynamic(() => import('@components/SocialBar'));
 const ToTop = dynamic(() => import('@components/ToTop'));
@@ -32,23 +33,42 @@ const Title = styled('h2')({
   overflowWrap: 'break-word',
 });
 
-const PostList = styled('div')({
-  margin: '20px auto 15px',
+const PostList = styled(motion.ul)({
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
   width: '100%',
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+  margin: '20px auto 15px',
   gap: 20,
+  listStyle: 'none',
   [Breakpoints.TabletOrLarger]: {
-    gridTemplateColumns: 'repeat(auto-fill, minmax(450px, 1fr))',
     margin: '20px auto 15px',
   },
 });
+
+const BlogPostWrapper = styled(motion.li)({
+  '> div': {
+    width: '100vw',
+    maxWidth: 450,
+  },
+});
+
+const moveUp = {
+  hidden: { opacity: 0, y: 200 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1.5,
+    },
+  },
+};
 
 const Blog = ({ allPosts, preview }) => {
   const [ref, inView] = useInView({
     rootMargin: '350px',
   });
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = React.useState('');
   const searcher = new FuzzySearch(allPosts, ['tags', 'title'], {
     caseSensitive: false,
   });
@@ -70,7 +90,18 @@ const Blog = ({ allPosts, preview }) => {
         {preview && <AlertPreview />}
         <PostList ref={ref}>
           {filteredPosts.map((post, index) => {
-            return <BlogPostCard key={index} data={post} />;
+            return (
+              <BlogPostWrapper
+                key={index}
+                initial="hidden"
+                animate="visible"
+                variants={moveUp}
+                whileHover={{ translateY: -10 }}
+                whileFocus={{ translateY: -10 }}
+              >
+                <BlogPostCard data={post} />
+              </BlogPostWrapper>
+            );
           })}
         </PostList>
       </Container>

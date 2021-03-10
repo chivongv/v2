@@ -24,7 +24,7 @@ const Container = styled('article')({
   minHeight: '100vh',
 });
 
-const PostTitle = styled('h3')({
+const PostTitle = styled('h1')({
   color: 'var(--colors-primary)',
   marginBottom: 10,
 });
@@ -65,7 +65,7 @@ const ContentWrapper = styled('div')({
   p: {
     lineHeight: 1.7,
     code: {
-      color: 'var(--colors-primary)',
+      color: 'var(--colors-tag)',
     },
   },
   a: {
