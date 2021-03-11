@@ -6,6 +6,10 @@ import { PortableText } from '@lib/sanity';
 const Container = styled('div')({
   marginBottom: '1.5em',
   background: 'var(--colors-thumbnail-background)',
+  ':empty': {
+    width: '100%',
+    height: 200,
+  },
 });
 
 const Header = styled('button')<{ isOpen: boolean }>(({ isOpen }) => ({

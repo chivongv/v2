@@ -16,5 +16,6 @@ export default {
     },
     { type: 'figure' },
     { type: 'gif' },
+    { type: 'youtube' },
   ],
 };

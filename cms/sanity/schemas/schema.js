@@ -12,6 +12,7 @@ import post from './documents/post';
 import project from './documents/project';
 import richText from './objects/richText';
 import siteSettings from './documents/siteSettings';
+import youtube from './objects/youtube';
 
 export default createSchema({
   name: 'portfolio',
@@ -26,5 +27,6 @@ export default createSchema({
     project,
     richText,
     siteSettings,
+    youtube,
   ]),
 });

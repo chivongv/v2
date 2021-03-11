@@ -42,12 +42,7 @@ const Button = styled('button')({
   },
 });
 
-const Text = styled('div')({
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: 26,
-  padding: 5,
+const Highlight = styled('span')({
   fontWeight: 700,
   color: '#1fb742',
 });
@@ -72,12 +67,15 @@ const CodeBlock = ({ node }) => {
       <Header>
         <Title>{mapCodeLanguages(language)}</Title>
         {filename && <Title>{filename}</Title>}
-        {!copied && (
-          <Button onClick={handleClick} title="Copy to clipboard">
-            <FiCopy /> Copy
-          </Button>
-        )}
-        {copied && <Text>Copied!</Text>}
+        <Button onClick={handleClick} title="Copy to clipboard">
+          {copied ? (
+            <Highlight>Copied!</Highlight>
+          ) : (
+            <>
+              <FiCopy /> Copy
+            </>
+          )}
+        </Button>
       </Header>
       <SyntaxHighlighter language={language || 'text'} style={syntaxTheme}>
         {code}

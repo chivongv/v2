@@ -4,11 +4,12 @@ import {
   createPortableTextComponent,
   createPreviewSubscriptionHook,
 } from 'next-sanity';
-const AccordionBlock = dynamic(() => import('@blocks/Accordion'));
-const BreakBlock = dynamic(() => import('@blocks/Break'));
-const CodeBlock = dynamic(() => import('@blocks/Code'));
-const FigureBlock = dynamic(() => import('@blocks/Figure'));
-const GIFBlock = dynamic(() => import('@blocks/GIF'));
+const AccordionBlock = dynamic(() => import('@blocks/AccordionBlock'));
+const BreakBlock = dynamic(() => import('@blocks/BreakBlock'));
+const CodeBlock = dynamic(() => import('@blocks/CodeBlock'));
+const FigureBlock = dynamic(() => import('@blocks/FigureBlock'));
+const GIFBlock = dynamic(() => import('@blocks/GIFBlock'));
+const YouTubeBlock = dynamic(() => import('@blocks/YouTubeBlock'));
 import { sanityConfig } from './config';
 
 export const serializers = {
@@ -18,6 +19,7 @@ export const serializers = {
     code: CodeBlock,
     figure: FigureBlock,
     gif: GIFBlock,
+    youtube: YouTubeBlock,
   },
 };
 
