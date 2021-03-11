@@ -36,7 +36,10 @@ const ToTop = ({ inView }) => {
 
   if (!inView) return null;
   return (
-    <Button onClick={() => handleClick()}>
+    <Button
+      aria-label="Click here to get to the top of the page"
+      onClick={() => handleClick()}
+    >
       <FaArrowUp />
     </Button>
   );
