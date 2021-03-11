@@ -26,6 +26,14 @@ export const postsIndexQuery = `
   }
 `;
 
+export const postsSitemapQuery = `
+  *[_type == "post"] | order(publishedDate desc, updatedDate desc) {
+    'slug': slug.current,
+    publishedDate,
+    updatedDate,
+  }
+`;
+
 export const postQuery = `
 {
   "post": *[_type == "post" && slug.current == $slug] | order(updatedDate desc) | [0] {

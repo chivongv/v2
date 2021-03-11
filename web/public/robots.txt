@@ -1,3 +1,5 @@
 User-Agent: *
 Disallow: /works
 Allow: /
+Allow: /blog
+Sitemap: https://chivongv.se/sitemap.xml
