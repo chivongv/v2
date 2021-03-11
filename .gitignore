@@ -15,6 +15,7 @@ out/
 # production
 /build
 dist/
+*/public/rss.xml
 
 # misc
 .DS_Store

@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { useInView } from 'react-intersection-observer';
 import FuzzySearch from 'fuzzy-search';
 import { motion } from 'framer-motion';
+import fs from 'fs';
 
 const SocialBar = dynamic(() => import('@components/SocialBar'));
 const ToTop = dynamic(() => import('@components/ToTop'));
@@ -14,6 +15,7 @@ import AlertPreview from '@components/AlertPreview';
 import BlogPostCard from '@components/cards/BlogPostCard';
 import Layout from '@components/Layout';
 import SearchInput from '@components/SearchInput';
+import generateRss from 'lib/rss';
 
 const Container = styled('div')({
   display: 'flex',
@@ -115,6 +117,9 @@ export async function getStaticProps({ preview = false }) {
   const allPosts = overlayDrafts(
     await getClient(preview).fetch(postsIndexQuery),
   );
+  const rss = generateRss(allPosts);
+
+  fs.writeFileSync('./public/rss.xml', rss);
 
   return {
     props: { allPosts, preview },
