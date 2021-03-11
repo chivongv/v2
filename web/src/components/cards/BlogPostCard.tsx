@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import { FaLongArrowAltRight } from 'react-icons/fa';
@@ -46,6 +47,17 @@ const ButtonLink = styled('a')({
   alignItems: 'center',
 });
 
+const Button = styled('button')({
+  background: 'var(--colors-thumbnail-background)',
+  border: 'none',
+  color: 'var(--colors-tag)',
+  padding: '10px',
+  borderRadius: 5,
+  cursor: 'pointer',
+  marginTop: 5,
+  fontWeight: 500,
+});
+
 const TagList = styled.ul({
   listStyleType: 'none',
   display: 'flex',
@@ -65,38 +77,64 @@ const Tag = styled.li({
   },
 });
 
-const BlogPostCard = ({ data }) => {
-  if (data) {
-    const { title, slug, excerpt, tags } = data;
+const Text = styled('span')({
+  ':hover': {
+    color: 'var(--colors-primary)',
+  },
+});
 
-    return (
-      <Container>
-        {title ? (
-          <Link href={`/blog/${encodeURIComponent(slug)}`}>
-            <a>
-              <Title>{title}</Title>
-            </a>
-          </Link>
-        ) : null}
-        <Body>{excerpt}</Body>
-        <Link href={`/blog/${encodeURIComponent(slug)}`} passHref>
-          <ButtonLink>
-            <span>Read more</span>
-            <FaLongArrowAltRight />
-          </ButtonLink>
-        </Link>
-        <TagList>
-          {tags
-            ? tags.map((tag, j) => {
-                return <Tag key={j}>#{tag}</Tag>;
-              })
-            : null}
-        </TagList>
-      </Container>
-    );
+const Highlight = styled('span')({
+  fontWeight: 700,
+  color: '#1fb742',
+});
+
+const BlogPostCard = ({ data }) => {
+  const [copied, setCopied] = React.useState(false);
+
+  if (!data) {
+    return null;
   }
 
-  return null;
+  const { title, slug, excerpt, tags } = data;
+
+  const handleClick = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(
+        `https://chivongv.se/blog/${encodeURIComponent(slug)}`,
+      );
+      setCopied(true);
+      setTimeout(() => setCopied(false), 5000);
+    }
+  };
+
+  return (
+    <Container>
+      {title ? (
+        <Link href={`/blog/${encodeURIComponent(slug)}`}>
+          <a>
+            <Title>{title}</Title>
+          </a>
+        </Link>
+      ) : null}
+      <Body>{excerpt}</Body>
+      <Link href={`/blog/${encodeURIComponent(slug)}`} passHref>
+        <ButtonLink>
+          <span>Read more</span>
+          <FaLongArrowAltRight />
+        </ButtonLink>
+      </Link>
+      <Button onClick={handleClick}>
+        {copied ? <Highlight>Copied!</Highlight> : <Text>Copy URL</Text>}
+      </Button>
+      <TagList>
+        {tags
+          ? tags.map((tag, j) => {
+              return <Tag key={j}>#{tag}</Tag>;
+            })
+          : null}
+      </TagList>
+    </Container>
+  );
 };
 
 export default BlogPostCard;

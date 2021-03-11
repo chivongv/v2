@@ -64,6 +64,9 @@ const moveUp = {
       duration: 1.5,
     },
   },
+  hover: {
+    boxShadow: `3px 3px 5px var(--colors-primary), -2px -2px 7px var(--colors-primary)`,
+  },
 };
 
 const Blog = ({ allPosts, preview }) => {
@@ -98,8 +101,8 @@ const Blog = ({ allPosts, preview }) => {
                 initial="hidden"
                 animate="visible"
                 variants={moveUp}
-                whileHover={{ translateY: -10 }}
-                whileFocus={{ translateY: -10 }}
+                whileHover="hover"
+                whileFocus="hover"
               >
                 <BlogPostCard data={post} />
               </BlogPostWrapper>
