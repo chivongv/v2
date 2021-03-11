@@ -4,14 +4,14 @@ export default {
   title: 'Accordion',
   fields: [
     {
-      name: 'title',
-      title: 'Title',
+      name: 'showMoreText',
+      title: 'Show more text',
       type: 'string',
     },
     {
-      name: 'isOpen',
-      title: 'Is accordion open?',
-      type: 'boolean',
+      name: 'showLessText',
+      title: 'Show less text',
+      type: 'string',
     },
     {
       name: 'content',
@@ -29,6 +29,22 @@ export default {
         },
         { type: 'figure' },
       ],
+    },
+    {
+      name: 'isOpen',
+      title: 'Is accordion open?',
+      type: 'boolean',
+    },
+    {
+      name: 'collapseDirection',
+      title: 'Collapse direction',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Up', value: 'up' },
+          { title: 'Down', value: 'down' },
+        ],
+      },
     },
   ],
 };

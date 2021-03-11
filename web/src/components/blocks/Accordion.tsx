@@ -62,12 +62,28 @@ const AccordionBlock = ({ node }) => {
     return null;
   }
 
-  const { title, content } = node;
+  const { showMoreText, showLessText, content, collapseDirection } = node;
+
+  if (collapseDirection === 'up') {
+    return (
+      <Container>
+        <Content {...getCollapseProps()}>
+          <PortableText blocks={content} />
+        </Content>
+        <Header isOpen={isExpanded} {...getToggleProps()}>
+          <Title>{isExpanded ? showLessText : showMoreText}</Title>
+          <Arrow isOpen={isExpanded}>
+            <IoIosArrowDown />
+          </Arrow>
+        </Header>
+      </Container>
+    );
+  }
 
   return (
     <Container>
       <Header isOpen={isExpanded} {...getToggleProps()}>
-        <Title>{title}</Title>
+        <Title>{isExpanded ? showLessText : showMoreText}</Title>
         <Arrow isOpen={isExpanded}>
           <IoIosArrowDown />
         </Arrow>
