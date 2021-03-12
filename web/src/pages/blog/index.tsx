@@ -120,12 +120,15 @@ export async function getStaticProps({ preview = false }) {
   const allPosts = overlayDrafts(
     await getClient(preview).fetch(postsIndexQuery),
   );
-  const rss = generateRss(allPosts);
 
-  try {
-    fs.writeFileSync('./public/rss.xml', rss);
-  } catch (err) {
-    console.log("Can't write to file ./public/rss.xml", err);
+  if (!preview) {
+    const rss = generateRss(allPosts);
+
+    try {
+      fs.writeFileSync('./public/rss.xml', rss);
+    } catch (err) {
+      console.log("Can't write to file ./public/rss.xml", err);
+    }
   }
 
   return {
