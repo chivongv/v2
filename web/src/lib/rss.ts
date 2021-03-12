@@ -1,14 +1,12 @@
 import { formatDate } from '@utils/datetime-utils';
 
-const generateRssItem = (post): string => `
-  <item>
+const generateRssItem = (post): string => `<item>
     <guid>https://chivongv.se/blog/${post.slug}</guid>
     <title>${post.title}</title>
     <link>https://chivongv.se/blog/${post.slug}</link>
     <description>${post.excerpt}</description>
     <pubDate>${formatDate(post.publishedDate)}</pubDate>
-  </item>
-`;
+  </item>`;
 
 const generateRss = (posts): string => `
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">

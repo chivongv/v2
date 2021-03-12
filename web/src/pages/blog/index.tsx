@@ -122,7 +122,11 @@ export async function getStaticProps({ preview = false }) {
   );
   const rss = generateRss(allPosts);
 
-  fs.writeFileSync('./public/rss.xml', rss);
+  try {
+    fs.writeFileSync('./public/rss.xml', rss);
+  } catch (err) {
+    console.log("Can't write to file ./public/rss.xml", err);
+  }
 
   return {
     props: { allPosts, preview },
