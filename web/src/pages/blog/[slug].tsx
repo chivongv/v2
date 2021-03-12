@@ -15,6 +15,7 @@ import Layout from '@components/Layout';
 import NotFound from '@pages/404';
 import SocialBar from '@components/SocialBar';
 import ToTop from '@components/ToTop';
+import { formatDate } from '@utils/datetime-utils';
 
 const Container = styled('article')({
   display: 'flex',
@@ -54,7 +55,9 @@ const PostBody = styled('section')({
 const ContentWrapper = styled('div')({
   flex: 1,
   paddingBottom: '1.5rem',
+  marginBottom: 5,
   fontSize: '1.25rem',
+  position: 'relative',
   'h1,h2,h3,h4,h5,h6,p': {
     marginTop: '1.2em',
     marginBottom: '1.2em',
@@ -108,6 +111,17 @@ const ContentWrapper = styled('div')({
   [Breakpoints.TabletOrLarger]: {
     marginBottom: 15,
   },
+});
+
+const Time = styled('time')({
+  position: 'absolute',
+  bottom: 0,
+  right: 0,
+  fontSize: '0.75rem',
+});
+
+const PostLinks = styled('div')({
+  textAlign: 'right',
 });
 
 const PostLink = styled('a')({
@@ -167,9 +181,12 @@ const Post: FC<Props> = ({ data, preview }) => {
             <PostBody ref={ref}>
               <ContentWrapper>
                 <PortableText blocks={post.body} />
+                <Time title="Last updated date">
+                  {formatDate(post.updatedDate)}
+                </Time>
               </ContentWrapper>
               {preview && <AlertPreview />}
-              <div>
+              <PostLinks>
                 <PostLink
                   target="_blank"
                   rel="noopener noreferrer"
@@ -189,7 +206,7 @@ const Post: FC<Props> = ({ data, preview }) => {
                 >
                   Tweet about this post
                 </PostLink>
-              </div>
+              </PostLinks>
             </PostBody>
           </>
         )}
