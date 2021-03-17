@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import styled from '@emotion/styled';
-import ToggleMode from './ToggleMode';
+const ToggleMode = dynamic(() => import('./ToggleMode'));
 
 const Container = styled('nav')({
   display: 'flex',

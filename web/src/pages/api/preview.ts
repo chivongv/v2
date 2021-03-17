@@ -30,14 +30,12 @@ export default async function preview(req, res) {
     // Redirect to the path from the fetched post
     // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
     res.writeHead(307, { Location: `/blog/${post.slug}` });
-    res.end();
   } else if (req.query.type && req.query.type === 'project') {
     res.setPreviewData({});
     res.writeHead(307, { Location: `/works` });
-    res.end();
   } else {
     res.setPreviewData({});
     res.writeHead(307, { Location: `/` });
-    res.end();
   }
+  res.end();
 }

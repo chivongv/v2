@@ -6,12 +6,12 @@ import { motion, useAnimation } from 'framer-motion';
 
 import { worksIndexQuery } from '@lib/queries';
 import { getClient, overlayDrafts } from '@lib/sanity.server';
-import Layout from '@components/Layout';
+import { Breakpoints } from '@styles/breakpoints';
+const Layout = dynamic(() => import('@components/Layout'));
 const ProjectCard = dynamic(() => import('@components/cards/ProjectCard'));
 const SocialBar = dynamic(() => import('@components/SocialBar'));
 const ToTop = dynamic(() => import('@components/ToTop'));
-import { Breakpoints } from '@styles/breakpoints';
-import AlertPreview from '@components/AlertPreview';
+const AlertPreview = dynamic(() => import('@components/AlertPreview'));
 
 const Container = styled('div')({
   display: 'flex',
@@ -55,7 +55,7 @@ const Works = ({ allWorks, preview }) => {
     <Layout title="Chi Vong | Works">
       <Container>
         <ProjectList>
-          {preview && <AlertPreview />}
+          {preview && <AlertPreview redirect="works" />}
           {allWorks
             ? allWorks.map((project, i) =>
                 project ? (

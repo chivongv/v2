@@ -1,6 +1,7 @@
-export default async function exit(_, res) {
-  res.clearPreviewData();
+export default async function exit(req, res) {
+  const redirect = req.query.redirect ? '/' + req.query.redirect : '/';
 
-  res.writeHead(307, { Location: '/' });
+  res.clearPreviewData();
+  res.writeHead(307, { Location: redirect });
   res.end();
 }

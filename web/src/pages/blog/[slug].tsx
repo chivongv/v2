@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import styled from '@emotion/styled';
 import Head from 'next/head';
+import styled from '@emotion/styled';
 import { useInView } from 'react-intersection-observer';
 
 import { BlogPost } from 'types/blogpost';
@@ -10,11 +11,11 @@ import { Breakpoints } from '@styles/breakpoints';
 import { getClient, overlayDrafts, sanityClient } from '@lib/sanity.server';
 import { postQuery, postSlugsQuery } from '@lib/queries';
 import { PortableText, usePreviewSubscription } from '@lib/sanity';
-import AlertPreview from '@components/AlertPreview';
-import Layout from '@components/Layout';
-import NotFound from '@pages/404';
-import SocialBar from '@components/SocialBar';
-import ToTop from '@components/ToTop';
+const AlertPreview = dynamic(() => import('@components/AlertPreview'));
+const Layout = dynamic(() => import('@components/Layout'));
+const NotFound = dynamic(() => import('@pages/404'));
+const ToTop = dynamic(() => import('@components/ToTop'));
+const SocialBar = dynamic(() => import('@components/SocialBar'));
 import { formatDate } from '@utils/datetime-utils';
 
 const Container = styled('article')({
@@ -185,7 +186,7 @@ const Post: FC<Props> = ({ data, preview }) => {
                   {formatDate(post.updatedDate)}
                 </Time>
               </ContentWrapper>
-              {preview && <AlertPreview />}
+              {preview && <AlertPreview redirect="blog" />}
               <PostLinks>
                 <PostLink
                   target="_blank"

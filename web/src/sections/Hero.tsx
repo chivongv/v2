@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import { Breakpoints } from '../styles/breakpoints';
+import { Breakpoints } from '@styles/breakpoints';
 
 const Container = styled(motion.div)({
   display: 'flex',

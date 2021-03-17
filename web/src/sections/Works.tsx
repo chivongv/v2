@@ -1,10 +1,11 @@
 import * as React from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import styled from '@emotion/styled';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-import WorkCard from '@components/cards/WorkCard';
+const WorkCard = dynamic(() => import('@components/cards/WorkCard'));
 
 const Container = styled(motion.div)({
   display: 'flex',

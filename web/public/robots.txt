@@ -1,5 +1,6 @@
 User-Agent: *
 Disallow: /works
+Disallow: /chill
 Allow: /
 Allow: /blog
 Sitemap: https://chivongv.se/sitemap.xml

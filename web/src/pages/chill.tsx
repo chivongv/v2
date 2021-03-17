@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
-import dynamic from 'next/dynamic';
 import Layout from '@components/Layout';
-const SoundCloudIframe = dynamic(() => import('@components/SoundCloudIframe'));
-const SocialBar = dynamic(() => import('@components/SocialBar'));
+import SoundCloudIframe from '@components/SoundCloudIframe';
+import SocialBar from '@components/SocialBar';
 
 const Container = styled('div')`
   display: flex;

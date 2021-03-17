@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import * as React from 'react';
 import styled from '@emotion/styled';
 
 const Container = styled('div')({
@@ -12,13 +12,17 @@ const ButtonLink = styled('a')({
   cursor: 'pointer',
 });
 
-const AlertPreview = () => {
+type Props = {
+  redirect: string;
+};
+
+const AlertPreview: React.FC<Props> = ({ redirect }) => {
   return (
     <Container>
       You are in preview mode.{' '}
-      <Link href="/api/exit-preview" passHref>
-        <ButtonLink>Click here to exit.</ButtonLink>
-      </Link>
+      <ButtonLink href={`/api/exit-preview?redirect=${redirect}`}>
+        Click here to exit.
+      </ButtonLink>
     </Container>
   );
 };

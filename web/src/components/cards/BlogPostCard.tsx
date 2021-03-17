@@ -2,6 +2,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import { FaLongArrowAltRight } from 'react-icons/fa';
+import { BlogPost } from 'types/blogpost';
 
 const Container = styled('div')({
   display: 'flex',
@@ -88,7 +89,11 @@ const Highlight = styled('span')({
   color: '#1fb742',
 });
 
-const BlogPostCard = ({ data }) => {
+type Props = {
+  data: BlogPost;
+};
+
+const BlogPostCard: React.FC<Props> = ({ data }) => {
   const [copied, setCopied] = React.useState(false);
 
   if (!data) {

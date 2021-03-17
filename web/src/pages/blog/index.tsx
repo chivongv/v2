@@ -6,16 +6,17 @@ import FuzzySearch from 'fuzzy-search';
 import { motion } from 'framer-motion';
 import fs from 'fs';
 
-const SocialBar = dynamic(() => import('@components/SocialBar'));
-const ToTop = dynamic(() => import('@components/ToTop'));
+import Layout from '@components/Layout';
 import { Breakpoints } from '@styles/breakpoints';
 import { getClient, overlayDrafts } from '@lib/sanity.server';
 import { postsIndexQuery } from '@lib/queries';
-import AlertPreview from '@components/AlertPreview';
-import BlogPostCard from '@components/cards/BlogPostCard';
-import Layout from '@components/Layout';
-import SearchInput from '@components/SearchInput';
+const SocialBar = dynamic(() => import('@components/SocialBar'));
+const ToTop = dynamic(() => import('@components/ToTop'));
+const AlertPreview = dynamic(() => import('@components/AlertPreview'));
+const BlogPostCard = dynamic(() => import('@components/cards/BlogPostCard'));
+const SearchInput = dynamic(() => import('@components/SearchInput'));
 import generateRss from 'lib/rss';
+import { BlogPost } from 'types/blogpost';
 
 const Container = styled('div')({
   display: 'flex',
@@ -92,9 +93,9 @@ const Blog = ({ allPosts, preview }) => {
           handleClick={handleClick}
           placeholder="Search by keyword or tag"
         />
-        {preview && <AlertPreview />}
+        {preview && <AlertPreview redirect="blog" />}
         <PostList ref={ref}>
-          {filteredPosts.map((post, index) => {
+          {filteredPosts.map((post: BlogPost, index) => {
             return (
               <BlogPostWrapper
                 key={index}

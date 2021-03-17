@@ -1,8 +1,10 @@
 import { ReactNode } from 'react';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import styled from '@emotion/styled';
 
-import Navbar from '../components/Navbar';
+const Navbar = dynamic(() => import('@components/Navbar'));
+const Footer = dynamic(() => import('@components/Footer'));
 
 const Container = styled('div')({
   position: 'relative',
@@ -12,16 +14,6 @@ const ContentWrapper = styled('div')({
   maxWidth: 1000,
   margin: '0 auto',
   paddingBottom: '2.5rem',
-});
-
-const Footer = styled('footer')({
-  position: 'absolute',
-  bottom: 0,
-  width: '100%',
-  height: '2.5rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
 });
 
 type Props = {
