@@ -1,4 +1,4 @@
-const sharedPostFields = `
+const sharedFields = `
   _id,
   name,
   excerpt,
@@ -19,9 +19,34 @@ const sharedProjectFields = `
   title,
 `;
 
+export const notesIndexQuery = `
+  *[_type == "note"] | order(publishedDate desc, updatedDate desc) {
+    ${sharedFields}
+    tags,
+  }
+`;
+
+export const noteQuery = `
+{
+  "note": *[_type == "note" && slug.current == $slug] | order(updatedDate desc) | [0] {
+    ${sharedFields}
+    body,
+  },
+}`;
+
+export const noteSlugsQuery = `
+  *[_type == "note" && defined(slug.current)][].slug.current
+`;
+
+export const noteBySlugQuery = `
+  *[_type == "note" && slug.current == $slug][0] {
+    ${sharedFields}
+  }
+`;
+
 export const postsIndexQuery = `
   *[_type == "post"] | order(publishedDate desc, updatedDate desc) {
-    ${sharedPostFields}
+    ${sharedFields}
     tags,
   }
 `;
@@ -37,11 +62,11 @@ export const postsSitemapQuery = `
 export const postQuery = `
 {
   "post": *[_type == "post" && slug.current == $slug] | order(updatedDate desc) | [0] {
-    ${sharedPostFields}
+    ${sharedFields}
     body,
   },
   "morePosts": *[_type == "post" && slug.current != $slug] | order(publishedDate desc, updatedDate desc) | [0...2] {
-    ${sharedPostFields}
+    ${sharedFields}
     body,
   }
 }`;
@@ -52,7 +77,7 @@ export const postSlugsQuery = `
 
 export const postBySlugQuery = `
   *[_type == "post" && slug.current == $slug][0] {
-    ${sharedPostFields}
+    ${sharedFields}
   }
 `;
 

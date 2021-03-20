@@ -1,4 +1,4 @@
-import { postBySlugQuery } from '@lib/queries';
+import { noteBySlugQuery, postBySlugQuery } from '@lib/queries';
 import { previewClient } from '@lib/sanity.server';
 
 export default async function preview(req, res) {
@@ -30,6 +30,19 @@ export default async function preview(req, res) {
     // Redirect to the path from the fetched post
     // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
     res.writeHead(307, { Location: `/blog/${post.slug}` });
+  } else if (req.query.type && req.query.type === 'note') {
+    const note = await previewClient.fetch(noteBySlugQuery, {
+      slug: req.query.slug,
+    });
+
+    if (!note || !note.slug) {
+      return res
+        .status(401)
+        .json({ message: 'No valid note or note slug returned.' });
+    }
+
+    res.setPreviewData({});
+    res.writeHead(307, { Location: `/notes/${note.slug}` });
   } else if (req.query.type && req.query.type === 'project') {
     res.setPreviewData({});
     res.writeHead(307, { Location: `/works` });

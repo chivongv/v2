@@ -65,6 +65,13 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+            <Link href="/notes" passHref>
+              <Anchor isActive={router.pathname.includes('/notes')}>
+                Notes
+              </Anchor>
+            </Link>
+          </li>
+          <li>
             <Link href="/blog" passHref>
               <Anchor isActive={router.pathname.includes('/blog')}>Blog</Anchor>
             </Link>
