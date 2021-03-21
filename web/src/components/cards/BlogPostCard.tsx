@@ -102,13 +102,26 @@ const BlogPostCard: React.FC<Props> = ({ data }) => {
 
   const { title, slug, excerpt, tags } = data;
 
+  React.useEffect(() => {
+    let id = null;
+
+    if (copied) {
+      id = setTimeout(() => setCopied(false), 5000);
+    }
+
+    return () => {
+      if (id) {
+        clearTimeout(id);
+      }
+    };
+  }, [copied]);
+
   const handleClick = () => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(
         `https://chivongv.se/blog/${encodeURIComponent(slug)}`,
       );
       setCopied(true);
-      setTimeout(() => setCopied(false), 5000);
     }
   };
 

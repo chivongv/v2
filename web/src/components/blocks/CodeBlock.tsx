@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import * as React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import styled from '@emotion/styled';
 import { FiCopy } from 'react-icons/fi';
@@ -51,14 +51,27 @@ const CodeBlock = ({ node }) => {
   if (!node || !node.code) {
     return null;
   }
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = React.useState(false);
   const { language, code, filename } = node;
+
+  React.useEffect(() => {
+    let id = null;
+
+    if (copied) {
+      id = setTimeout(() => setCopied(false), 5000);
+    }
+
+    return () => {
+      if (id) {
+        clearTimeout(id);
+      }
+    };
+  }, [copied]);
 
   const handleClick = () => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(code);
       setCopied(true);
-      setTimeout(() => setCopied(false), 5000);
     }
   };
 
