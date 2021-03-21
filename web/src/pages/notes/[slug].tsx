@@ -3,8 +3,10 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Head from 'next/head';
+import Link from 'next/link';
 import styled from '@emotion/styled';
 import { useInView } from 'react-intersection-observer';
+import { FaLongArrowAltLeft } from 'react-icons/fa';
 
 import { NotePost } from 'types/notepost';
 import { Breakpoints } from '@styles/breakpoints';
@@ -17,6 +19,7 @@ const NotFound = dynamic(() => import('@pages/404'));
 const ToTop = dynamic(() => import('@components/ToTop'));
 const SocialBar = dynamic(() => import('@components/SocialBar'));
 import { formatDate } from '@utils/datetime-utils';
+import { BackTo, Time } from '@components/sharedPosts';
 
 const Container = styled('article')({
   display: 'flex',
@@ -114,13 +117,6 @@ const ContentWrapper = styled('div')({
   },
 });
 
-const Time = styled('time')({
-  position: 'absolute',
-  bottom: 0,
-  right: 0,
-  fontSize: '0.75rem',
-});
-
 const NoteLinks = styled('div')({
   textAlign: 'right',
 });
@@ -181,6 +177,11 @@ const Note: FC<Props> = ({ data, preview }) => {
             <NoteBody ref={ref}>
               <ContentWrapper>
                 <PortableText blocks={note.body} />
+                <Link href="/notes" passHref>
+                  <BackTo>
+                    <FaLongArrowAltLeft /> Back to notes
+                  </BackTo>
+                </Link>
                 <Time title="Last updated date">
                   {formatDate(note.updatedDate)}
                 </Time>

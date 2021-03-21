@@ -62,7 +62,6 @@ const Works = ({ allWorks, preview }) => {
                   <ProjectCardWrapper
                     key={project._id}
                     ref={ref}
-                    custom={i}
                     initial="hidden"
                     animate="visible"
                     variants={animations}
