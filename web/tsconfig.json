@@ -17,6 +17,7 @@
     "paths": {
       "@blocks/*": ["components/blocks/*"],
       "@components/*": ["components/*"],
+      "@data/*": ["data/*"],
       "@lib/*": ["lib/*"],
       "@sections/*": ["sections/*"],
       "@styles/*": ["styles/*"],

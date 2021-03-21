@@ -1,7 +1,10 @@
+import * as React from 'react';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import { Breakpoints } from '@styles/breakpoints';
+import { allRoles } from '@data/roles';
+import { shuffleArray } from '@utils/array-utils';
 
 const Container = styled(motion.div)({
   display: 'flex',
@@ -17,15 +20,20 @@ const Container = styled(motion.div)({
 const Title = styled(motion.h2)({
   fontSize: 'calc(1rem + 2.5vw)',
   lineHeight: 1.5,
-  marginBottom: 20,
+  marginBottom: 10,
 });
 
 const SubTitle = styled(motion.h3)({
-  fontSize: 'calc(0.6rem + 0.8vw)',
+  fontSize: 'calc(1rem + 1.5vw)',
   maxWidth: 800,
   width: '85vw',
   lineHeight: 1.3,
   textAlign: 'center',
+  marginBottom: 25,
+  color: 'transparent',
+  backgroundColor: 'var(--colors-background)',
+  backgroundImage: 'var(--colors-role)',
+  backgroundClip: 'text',
 });
 
 const Anchor = styled(motion.a)({
@@ -40,7 +48,7 @@ const Anchor = styled(motion.a)({
     color: 'initial',
   },
   '@media screen and (min-width: 594px)': {
-    marginTop: 30,
+    marginTop: 100,
   },
 });
 
@@ -54,17 +62,39 @@ const moveUp = {
   visible: { opacity: 1, y: 0 },
 };
 
+const RESELECT_INTERVAL = 3000;
+
 const Hero = () => {
+  const [firstRole, ...otherRoles] = allRoles;
+  const [roles, setRoles] = React.useState([
+    firstRole,
+    ...shuffleArray(otherRoles),
+  ]);
+
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      if (!document?.hasFocus()) return;
+
+      setRoles((currentRoles) =>
+        currentRoles.length > 1
+          ? currentRoles.slice(1)
+          : shuffleArray(allRoles),
+      );
+    }, RESELECT_INTERVAL);
+
+    return () => {
+      clearInterval(id);
+    };
+  }, []);
+
   return (
     <Container initial="hidden" animate="visible">
-      <Title variants={moveLeft} transition={{ delay: 0.5, duration: 1 }}>
-        Hi, I'm <span className="highlight">Chi</span>
+      <Title>
+        Hi, I'm <span className="highlight">Chi</span> and I'm
       </Title>
-      <SubTitle variants={moveUp} transition={{ delay: 1.5, duration: 2 }}>
-        Software Engineer
-      </SubTitle>
+      <SubTitle>{roles[0]}</SubTitle>
       <Link href="/#works" passHref>
-        <Anchor variants={moveUp} transition={{ delay: 3, duration: 2 }}>
+        <Anchor variants={moveUp} transition={{ delay: 0.5, duration: 2 }}>
           Read more
         </Anchor>
       </Link>
