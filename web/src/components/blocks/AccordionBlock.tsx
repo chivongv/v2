@@ -1,5 +1,5 @@
 import useCollapse from 'react-collapsed';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import { IoIosArrowDown } from 'react-icons/io';
 import { PortableText } from '@lib/sanity';
 

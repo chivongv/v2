@@ -1,6 +1,6 @@
 import * as React from 'react';
 import dynamic from 'next/dynamic';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 

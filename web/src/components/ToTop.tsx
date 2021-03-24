@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaArrowUp } from 'react-icons/fa';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import { Breakpoints } from '../styles/breakpoints';
 
 const Button = styled('button')({

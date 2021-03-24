@@ -1,4 +1,4 @@
 {
   "presets": ["next/babel"],
-  "plugins": ["react-require"]
+  "plugins": ["react-require", "macros"]
 }

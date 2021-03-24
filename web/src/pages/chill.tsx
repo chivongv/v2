@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import Layout from '@components/Layout';
 import SoundCloudIframe from '@components/SoundCloudIframe';
 import SocialBar from '@components/SocialBar';

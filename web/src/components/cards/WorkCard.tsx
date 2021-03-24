@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import { FaGithub, FaGitlab, FaExternalLinkAlt } from 'react-icons/fa';
 
 const Container = styled('div')({

@@ -1,6 +1,6 @@
 import getYouTubeId from 'get-youtube-id';
 import YouTube from 'react-youtube';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 
 const Container = styled('div')({
   display: 'flex',

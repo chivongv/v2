@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import { useTheme } from 'next-themes';
 
 const Button = styled('button')({

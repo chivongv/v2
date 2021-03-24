@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 

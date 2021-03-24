@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import { FaSearch } from 'react-icons/fa';
 
 const Container = styled('div')({

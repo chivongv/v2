@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Link from 'next/link';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import { NotePost } from 'types/notepost';
 

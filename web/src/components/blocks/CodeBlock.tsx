@@ -1,6 +1,6 @@
 import * as React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import { FiCopy } from 'react-icons/fi';
 
 import syntaxTheme from '@styles/syntax-theme';

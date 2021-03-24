@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 
 const Navbar = dynamic(() => import('@components/Navbar'));
 const Footer = dynamic(() => import('@components/Footer'));

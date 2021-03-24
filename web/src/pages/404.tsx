@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 

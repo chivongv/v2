@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Link from 'next/link';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import { motion } from 'framer-motion';
 import { Breakpoints } from '@styles/breakpoints';
 import { allRoles } from '@data/roles';

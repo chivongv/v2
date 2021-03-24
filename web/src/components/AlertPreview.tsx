@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 
 const Container = styled('div')({
   margin: '10px auto',

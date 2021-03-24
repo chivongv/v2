@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import { useInView } from 'react-intersection-observer';
 import { FaLongArrowAltLeft } from 'react-icons/fa';
 
