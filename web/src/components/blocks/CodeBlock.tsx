@@ -47,6 +47,11 @@ const Highlight = styled('span')({
   color: '#1fb742',
 });
 
+const CodeWrapper = styled(SyntaxHighlighter)({
+  maxHeight: 500,
+  overflow: 'auto',
+});
+
 const CodeBlock = ({ node }) => {
   if (!node || !node.code) {
     return null;
@@ -90,9 +95,9 @@ const CodeBlock = ({ node }) => {
           )}
         </Button>
       </Header>
-      <SyntaxHighlighter language={language || 'text'} style={syntaxTheme}>
+      <CodeWrapper language={language || 'text'} style={syntaxTheme}>
         {code}
-      </SyntaxHighlighter>
+      </CodeWrapper>
     </div>
   );
 };
