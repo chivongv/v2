@@ -22,7 +22,8 @@
       "@sections/*": ["sections/*"],
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
-      "@pages/*": ["pages/*"]
+      "@pages/*": ["pages/*"],
+      "@icons/*": ["icons/*"]
     },
     "typeRoots": ["./src/types"]
   },
