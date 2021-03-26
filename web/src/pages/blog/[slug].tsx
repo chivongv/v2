@@ -31,7 +31,7 @@ const Container = styled('article')({
 
 const PostTitle = styled('h1')({
   color: 'var(--colors-primary)',
-  marginBottom: 10,
+  margin: '0 10px 10px',
 });
 
 const ImageWrapper = styled('div')({

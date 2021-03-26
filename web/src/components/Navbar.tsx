@@ -49,7 +49,7 @@ const Nav = styled('nav')<{ isOpen: boolean }>(({ isOpen }) => ({
   [Breakpoints.Mobile]: {
     position: 'absolute',
     top: 0,
-    left: 0,
+    left: '-100vw',
     flexDirection: 'column',
     background: 'var(--colors-background)',
     padding: '30px 10px 10px',
@@ -59,7 +59,7 @@ const Nav = styled('nav')<{ isOpen: boolean }>(({ isOpen }) => ({
       padding: 5,
       margin: 5,
     },
-    transform: isOpen ? 'translateX(0)' : 'translateX(-100vw)',
+    transform: isOpen ? 'translateX(100vw)' : 'translateX(0)',
     transition: 'transform 500ms ease-in-out',
     zIndex: 1000,
   },
