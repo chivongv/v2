@@ -25,7 +25,7 @@ const Home = ({ works }: Props) => {
       <Works works={works} />
       <div ref={ref}></div>
       <SocialBar />
-      {inView && <ToTop inView={inView} />}
+      {inView && <ToTop />}
     </Layout>
   );
 };

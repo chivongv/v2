@@ -1,7 +1,6 @@
 import * as React from 'react';
 import dynamic from 'next/dynamic';
 import styled from '@emotion/styled/macro';
-import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 
 import Layout from '@components/Layout';
@@ -77,10 +76,6 @@ const moveUp = {
 };
 
 const Notes = ({ allNotes, preview }) => {
-  const [ref, inView] = useInView({
-    rootMargin: '350px',
-  });
-
   return (
     <Layout title="Chi Vong | Notes">
       <Container>
@@ -91,7 +86,7 @@ const Notes = ({ allNotes, preview }) => {
           am sharing these publicly because I believe in learning in public.
         </SubTitle>
         {preview && <AlertPreview redirect="notes" />}
-        <NoteList ref={ref}>
+        <NoteList>
           {allNotes.map((note: NotePost, index) => {
             return (
               <NotePostWrapper
@@ -109,7 +104,6 @@ const Notes = ({ allNotes, preview }) => {
         </NoteList>
       </Container>
       <SocialBar />
-      {inView && <ToTop inView={inView} />}
     </Layout>
   );
 };

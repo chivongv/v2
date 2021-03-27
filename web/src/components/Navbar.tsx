@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import styled from '@emotion/styled/macro';
 import { Breakpoints } from '@styles/breakpoints';
+const SocialBar = dynamic(() => import('./SocialBar'));
 const ToggleMode = dynamic(() => import('./ToggleMode'));
 const Bars = dynamic(() => import('@icons/Bars'));
 const Cube = dynamic(() => import('@icons/Cube'));
@@ -65,8 +66,7 @@ const Nav = styled('nav')<{ isOpen: boolean }>(({ isOpen }) => ({
   },
   [Breakpoints.Small]: {
     justifyContent: 'flex-end',
-    alignItems: 'center',
-    '& a:not(:last-child)': {
+    '> a:not(:last-child)': {
       background: 'var(--colors-text)',
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
@@ -131,9 +131,15 @@ const Navbar = () => {
             <ToggleMode />
           </div>
           {isOpen && (
-            <MenuExit type="button" onClick={() => setIsOpen((prev) => !prev)}>
-              <X width="24" height="24" />
-            </MenuExit>
+            <>
+              <SocialBar />
+              <MenuExit
+                type="button"
+                onClick={() => setIsOpen((prev) => !prev)}
+              >
+                <X width="24" height="24" />
+              </MenuExit>
+            </>
           )}
         </Nav>
         <MenuToggle type="button" onClick={() => setIsOpen((prev) => !prev)}>

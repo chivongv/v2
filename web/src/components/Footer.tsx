@@ -10,8 +10,12 @@ const Container = styled('footer')({
   alignItems: 'center',
 });
 
-const Footer = ({ children }) => {
-  return <Container>{children}</Container>;
+const Footer = () => {
+  return (
+    <Container>
+      © {new Date().getFullYear()} Built with &#9829; by Chi Vong
+    </Container>
+  );
 };
 
 export default Footer;

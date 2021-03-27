@@ -7,6 +7,7 @@ import {
   FaCodepen,
   FaTwitter,
 } from 'react-icons/fa';
+import { Breakpoints } from '@styles/breakpoints';
 
 import { socialMedia } from '../siteSettings';
 
@@ -48,7 +49,7 @@ const List = styled('ul')({
       marginLeft: -45,
     },
   },
-  '@media all and (min-width: 1230px)': {
+  [Breakpoints.XLarge]: {
     flexDirection: 'column',
     width: 50,
     position: 'fixed',

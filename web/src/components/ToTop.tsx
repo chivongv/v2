@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaArrowUp } from 'react-icons/fa';
 import styled from '@emotion/styled/macro';
-import { Breakpoints } from '../styles/breakpoints';
+import { Breakpoints } from '@styles/breakpoints';
 
 const Button = styled('button')({
   position: 'fixed',
@@ -27,14 +27,13 @@ const Button = styled('button')({
   },
 });
 
-const ToTop = ({ inView }) => {
+const ToTop = () => {
   function handleClick() {
     document.documentElement.scrollTop = 0;
     // @ts-ignore
     window.pageYOffset = 0;
   }
 
-  if (!inView) return null;
   return (
     <Button
       aria-label="Click here to get to the top of the page"

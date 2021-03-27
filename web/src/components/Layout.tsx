@@ -24,7 +24,7 @@ type Props = {
 const Layout = ({ children, ...customMeta }: Props) => {
   const meta = {
     title: 'Chi Vong',
-    description: `Frontend Developer, Software Engineer`,
+    description: `Fullstack Developer, Software Engineer`,
     type: 'website',
     ...customMeta,
   };
@@ -44,9 +44,7 @@ const Layout = ({ children, ...customMeta }: Props) => {
       <ContentWrapper>
         <main>{children}</main>
       </ContentWrapper>
-      <Footer>
-        © {new Date().getFullYear()} Built with &#9829; by Chi Vong
-      </Footer>
+      <Footer />
     </Container>
   );
 };

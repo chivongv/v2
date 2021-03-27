@@ -52,11 +52,6 @@ const Anchor = styled(motion.a)({
   },
 });
 
-const moveLeft = {
-  hidden: { opacity: 0, x: 200 },
-  visible: { opacity: 1, x: 0 },
-};
-
 const moveUp = {
   hidden: { opacity: 0, y: 200 },
   visible: { opacity: 1, y: 0 },

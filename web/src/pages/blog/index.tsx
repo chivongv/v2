@@ -1,7 +1,6 @@
 import * as React from 'react';
 import dynamic from 'next/dynamic';
 import styled from '@emotion/styled/macro';
-import { useInView } from 'react-intersection-observer';
 import FuzzySearch from 'fuzzy-search';
 import { motion } from 'framer-motion';
 import fs from 'fs';
@@ -71,9 +70,6 @@ const moveUp = {
 };
 
 const Blog = ({ allPosts, preview }) => {
-  const [ref, inView] = useInView({
-    rootMargin: '350px',
-  });
   const [searchText, setSearchText] = React.useState('');
   const searcher = new FuzzySearch(allPosts, ['tags', 'title'], {
     caseSensitive: false,
@@ -94,7 +90,7 @@ const Blog = ({ allPosts, preview }) => {
           placeholder="Search by keyword or tag"
         />
         {preview && <AlertPreview redirect="blog" />}
-        <PostList ref={ref}>
+        <PostList>
           {filteredPosts.map((post: BlogPost, index) => {
             return (
               <BlogPostWrapper
@@ -112,7 +108,6 @@ const Blog = ({ allPosts, preview }) => {
         </PostList>
       </Container>
       <SocialBar />
-      {inView && <ToTop inView={inView} />}
     </Layout>
   );
 };

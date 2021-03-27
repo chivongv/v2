@@ -85,9 +85,9 @@ type Props = {
   works: Work[];
 };
 
-const Works = React.forwardRef(({ works }: Props, ref?: any) => {
+const Works = ({ works }: Props) => {
   const controls = useAnimation();
-  const { ref: mRef, inView } = useInView();
+  const { ref, inView } = useInView({ threshold: 0 });
 
   React.useEffect(() => {
     if (inView) {
@@ -110,7 +110,6 @@ const Works = React.forwardRef(({ works }: Props, ref?: any) => {
               return (
                 <motion.li
                   key={work._id}
-                  ref={mRef}
                   whileHover={{ translateY: -10 }}
                   whileFocus={{ translateY: -10 }}
                 >
@@ -131,6 +130,6 @@ const Works = React.forwardRef(({ works }: Props, ref?: any) => {
   }
 
   return null;
-});
+};
 
 export default Works;

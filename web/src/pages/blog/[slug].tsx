@@ -59,7 +59,7 @@ const PostBody = styled('section')({
 const ContentWrapper = styled('div')({
   flex: 1,
   paddingBottom: '1.5rem',
-  marginBottom: 5,
+  marginBottom: 10,
   fontSize: '1.25rem',
   position: 'relative',
   'h1,h2,h3,h4,h5,h6,p': {
@@ -112,7 +112,7 @@ const ContentWrapper = styled('div')({
       height: '100%',
     },
   },
-  [Breakpoints.TabletOrLarger]: {
+  [Breakpoints.Medium]: {
     marginBottom: 15,
   },
 });
@@ -213,7 +213,7 @@ const Post: FC<Props> = ({ data, preview }) => {
           </>
         )}
         <SocialBar />
-        {inView && <ToTop inView={inView} />}
+        {inView && <ToTop />}
       </Container>
     </Layout>
   );
