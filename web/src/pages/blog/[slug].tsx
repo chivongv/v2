@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
 import styled from '@emotion/styled/macro';
-import { useInView } from 'react-intersection-observer';
 import { FaLongArrowAltLeft } from 'react-icons/fa';
 
 import { BlogPost } from 'types/blogpost';
@@ -141,9 +140,6 @@ const Post: FC<Props> = ({ data, preview }) => {
     initialData: data,
     enabled: Boolean(preview && slug),
   });
-  const [ref, inView] = useInView({
-    rootMargin: '350px',
-  });
 
   if (!mdata || (!router.isFallback && !slug)) {
     return <NotFound />;
@@ -175,7 +171,7 @@ const Post: FC<Props> = ({ data, preview }) => {
                 <Image src={post.coverImage} width="800" height="600" />
               </ImageWrapper>
             )}
-            <PostBody ref={ref}>
+            <PostBody>
               <ContentWrapper>
                 <PortableText blocks={post.body} />
                 <Link href="/blog" passHref>
@@ -213,7 +209,7 @@ const Post: FC<Props> = ({ data, preview }) => {
           </>
         )}
         <SocialBar />
-        {inView && <ToTop />}
+        <ToTop />
       </Container>
     </Layout>
   );

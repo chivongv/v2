@@ -10,7 +10,6 @@ import { Breakpoints } from '@styles/breakpoints';
 import { getClient, overlayDrafts } from '@lib/sanity.server';
 import { postsIndexQuery } from '@lib/queries';
 const SocialBar = dynamic(() => import('@components/SocialBar'));
-const ToTop = dynamic(() => import('@components/ToTop'));
 const AlertPreview = dynamic(() => import('@components/AlertPreview'));
 const BlogPostCard = dynamic(() => import('@components/cards/BlogPostCard'));
 const SearchInput = dynamic(() => import('@components/SearchInput'));

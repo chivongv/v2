@@ -1,6 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import { FaArrowUp } from 'react-icons/fa';
 import styled from '@emotion/styled/macro';
+import { useReducedMotion } from 'framer-motion';
 import { Breakpoints } from '@styles/breakpoints';
 
 const Button = styled('button')({
@@ -27,11 +28,37 @@ const Button = styled('button')({
   },
 });
 
-const ToTop = () => {
+const ToTop = (props) => {
+  const shouldReduceMotion = useReducedMotion();
+  const [visible, setVisible] = React.useState(false);
+  const { showAtPosition } = props;
+
+  function scrollListener() {
+    if (window.scrollY > showAtPosition) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  }
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', scrollListener);
+
+    return () => {
+      window.removeEventListener('scroll', scrollListener);
+    };
+  }, []);
+
   function handleClick() {
-    document.documentElement.scrollTop = 0;
-    // @ts-ignore
-    window.pageYOffset = 0;
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: shouldReduceMotion ? 'auto' : 'smooth',
+    });
+  }
+
+  if (!visible) {
+    return null;
   }
 
   return (
@@ -42,6 +69,10 @@ const ToTop = () => {
       <FaArrowUp />
     </Button>
   );
+};
+
+ToTop.defaultProps = {
+  showAtPosition: 150,
 };
 
 export default ToTop;

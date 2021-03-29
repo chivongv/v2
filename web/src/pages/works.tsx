@@ -9,7 +9,6 @@ import { Breakpoints } from '@styles/breakpoints';
 const Layout = dynamic(() => import('@components/Layout'));
 const ProjectCard = dynamic(() => import('@components/cards/ProjectCard'));
 const SocialBar = dynamic(() => import('@components/SocialBar'));
-const ToTop = dynamic(() => import('@components/ToTop'));
 const AlertPreview = dynamic(() => import('@components/AlertPreview'));
 
 const Container = styled('div')({
@@ -71,7 +70,6 @@ const Works = ({ allWorks, preview }) => {
         </ProjectList>
       </Container>
       <SocialBar />
-      <ToTop />
     </Layout>
   );
 };

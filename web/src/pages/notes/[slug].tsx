@@ -140,9 +140,6 @@ const Note: FC<Props> = ({ data, preview }) => {
     initialData: data,
     enabled: Boolean(preview && slug),
   });
-  const [ref, inView] = useInView({
-    rootMargin: '350px',
-  });
 
   if (!mdata || (!router.isFallback && !slug)) {
     return <NotFound />;
@@ -174,7 +171,7 @@ const Note: FC<Props> = ({ data, preview }) => {
                 <Image src={note.coverImage} width="800" height="600" />
               </ImageWrapper>
             )}
-            <NoteBody ref={ref}>
+            <NoteBody>
               <ContentWrapper>
                 <PortableText blocks={note.body} />
                 <Link href="/notes" passHref>
@@ -212,7 +209,7 @@ const Note: FC<Props> = ({ data, preview }) => {
           </>
         )}
         <SocialBar />
-        {inView && <ToTop />}
+        <ToTop />
       </Container>
     </Layout>
   );

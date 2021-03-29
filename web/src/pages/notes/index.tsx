@@ -8,7 +8,6 @@ import { Breakpoints } from '@styles/breakpoints';
 import { getClient, overlayDrafts } from '@lib/sanity.server';
 import { notesIndexQuery } from '@lib/queries';
 const SocialBar = dynamic(() => import('@components/SocialBar'));
-const ToTop = dynamic(() => import('@components/ToTop'));
 const AlertPreview = dynamic(() => import('@components/AlertPreview'));
 const NotePostCard = dynamic(() => import('@components/cards/NotePostCard'));
 import { NotePost } from 'types/notepost';
